@@ -59,16 +59,16 @@
 }
 
 .slideBeauty {
-  background-image: url("/images/hero-rice.png");
-  background-position: 58% 42%;
-  filter: brightness(1.11) contrast(0.9) saturate(0.74);
+  background-image: url("/images/hero-beauty.jpg");
+  background-position: center center;
+  filter: brightness(1.12) contrast(0.9) saturate(0.78);
   animation-delay: 10.8s;
 }
 
 .slideMind {
-  background-image: url("/images/hero-mind-tea.svg");
-  background-position: 63% 47%;
-  filter: brightness(1.08) contrast(0.92) saturate(0.78);
+  background-image: url("/images/hero-heart.jpg");
+  background-position: 60% center;
+  filter: brightness(1.1) contrast(0.92) saturate(0.78);
   animation-delay: 16.8s;
 }
 
@@ -134,8 +134,12 @@
   }
 
   .header img {
-    width: 42px !important;
+    width: clamp(48px, 13vw, 64px) !important;
     filter: drop-shadow(0 4px 10px rgba(36, 34, 30, 0.08));
+  }
+
+  .header span {
+    display: none !important;
   }
 
   .header strong {
