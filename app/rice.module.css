@@ -29,55 +29,151 @@
 .openingIntro::after {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 3;
   background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.12), rgba(255, 253, 248, 0.46)),
-    rgba(250, 248, 240, 0.22);
+    linear-gradient(180deg, rgba(255, 253, 248, 0.08), rgba(255, 253, 248, 0.5)),
+    rgba(250, 248, 240, 0.14);
   content: "";
 }
 
-.openingRice {
+.openingPhase {
   position: absolute;
-  inset: -7%;
+  inset: -8%;
   z-index: 0;
-  background-image: url("/images/rice-hero.svg");
-  background-position: 52% 46%;
-  background-size: auto 182%;
-  filter: brightness(1.08) contrast(0.98) saturate(0.84);
+  background-position: center;
+  background-size: cover;
+  filter: brightness(1.08) contrast(0.94) saturate(0.82);
+  opacity: 0;
   transform: scale(0.95);
   transform-origin: center;
-  animation: introRiceZoom 1.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-duration: 2.28s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.openingPhase::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.openingFood {
+  background-image: url("/images/hero-table.png");
+  animation-name: introPhaseFood;
+}
+
+.openingFood::after {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.38), rgba(255, 253, 248, 0.58)),
+    rgba(242, 210, 86, 0.18);
+}
+
+.openingMove {
+  background-image: url("/images/hero-movement.png");
+  animation-name: introPhaseMove;
+}
+
+.openingMove::after {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.34), rgba(255, 253, 248, 0.62)),
+    rgba(231, 154, 184, 0.16);
+}
+
+.openingBeauty {
+  background-image: url("/images/hero-beauty.jpg");
+  animation-name: introPhaseBeauty;
+}
+
+.openingBeauty::after {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.4), rgba(255, 253, 248, 0.64)),
+    rgba(117, 173, 150, 0.14);
+}
+
+.openingMind {
+  background-image: url("/images/hero-heart.jpg");
+  animation-name: introPhaseMind;
+}
+
+.openingMind::after {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.38), rgba(255, 253, 248, 0.66)),
+    rgba(120, 183, 223, 0.16);
+}
+
+.openingRice {
+  background-image: url("/images/rice-hero.svg");
+  background-position: 52% 47%;
+  background-size: auto 206%;
+  filter: brightness(1.08) contrast(1) saturate(0.84);
+  animation-name: introPhaseRice;
 }
 
 .openingLogo {
   position: absolute;
   left: 50%;
-  top: 45%;
-  z-index: 2;
-  width: min(56vw, 260px);
+  top: 46%;
+  z-index: 5;
+  width: min(58vw, 238px);
   height: auto;
-  opacity: 0;
+  opacity: 0.62;
   transform: translate(-50%, -50%) scale(0.985);
-  filter: drop-shadow(0 10px 24px rgba(36, 34, 30, 0.08));
-  animation: introLogo 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  filter: drop-shadow(0 10px 24px rgba(36, 34, 30, 0.1));
+  animation: introLogo 2.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.openingCopy {
+.openingMarks {
   position: absolute;
   left: 50%;
-  top: calc(45% + min(32vw, 154px));
-  z-index: 2;
-  margin: 0;
-  color: rgba(36, 34, 30, 0.68);
-  font-family: var(--font-heading);
-  font-size: clamp(21px, 6.2vw, 30px);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1.55;
-  text-align: center;
-  transform: translate(-50%, 12px);
+  top: 46%;
+  z-index: 4;
+  width: min(68vw, 280px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.openingMarks span {
+  position: absolute;
+  width: 26px;
+  height: 2px;
+  border-radius: 999px;
   opacity: 0;
-  animation: introCopy 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+  filter: blur(0.1px);
+  transform-origin: center;
+  animation-duration: 2.28s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.openingMarks span:nth-child(1) {
+  left: 13%;
+  top: 47%;
+  background: rgba(242, 210, 86, 0.82);
+  animation-name: introMarkFood;
+}
+
+.openingMarks span:nth-child(2) {
+  left: 45%;
+  top: 12%;
+  background: rgba(231, 154, 184, 0.78);
+  transform: rotate(78deg);
+  animation-name: introMarkMove;
+}
+
+.openingMarks span:nth-child(3) {
+  right: 13%;
+  top: 38%;
+  background: rgba(117, 173, 150, 0.8);
+  transform: rotate(-58deg);
+  animation-name: introMarkBeauty;
+}
+
+.openingMarks span:nth-child(4) {
+  left: 47%;
+  bottom: 13%;
+  background: rgba(120, 183, 223, 0.84);
+  transform: rotate(6deg);
+  animation-name: introMarkMind;
 }
 
 .header {
@@ -137,6 +233,10 @@
   text-transform: uppercase;
 }
 
+.mobileMenu {
+  display: none;
+}
+
 .hero {
   position: relative;
   min-height: 100svh;
@@ -188,6 +288,10 @@
   height: 34%;
   background: linear-gradient(180deg, rgba(255, 253, 248, 0), #fffdf8 88%);
   content: "";
+}
+
+.mobileVisual {
+  display: none;
 }
 
 .heroInner {
@@ -393,6 +497,7 @@
 
 .photo {
   position: relative;
+  aspect-ratio: 4 / 5;
   min-height: 560px;
   overflow: hidden;
   border-radius: 8px;
@@ -402,7 +507,17 @@
 
 .photo img {
   object-fit: cover;
+  object-position: center center;
+  display: block;
   transition: scale 1200ms cubic-bezier(0.22, 1, 0.36, 1), filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photoHeart img {
+  object-position: 60% center;
+}
+
+.photoBeauty img {
+  object-position: center center;
 }
 
 .photo::after {
@@ -489,6 +604,7 @@
 }
 
 .elementItem .photo {
+  aspect-ratio: 4 / 5;
   min-height: 430px;
 }
 
@@ -598,7 +714,7 @@
 
 @keyframes introFade {
   0%,
-  68% {
+  74% {
     opacity: 1;
     visibility: visible;
   }
@@ -608,30 +724,155 @@
   }
 }
 
-@keyframes introRiceZoom {
+@keyframes introPhaseFood {
   0% {
+    opacity: 1;
     transform: scale(0.95);
   }
+  16% {
+    opacity: 1;
+  }
+  23%,
   100% {
-    transform: scale(1.05);
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes introPhaseMove {
+  0%,
+  15% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  24%,
+  34% {
+    opacity: 1;
+  }
+  43%,
+  100% {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes introPhaseBeauty {
+  0%,
+  34% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  43%,
+  52% {
+    opacity: 1;
+  }
+  61%,
+  100% {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes introPhaseMind {
+  0%,
+  52% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  61%,
+  68% {
+    opacity: 1;
+  }
+  76%,
+  100% {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes introPhaseRice {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  70% {
+    opacity: 0;
+  }
+  82%,
+  100% {
+    opacity: 1;
+    transform: scale(1.045);
   }
 }
 
 @keyframes introLogo {
-  0% {
-    opacity: 0;
+  0%,
+  12% {
+    opacity: 0.26;
     transform: translate(-50%, -50%) scale(0.985);
   }
+  74% {
+    opacity: 0.58;
+  }
   100% {
-    opacity: 0.09;
+    opacity: 0.72;
     transform: translate(-50%, -50%) scale(1);
   }
 }
 
-@keyframes introCopy {
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
+@keyframes introMarkFood {
+  0%,
+  20% {
+    opacity: 0.9;
+  }
+  30%,
+  100% {
+    opacity: 0.18;
+  }
+}
+
+@keyframes introMarkMove {
+  0%,
+  19% {
+    opacity: 0.18;
+  }
+  24%,
+  40% {
+    opacity: 0.9;
+  }
+  50%,
+  100% {
+    opacity: 0.18;
+  }
+}
+
+@keyframes introMarkBeauty {
+  0%,
+  39% {
+    opacity: 0.18;
+  }
+  44%,
+  58% {
+    opacity: 0.9;
+  }
+  68%,
+  100% {
+    opacity: 0.18;
+  }
+}
+
+@keyframes introMarkMind {
+  0%,
+  57% {
+    opacity: 0.18;
+  }
+  62%,
+  74% {
+    opacity: 0.9;
+  }
+  86%,
+  100% {
+    opacity: 0.28;
   }
 }
 
@@ -647,6 +888,13 @@
   }
   to {
     translate: 0 42px;
+  }
+}
+
+@keyframes mobileHeroRice {
+  to {
+    scale: 1.045;
+    translate: 0 12px;
   }
 }
 
@@ -700,6 +948,10 @@
 }
 
 @media (max-width: 720px) {
+  .page {
+    background: #fffdf8;
+  }
+
   .headerInner,
   .heroInner,
   .narrow,
@@ -714,19 +966,154 @@
   }
 
   .headerInner {
-    min-height: 74px;
+    min-height: 72px;
+    width: min(100% - 28px, 1120px);
+  }
+
+  .header {
+    background: linear-gradient(180deg, rgba(255, 253, 248, 0.74), rgba(255, 253, 248, 0.18));
+    border-bottom: 0;
+    backdrop-filter: blur(10px);
   }
 
   .brand img {
-    width: 62px;
+    width: 42px;
+    filter: drop-shadow(0 4px 10px rgba(36, 34, 30, 0.08));
   }
 
   .brand strong {
-    font-size: 17px;
+    font-size: 15px;
+    letter-spacing: 0.16em;
+    text-shadow: 0 1px 12px rgba(255, 253, 248, 0.9);
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mobileMenu summary {
+    display: inline-flex;
+    min-width: 74px;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(36, 34, 30, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.38);
+    color: rgba(36, 34, 30, 0.68);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    list-style: none;
+    text-transform: uppercase;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 22px rgba(36, 34, 30, 0.05);
+  }
+
+  .mobileMenu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobileMenu nav {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    display: grid;
+    min-width: 180px;
+    gap: 0;
+    border: 1px solid rgba(36, 34, 30, 0.09);
+    border-radius: 10px;
+    background: rgba(255, 253, 248, 0.88);
+    box-shadow: 0 18px 48px rgba(36, 34, 30, 0.09);
+    overflow: hidden;
+    backdrop-filter: blur(18px);
+  }
+
+  .mobileMenu nav a {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(36, 34, 30, 0.07);
+    color: rgba(36, 34, 30, 0.72);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .mobileMenu nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .hero {
+    display: block;
+    min-height: auto;
+    background: #f7f3ec;
+  }
+
+  .hero::before,
+  .hero::after,
+  .riceImage,
+  .riceVeil {
+    display: none;
+  }
+
+  .mobileVisual {
+    position: relative;
+    display: grid;
+    min-height: 390px;
+    height: 53svh;
+    overflow: hidden;
+    background: #fffdf8;
+    place-items: center;
+  }
+
+  .mobileVisualRice,
+  .mobileVisualVeil {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .mobileVisualRice {
+    inset: -5%;
+    background-image: url("/images/rice-hero.svg");
+    background-position: 52% 45%;
+    background-size: auto 154%;
+    filter: brightness(1.08) contrast(0.98) saturate(0.84);
+    scale: 1.01;
+    animation: mobileHeroRice 16s ease-out forwards;
+  }
+
+  .mobileVisualVeil {
+    z-index: 1;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(255, 253, 248, 0.08), rgba(255, 253, 248, 0.54) 76%),
+      linear-gradient(180deg, rgba(255, 253, 248, 0.16), rgba(247, 243, 236, 0.76));
+  }
+
+  .mobileVisualLogo {
+    position: relative;
+    z-index: 2;
+    width: min(44vw, 186px);
+    height: auto;
+    opacity: 0.82;
+    filter: drop-shadow(0 12px 26px rgba(36, 34, 30, 0.1));
   }
 
   .heroInner {
-    padding: 118px 0 92px;
+    padding: 52px 0 74px;
+    background:
+      linear-gradient(180deg, rgba(247, 243, 236, 0.92), #fffdf8 100%),
+      #f7f3ec;
+  }
+
+  .hero .eyebrow {
+    color: rgba(80, 70, 60, 0.48);
+    font-size: 10px;
+    letter-spacing: 0.2em;
   }
 
   .riceImage {
@@ -742,14 +1129,16 @@
   }
 
   .hero h1 {
-    margin-top: 28px;
-    font-size: 43px;
-    line-height: 1.24;
+    margin-top: 26px;
+    font-size: clamp(44px, 12vw, 54px);
+    letter-spacing: -0.045em;
+    line-height: 1.28;
   }
 
   .heroLead {
-    margin-top: 28px;
-    font-size: 17px;
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 1.95;
   }
 
   .desktopLead {
@@ -761,7 +1150,7 @@
   }
 
   .heroDots {
-    margin-top: 42px;
+    margin-top: 38px;
   }
 
   .openingRice {
