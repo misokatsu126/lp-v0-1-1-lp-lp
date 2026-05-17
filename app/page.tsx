@@ -5,129 +5,84 @@ const navItems = [
   { href: "#about", label: "About" },
   { href: "#elements", label: "Elements" },
   { href: "#activities", label: "Activities" },
-  { href: "#join", label: "Join" },
+  { href: "#message", label: "Message" },
   { href: "#partnership", label: "Partnership" },
   { href: "#contact", label: "Contact" }
 ];
 
+const heroImages = [
+  { src: "/images/hero-table.png", alt: "自然光の食卓と白い器" },
+  { src: "/images/hero-rice.png", alt: "稲穂を持つ手元" },
+  { src: "/images/hero-rest.png", alt: "夕方の窓辺で休む様子" },
+  { src: "/images/hero-movement.png", alt: "窓辺で身体を伸ばす様子" },
+  { src: "/images/hero-community.png", alt: "お茶を囲む穏やかな交流" }
+];
+
 const elements = [
   {
-    id: "food",
+    key: "food",
     title: "食",
     en: "Food",
-    lead: "バランスの取れた食事で、健康な身体をつくる。"
+    image: "/images/hero-table.png",
+    alt: "自然光の食卓",
+    body: "整った食卓から、日々のからだをやさしく支える。"
   },
   {
-    id: "move",
+    key: "move",
     title: "動",
-    en: "Move",
-    lead: "適度な運動で、心身をいきいきと活性化する。"
+    en: "Movement",
+    image: "/images/hero-movement.png",
+    alt: "静かな運動の時間",
+    body: "無理のない動きで、心身にしなやかな巡りをつくる。"
   },
   {
-    id: "beauty",
+    key: "beauty",
     title: "美",
-    en: "Beauty",
-    lead: "美に気を配ることで、自分らしく輝く力を育てる。"
+    en: "Care",
+    image: "/images/hero-rice.png",
+    alt: "手元と自然光",
+    body: "整える時間を、自分らしく健やかに過ごす力へ。"
   },
   {
-    id: "mind",
+    key: "mind",
     title: "心",
-    en: "Mind",
-    lead: "十分な休養で心身を癒し、明日への活力へつなげる。"
+    en: "Rest",
+    image: "/images/hero-rest.png",
+    alt: "夕方の窓辺で休む様子",
+    body: "休むこと、話すこと、深く息をすることを大切に。"
   }
 ];
 
 const activities = [
   {
-    label: "Food & Wellness",
-    title: "食と健康の講座",
-    body: "食卓や地域の食材を入口に、日々の健康を考える学びと体験をつくります。"
+    label: "Learning",
+    title: "暮らしに近い学び",
+    body: "食、運動、セルフケア、休養を、日常に持ち帰れる小さな体験へ。"
   },
   {
-    label: "Movement",
-    title: "からだを動かす企画",
-    body: "ストレッチや軽い運動を通じて、無理なく続けられる健康習慣を届けます。"
+    label: "Gathering",
+    title: "人が自然に集まる場",
+    body: "マルシェ、講座、対話の時間を通じて、地域の中にゆるやかなつながりをつくります。"
   },
   {
-    label: "Self Care",
-    title: "美容・セルフケア",
-    body: "整える時間を、心身の健やかさへつなげる体験として企画します。"
-  },
-  {
-    label: "Dialogue",
-    title: "心を整える交流",
-    body: "休養、対話、学びの場を通じて、人と人が自然につながる時間を育てます。"
+    label: "Co-creation",
+    title: "想いを企画に結ぶ",
+    body: "企業、自治体、専門家、クリエイターとともに、健康づくりの場を形にします。"
   }
 ];
 
-const joinSteps = [
-  {
-    title: "知る",
-    body: "結の考え方や、食・動・美・心の取り組みに触れる。"
-  },
-  {
-    title: "参加する",
-    body: "講座、体験、交流の場に参加し、自分の暮らしに持ち帰る。"
-  },
-  {
-    title: "一緒につくる",
-    body: "地域、企業、専門家とともに、健康づくりの場を企画する。"
-  }
+const joinNotes = [
+  "結の考え方にふれる",
+  "講座や体験に参加する",
+  "一緒に場をつくる"
 ];
 
 const partnershipItems = [
-  "健康づくりイベント",
-  "食育・運動・美容・休養の講座",
-  "地域マルシェや交流企画",
-  "企業の健康経営・福利厚生",
-  "地域資源を活かした体験",
-  "専門家・講師・クリエイター連携"
-];
-
-const heroImages = [
-  {
-    src: "/images/hero-table.png",
-    alt: "自然光の中の食卓とごはん"
-  },
-  {
-    src: "/images/hero-rice.png",
-    alt: "手に持った稲穂と地域の風景"
-  },
-  {
-    src: "/images/hero-rest.png",
-    alt: "夕方の窓辺で静かに休息する様子"
-  },
-  {
-    src: "/images/hero-movement.png",
-    alt: "窓辺でゆっくり身体を伸ばす様子"
-  },
-  {
-    src: "/images/hero-community.png",
-    alt: "自然光の中で人が集まりお茶を囲む様子"
-  }
-];
-
-const quietPhotos = [
-  {
-    src: "/images/hero-table.png",
-    alt: "食卓と地域の食材",
-    title: "食卓・地域の食材"
-  },
-  {
-    src: "/images/hero-rice.png",
-    alt: "稲穂を持つ手元",
-    title: "地域の空気"
-  },
-  {
-    src: "/images/hero-rest.png",
-    alt: "夕方の窓辺で休息する様子",
-    title: "心を整える"
-  },
-  {
-    src: "/images/hero-community.png",
-    alt: "お茶を囲む交流の場",
-    title: "人と人のつながり"
-  }
+  "健康づくり企画",
+  "食育・運動・休養の講座",
+  "地域マルシェ",
+  "福利厚生・健康経営",
+  "専門家との連携"
 ];
 
 function Logo() {
@@ -152,7 +107,7 @@ function Logo() {
 function LogoMotif({ className = "" }: { className?: string }) {
   return (
     <div className={`logo-motif ${className}`} aria-hidden="true">
-      <Image src="/images/logo-musubu-mark.png" alt="" fill sizes="(max-width: 720px) 58vw, 360px" />
+      <Image src="/images/logo-musubu-mark.png" alt="" fill sizes="(max-width: 720px) 64vw, 420px" />
     </div>
   );
 }
@@ -163,7 +118,7 @@ function SectionHeading({
   children
 }: {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -177,7 +132,7 @@ function SectionHeading({
 
 function HeroImageRotator() {
   return (
-    <div className="hero-rotator" aria-label="MUSUBUの世界観を表す写真">
+    <div className="hero-photo-rotator" aria-label="MUSUBUの世界観を表す写真">
       {heroImages.map((image, index) => (
         <Image
           key={image.src}
@@ -185,29 +140,29 @@ function HeroImageRotator() {
           alt={image.alt}
           fill
           priority={index === 0}
-          sizes="100vw"
+          sizes="(max-width: 720px) 92vw, 42vw"
         />
       ))}
     </div>
   );
 }
 
-function PhotoFrame({
-  title,
-  tone,
+function PhotoPanel({
   src,
-  alt
+  alt,
+  label,
+  className = ""
 }: {
-  title: string;
-  tone: "table" | "move" | "care" | "rest";
-  src?: string;
-  alt?: string;
+  src: string;
+  alt: string;
+  label?: string;
+  className?: string;
 }) {
   return (
-    <div className={`photo-frame photo-frame--${tone}`} aria-label={`${title}を想定した写真枠`}>
-      {src ? <Image src={src} alt={alt ?? title} fill sizes="(max-width: 720px) 100vw, 42vw" /> : null}
-      <span>{title}</span>
-    </div>
+    <figure className={`photo-panel ${className}`}>
+      <Image src={src} alt={alt} fill sizes="(max-width: 720px) 92vw, 44vw" />
+      {label ? <figcaption>{label}</figcaption> : null}
+    </figure>
   );
 }
 
@@ -215,7 +170,7 @@ export default function Home() {
   return (
     <div id="top" className="page">
       <header className="header">
-        <div className="shell header__inner">
+        <div className="shell-wide header__inner">
           <Logo />
           <nav className="nav" aria-label="主要ナビゲーション">
             {navItems.map((item) => (
@@ -224,17 +179,12 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a className="header__cta" href="#contact">
-            お問い合わせ
-          </a>
         </div>
       </header>
 
       <main>
         <section className="hero">
-          <HeroImageRotator />
-          <div className="hero__shade" aria-hidden="true" />
-          <div className="shell hero__inner reveal">
+          <div className="shell-wide hero__layout reveal">
             <div className="hero__copy">
               <p className="eyebrow">MUSUBU WELLNESS CIRCLE</p>
               <h1>
@@ -247,42 +197,56 @@ export default function Home() {
                 <br />
                 毎日の暮らしをやさしく整える。
               </p>
-              <div className="hero__actions">
-                <a href="#about">結について</a>
-                <a href="#contact">相談する</a>
-              </div>
             </div>
-            <LogoMotif className="hero__motif" />
+            <div className="hero__gallery" aria-label="自然光の暮らしを表す写真構成">
+              <HeroImageRotator />
+              <PhotoPanel
+                className="hero__small hero__small--rice"
+                src="/images/hero-rice.png"
+                alt="稲穂を持つ手元"
+              />
+              <PhotoPanel
+                className="hero__small hero__small--rest"
+                src="/images/hero-rest.png"
+                alt="夕方の窓辺で休む様子"
+              />
+              <PhotoPanel
+                className="hero__small hero__small--community"
+                src="/images/hero-community.png"
+                alt="お茶を囲む穏やかな交流"
+              />
+              <LogoMotif className="hero__motif" />
+            </div>
           </div>
         </section>
 
-        <section className="intro-section">
-          <div className="shell intro reveal">
-            <p className="large-en">What is Musubu?</p>
-            <div>
-              <h2>暮らしの中に、やさしい健康のつながりを。</h2>
-              <p>
-                食べること、動くこと、美しく整えること、心を休めること。
-                その小さな積み重ねが、人と人のつながりの中で続いていくように。
-                結は、健康づくりの輪を地域や暮らしへ静かに広げていきます。
-              </p>
-            </div>
+        <section className="philosophy">
+          <div className="shell philosophy__inner reveal">
+            <p className="large-en">Philosophy</p>
+            <h2>
+              暮らしの中に、
+              <br />
+              やさしい健康の
+              <br />
+              つながりを。
+            </h2>
+            <p>
+              食べること、動くこと、整えること、休むこと。
+              その小さな積み重ねを、人とのつながりの中で。
+            </p>
           </div>
         </section>
 
         <section id="about" className="section about">
-          <div className="shell split">
-            <div className="reveal">
-              <SectionHeading eyebrow="ABOUT" title="一般社団法人 結について。">
+          <div className="shell editorial-pair">
+            <PhotoPanel src="/images/hero-community.png" alt="お茶を囲む穏やかな交流" label="MUSUBU" />
+            <div className="editorial-text reveal">
+              <SectionHeading eyebrow="ABOUT" title="結について。">
                 人と人がつながり、健康を育む場をつくります。
               </SectionHeading>
-            </div>
-            <div className="about__content reveal">
               <p>
-                一般社団法人 結（むすぶ）は、人と人との繋がりを象徴する「あわじ結び」の想いを大切に、食・動・美・心の4つの要素から健康づくりを支える団体です。
-              </p>
-              <p>
-                一人ひとりの暮らしが少しずつ整い、その輪が家族、地域、社会へと広がっていく。そんな未来を目指して、学び・体験・交流の場をつくります。
+                一般社団法人 結は、あわじ結びの想いを大切に、
+                食・動・美・心から健康づくりを支える団体です。
               </p>
               <dl className="facts">
                 <div>
@@ -293,42 +257,31 @@ export default function Home() {
                   <dt>Director</dt>
                   <dd>渡邉裕子</dd>
                 </div>
-                <div>
-                  <dt>Name</dt>
-                  <dd>一般社団法人 結 / MUSUBU</dd>
-                </div>
               </dl>
             </div>
-          </div>
-        </section>
-
-        <section className="quiet-photos" aria-label="結の世界観を表す写真">
-          <div className="quiet-photos__track reveal">
-            {quietPhotos.map((photo) => (
-              <figure key={photo.src}>
-                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 720px) 78vw, 33vw" />
-                <figcaption>{photo.title}</figcaption>
-              </figure>
-            ))}
           </div>
         </section>
 
         <section id="elements" className="section elements">
           <LogoMotif className="elements__motif" />
           <div className="shell">
-            <div className="section-center reveal">
-              <SectionHeading eyebrow="FOUR ELEMENTS" title="4つの調和から、すこやかな毎日へ。">
-                食・動・美・心。4色の結び紐には、健康につながる意味が込められています。
-              </SectionHeading>
+            <div className="section-heading section-heading--wide reveal">
+              <p>FOUR ELEMENTS</p>
+              <h2>
+                4つの調和から、
+                <br />
+                すこやかな毎日へ。
+              </h2>
             </div>
-            <div className="element-grid">
+            <div className="element-editorial">
               {elements.map((item) => (
-                <article className={`element element--${item.id} reveal`} key={item.id}>
-                  <div className="element__title">
-                    <span>{item.title}</span>
-                    <small>{item.en}</small>
+                <article className={`element-story element-story--${item.key} reveal`} key={item.key}>
+                  <PhotoPanel src={item.image} alt={item.alt} />
+                  <div>
+                    <span>{item.en}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
                   </div>
-                  <p>{item.lead}</p>
                 </article>
               ))}
             </div>
@@ -336,73 +289,70 @@ export default function Home() {
         </section>
 
         <section id="activities" className="section activities">
-          <div className="shell">
-            <div className="section-center reveal">
-              <SectionHeading eyebrow="ACTIVITIES" title="学び、体験し、つながる。">
-                まだ実績を大きく見せるのではなく、これから育てていく活動の方向性を丁寧に伝えます。
+          <div className="shell activity-feature">
+            <div className="activity-feature__copy reveal">
+              <SectionHeading
+                eyebrow="ACTIVITIES"
+                title={
+                  <>
+                    学び、
+                    <br />
+                    体験し、
+                    <br />
+                    つながる。
+                  </>
+                }
+              >
+                暮らしに近い場を、静かに育てていきます。
               </SectionHeading>
             </div>
-            <div className="activity-layout">
-              <div className="photo-stack reveal">
-                <PhotoFrame
-                  title="食卓・地域の食材"
-                  tone="table"
-                  src="/images/hero-table.png"
-                  alt="自然光の中の食卓"
-                />
-                <PhotoFrame
-                  title="からだを整える時間"
-                  tone="rest"
-                  src="/images/hero-movement.png"
-                  alt="窓辺で身体を伸ばす様子"
-                />
-              </div>
-              <div className="activity-list">
-                {activities.map((item) => (
-                  <article className="activity reveal" key={item.title}>
-                    <p>{item.label}</p>
-                    <h3>{item.title}</h3>
-                    <span>{item.body}</span>
-                  </article>
-                ))}
-              </div>
-            </div>
+            <PhotoPanel src="/images/hero-table.png" alt="自然光の食卓" label="Food / Place / Dialogue" />
+          </div>
+          <div className="shell activity-lines">
+            {activities.map((item) => (
+              <article className="activity-line reveal" key={item.title}>
+                <span>{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
         <section id="join" className="section join">
           <div className="shell join__inner reveal">
-            <SectionHeading eyebrow="HOW TO JOIN" title="結とつながる、3つの入口。">
-              まず知る。気になる場に参加する。そして、必要な人と一緒につくる。
-            </SectionHeading>
-            <div className="join-steps">
-              {joinSteps.map((step, index) => (
-                <article key={step.title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.body}</p>
-                </article>
+            <p className="large-en">Join Us</p>
+            <h2>
+              知ることから、
+              <br />
+              ゆるやかに
+              <br />
+              つながる。
+            </h2>
+            <div className="join-notes">
+              {joinNotes.map((item) => (
+                <span key={item}>{item}</span>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section message">
-          <div className="shell split split--middle">
-            <div className="message__visual reveal">
-              <PhotoFrame
-                title="休養・余白・整える時間"
-                tone="care"
-                src="/images/hero-rest.png"
-                alt="夕方の窓辺で静かに休息する様子"
-              />
+        <section id="message" className="section message">
+          <div className="shell message__inner reveal">
+            <div>
+              <p className="eyebrow">MESSAGE</p>
+              <h2>
+                健やかな未来を、
+                <br />
+                皆さまと
+                <br />
+                共に結ぶ。
+              </h2>
             </div>
-            <div className="message__text reveal">
-              <SectionHeading eyebrow="MESSAGE" title="皆さまと共に、健康で輝く未来を結ぶ。">
-                健康は、毎日の暮らしの中にある小さな選択から育まれるものです。
-              </SectionHeading>
+            <div className="message__body">
               <p>
-                結は、食べること、動くこと、美しく整えること、心を休めることを通じて、誰もが自分らしく健やかに過ごせる未来を目指します。
+                健康は、毎日の小さな選択から育まれるもの。
+                結は、誰もが自分らしく過ごせる未来を目指します。
               </p>
               <p className="signature">理事長　渡邉裕子</p>
             </div>
@@ -411,38 +361,51 @@ export default function Home() {
 
         <section id="partnership" className="section partnership">
           <div className="shell partnership__inner">
-            <div className="reveal">
-              <SectionHeading eyebrow="PARTNERSHIP" title="企業・地域の皆さまへ。">
-                協賛、講座依頼、地域連携、健康づくり企画など、まだ形になる前の段階からご相談ください。
+            <PhotoPanel src="/images/hero-rest.png" alt="夕方の窓辺で休む様子" label="Partnership" />
+            <div className="editorial-text reveal">
+              <SectionHeading
+                eyebrow="PARTNERSHIP"
+                title={
+                  <>
+                    企業・地域の
+                    <br />
+                    皆さまへ。
+                  </>
+                }
+              >
+                健康づくりの輪を、地域や働く場へ。
               </SectionHeading>
-            </div>
-            <div className="partner-list reveal">
-              {partnershipItems.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
+              <p>
+                まだ形になる前の想いを、対話しながら企画へ。
+                講座、地域連携、福利厚生などをご相談ください。
+              </p>
+              <div className="partner-list">
+                {partnershipItems.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         <section id="contact" className="contact">
           <div className="shell contact__inner reveal">
-            <p className="large-en">CONTACT</p>
-            <h2>ご相談・お問い合わせ</h2>
-            <p>
-              講座、イベント、地域連携、企業との協業など、まずはお気軽にご相談ください。
-              公開用のお問い合わせ窓口は準備中です。
-            </p>
-            <div className="contact-box">
-              <span>Contact Form</span>
-              <strong>準備中</strong>
-              <small>メールアドレス、フォームURL、住所、電話番号は確定後に掲載してください。</small>
-            </div>
+            <p className="large-en">Contact</p>
+            <h2>
+              ご相談・
+              <br />
+              お問い合わせ
+            </h2>
+            <p>講座、イベント、地域連携、企業との協業など、まずはお気軽にご相談ください。</p>
+            <a className="contact-button" href="mailto:tcgmusubu@gmail.com">
+              お問い合わせする
+            </a>
           </div>
         </section>
       </main>
 
       <footer className="footer">
-        <div className="shell footer__inner">
+        <div className="shell-wide footer__inner">
           <div>
             <Image
               className="footer__logo-full"
@@ -451,11 +414,6 @@ export default function Home() {
               width={250}
               height={229}
             />
-            <p>
-              一般社団法人 結 / MUSUBU
-              <br />
-              人と人を結ぶ、健康づくりの輪。
-            </p>
           </div>
           <nav aria-label="フッターナビゲーション">
             {navItems.map((item) => (
