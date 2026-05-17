@@ -6,6 +6,80 @@
   font-family: var(--font-body);
 }
 
+.openingIntro {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  overflow: hidden;
+  background: #fffdf8;
+  pointer-events: none;
+}
+
+:global(.musubu-intro-run) .openingIntro {
+  display: block;
+  animation: introFade 1.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+:global(.musubu-intro-skip) .openingIntro,
+:global(.musubu-intro-done) .openingIntro {
+  display: none;
+}
+
+.openingIntro::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.12), rgba(255, 253, 248, 0.46)),
+    rgba(250, 248, 240, 0.22);
+  content: "";
+}
+
+.openingRice {
+  position: absolute;
+  inset: -7%;
+  z-index: 0;
+  background-image: url("/images/rice-hero.svg");
+  background-position: 52% 46%;
+  background-size: auto 182%;
+  filter: brightness(1.08) contrast(0.98) saturate(0.84);
+  transform: scale(0.95);
+  transform-origin: center;
+  animation: introRiceZoom 1.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.openingLogo {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  z-index: 2;
+  width: min(56vw, 260px);
+  height: auto;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.985);
+  filter: drop-shadow(0 10px 24px rgba(36, 34, 30, 0.08));
+  animation: introLogo 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+.openingCopy {
+  position: absolute;
+  left: 50%;
+  top: calc(45% + min(32vw, 154px));
+  z-index: 2;
+  margin: 0;
+  color: rgba(36, 34, 30, 0.68);
+  font-family: var(--font-heading);
+  font-size: clamp(21px, 6.2vw, 30px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.55;
+  text-align: center;
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  animation: introCopy 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+}
+
 .header {
   position: fixed;
   inset: 0 0 auto;
@@ -158,6 +232,14 @@
   line-height: 1.95;
 }
 
+.desktopLead {
+  display: inline;
+}
+
+.mobileLead {
+  display: none;
+}
+
 .button {
   display: inline-flex;
   min-height: 54px;
@@ -189,6 +271,39 @@
 
 .button:hover::after {
   translate: 4px 0;
+}
+
+.heroDots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 1.12s cubic-bezier(0.22, 1, 0.36, 1) 560ms forwards;
+}
+
+.heroDots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 6px rgba(255, 253, 248, 0.42);
+}
+
+.heroDots span:nth-child(1) {
+  background: rgba(242, 210, 86, 0.72);
+}
+
+.heroDots span:nth-child(2) {
+  background: rgba(231, 154, 184, 0.7);
+}
+
+.heroDots span:nth-child(3) {
+  background: rgba(117, 173, 150, 0.7);
+}
+
+.heroDots span:nth-child(4) {
+  background: rgba(120, 183, 223, 0.72);
 }
 
 .hero .eyebrow,
@@ -481,6 +596,45 @@
   }
 }
 
+@keyframes introFade {
+  0%,
+  68% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes introRiceZoom {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes introLogo {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.985);
+  }
+  100% {
+    opacity: 0.09;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes introCopy {
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 @keyframes riceZoom {
   to {
     scale: 1.02;
@@ -576,14 +730,15 @@
   }
 
   .riceImage {
-    background-position: 56% center;
-    filter: brightness(1.18) contrast(0.91) saturate(0.8);
+    background-position: 52% 45%;
+    background-size: auto 128%;
+    filter: brightness(1.1) contrast(0.96) saturate(0.84);
   }
 
   .riceVeil {
     background:
-      linear-gradient(180deg, rgba(250, 248, 240, 0.94) 0%, rgba(250, 248, 240, 0.74) 48%, rgba(250, 248, 240, 0.4) 100%),
-      linear-gradient(90deg, rgba(250, 248, 240, 0.9), rgba(250, 248, 240, 0.48));
+      linear-gradient(180deg, rgba(250, 248, 240, 0.82) 0%, rgba(250, 248, 240, 0.62) 52%, rgba(250, 248, 240, 0.34) 100%),
+      linear-gradient(90deg, rgba(250, 248, 240, 0.86), rgba(250, 248, 240, 0.42));
   }
 
   .hero h1 {
@@ -595,6 +750,29 @@
   .heroLead {
     margin-top: 28px;
     font-size: 17px;
+  }
+
+  .desktopLead {
+    display: none;
+  }
+
+  .mobileLead {
+    display: inline;
+  }
+
+  .heroDots {
+    margin-top: 42px;
+  }
+
+  .openingRice {
+    inset: -10%;
+    background-position: 52% 47%;
+    background-size: auto 206%;
+    filter: brightness(1.07) contrast(1) saturate(0.84);
+  }
+
+  .openingLogo {
+    width: min(62vw, 238px);
   }
 
   .section,
@@ -650,11 +828,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .openingIntro {
+    display: none !important;
+  }
+
   .riceImage,
   .hero .eyebrow,
   .hero h1,
   .heroLead,
-  .button {
+  .button,
+  .heroDots {
     animation: none !important;
     opacity: 1;
     transform: none;
