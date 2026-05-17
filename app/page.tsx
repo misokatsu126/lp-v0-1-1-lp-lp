@@ -45,6 +45,30 @@ const activities = [
 
 const partners = ["健康づくり企画", "食育・運動・休養の講座", "地域マルシェ", "福利厚生・健康経営", "専門家との連携"];
 
+const introScript = `
+(() => {
+  try {
+    const root = document.documentElement;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const seen = window.sessionStorage.getItem("musubu-rice-intro-seen");
+
+    if (seen || reduced) {
+      root.classList.add("musubu-intro-skip");
+      return;
+    }
+
+    root.classList.add("musubu-intro-run");
+    window.sessionStorage.setItem("musubu-rice-intro-seen", "1");
+
+    window.setTimeout(() => {
+      root.classList.add("musubu-intro-done");
+    }, 1550);
+  } catch {
+    document.documentElement.classList.add("musubu-intro-skip");
+  }
+})();
+`;
+
 function Logo() {
   return (
     <a className={styles.brand} href="#top" aria-label="一般社団法人 結 トップへ">
@@ -69,6 +93,23 @@ function Photo({ src, alt, label }: { src: string; alt: string; label?: string }
 export default function Home() {
   return (
     <div id="top" className={styles.page}>
+      <script dangerouslySetInnerHTML={{ __html: introScript }} />
+      <div className={styles.openingIntro} aria-hidden="true">
+        <div className={styles.openingRice} />
+        <Image
+          className={styles.openingLogo}
+          src="/images/logo-musubu-full.png"
+          alt=""
+          width={250}
+          height={229}
+          priority
+        />
+        <p className={styles.openingCopy}>
+          暮らしを整え、
+          <br />
+          人と人を結ぶ。
+        </p>
+      </div>
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Logo />
@@ -94,13 +135,22 @@ export default function Home() {
               人と人を結ぶ。
             </h1>
             <p className={styles.heroLead}>
-              食・動・美・心の調和から、
-              <br />
-              毎日のすこやかさを育てる。
+              <span className={styles.desktopLead}>
+                食・動・美・心の調和から、
+                <br />
+                毎日のすこやかさを育てる。
+              </span>
+              <span className={styles.mobileLead}>食・動・美・心の調和から。</span>
             </p>
             <a className={styles.button} href="#about">
               結について
             </a>
+            <div className={styles.heroDots} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
           </div>
         </section>
 
