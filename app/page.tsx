@@ -27,13 +27,13 @@ const elements = [
   {
     title: "美",
     label: "Care",
-    image: "/images/hero-rice.png",
+    image: "/images/element-beauty.jpg",
     body: "整える時間を、自分らしく健やかに過ごす力へ。"
   },
   {
     title: "心",
     label: "Rest",
-    image: "/images/hero-mind-tea.svg",
+    image: "/images/element-heart.jpg",
     body: "休むこと、話すこと、深く息をすることを大切に。"
   }
 ];
@@ -49,7 +49,7 @@ const partners = ["健康づくり企画", "食育・運動・休養の講座", 
 function Logo() {
   return (
     <a className={styles.brand} href="#top" aria-label="一般社団法人 結 トップへ">
-      <Image src="/images/logo-musubu-mark.png" alt="" width={150} height={82} aria-hidden="true" />
+      <Image src="/images/logo-musubu-mark-transparent.png" alt="" width={150} height={82} aria-hidden="true" />
       <span>
         <strong>MUSUBU</strong>
         <small>一般社団法人 結</small>
@@ -59,8 +59,14 @@ function Logo() {
 }
 
 function Photo({ src, alt, label }: { src: string; alt: string; label?: string }) {
+  const toneClass = src.includes("heart")
+    ? styles.photoHeart
+    : src.includes("beauty")
+      ? styles.photoBeauty
+      : "";
+
   return (
-    <figure className={styles.photo}>
+    <figure className={`${styles.photo} ${toneClass}`}>
       <Image src={src} alt={alt} fill sizes="(max-width: 720px) 92vw, 44vw" />
       {label ? <figcaption>{label}</figcaption> : null}
     </figure>
@@ -107,10 +113,10 @@ export default function Home() {
             <div className={mobile.visualVeil} />
             <Image
               className={mobile.visualLogo}
-              src="/images/logo-musubu-full.png"
+              src="/images/logo-musubu-mark-transparent.png"
               alt=""
-              width={250}
-              height={229}
+              width={150}
+              height={82}
               priority
             />
           </div>
@@ -259,7 +265,7 @@ export default function Home() {
 
         <section id="partnership" className={styles.section}>
           <div className={styles.pair}>
-            <Photo src="/images/hero-mind-tea.svg" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
+            <Photo src="/images/element-heart.jpg" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
