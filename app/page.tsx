@@ -33,7 +33,7 @@ const elements = [
   {
     title: "心",
     label: "Rest",
-    image: "/images/hero-rest.png",
+    image: "/images/hero-mind-tea.svg",
     body: "休むこと、話すこと、深く息をすることを大切に。"
   }
 ];
@@ -45,31 +45,6 @@ const activities = [
 ];
 
 const partners = ["健康づくり企画", "食育・運動・休養の講座", "地域マルシェ", "福利厚生・健康経営", "専門家との連携"];
-
-const introScript = `
-(() => {
-  try {
-    const root = document.documentElement;
-    const mobile = window.matchMedia("(max-width: 720px)").matches;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const seen = window.sessionStorage.getItem("musubu-rice-intro-seen");
-
-    if (!mobile || seen || reduced) {
-      root.classList.add("musubu-intro-skip");
-      return;
-    }
-
-    root.classList.add("musubu-intro-run");
-    window.sessionStorage.setItem("musubu-rice-intro-seen", "1");
-
-    window.setTimeout(() => {
-      root.classList.add("musubu-intro-done");
-    }, 2300);
-  } catch {
-    document.documentElement.classList.add("musubu-intro-skip");
-  }
-})();
-`;
 
 function Logo() {
   return (
@@ -95,28 +70,6 @@ function Photo({ src, alt, label }: { src: string; alt: string; label?: string }
 export default function Home() {
   return (
     <div id="top" className={styles.page}>
-      <script dangerouslySetInnerHTML={{ __html: introScript }} />
-      <div className={mobile.openingIntro} aria-hidden="true">
-        <div className={`${mobile.openingPhase} ${mobile.openingFood}`} />
-        <div className={`${mobile.openingPhase} ${mobile.openingMove}`} />
-        <div className={`${mobile.openingPhase} ${mobile.openingBeauty}`} />
-        <div className={`${mobile.openingPhase} ${mobile.openingMind}`} />
-        <div className={`${mobile.openingPhase} ${mobile.openingRice}`} />
-        <div className={mobile.openingMarks}>
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-        <Image
-          className={mobile.openingLogo}
-          src="/images/logo-musubu-full.png"
-          alt=""
-          width={250}
-          height={229}
-          priority
-        />
-      </div>
       <header className={`${styles.header} ${mobile.header}`}>
         <div className={`${styles.headerInner} ${mobile.headerInner}`}>
           <Logo />
@@ -145,7 +98,12 @@ export default function Home() {
           <div className={styles.riceImage} aria-hidden="true" />
           <div className={styles.riceVeil} aria-hidden="true" />
           <div className={mobile.visual} aria-hidden="true">
-            <div className={mobile.visualRice} />
+            <div className={mobile.visualSlides}>
+              <div className={`${mobile.visualSlide} ${mobile.slideFood}`} />
+              <div className={`${mobile.visualSlide} ${mobile.slideMove}`} />
+              <div className={`${mobile.visualSlide} ${mobile.slideBeauty}`} />
+              <div className={`${mobile.visualSlide} ${mobile.slideMind}`} />
+            </div>
             <div className={mobile.visualVeil} />
             <Image
               className={mobile.visualLogo}
@@ -301,7 +259,7 @@ export default function Home() {
 
         <section id="partnership" className={styles.section}>
           <div className={styles.pair}>
-            <Photo src="/images/hero-rest.png" alt="夕方の窓辺で休む様子" label="Partnership" />
+            <Photo src="/images/hero-mind-tea.svg" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
