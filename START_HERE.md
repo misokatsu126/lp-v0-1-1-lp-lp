@@ -8,6 +8,9 @@
 - Heroは複数の静かな写真が6〜8秒ごとにクロスフェードする構成です。
 - 写真順は「明るい食卓 → 明るい手元 → 影のある休息 → 明るい運動 → 明るい交流」です。
 - 提供ロゴを入れ、ヘッダー・フッター・装飾モチーフに反映しています。
+- 現在は、カードや説明ブロックを減らし、余白・写真・文字組みで見せるブランドサイト寄りの構成です。
+- スクロール時に写真・見出し・本文が静かに現れ、Heroの重なり写真には控えめな奥行きとパララックス風の動きを入れています。
+- 見出しに Zen Kaku Gothic New、本文に Noto Sans JP を優先し、細いウェイト、広い行間、詩的な改行で文字組みを整えています。
 - Next.js / TypeScript / Tailwind CSS のプロジェクトとして動く状態です。
 - `npm run lint` と `npm run build` は確認済みです。
 - GitHubに上げる準備として `.gitignore` も入っています。
@@ -69,7 +72,7 @@ Initial LP implementation
 
 - LP本文：`app/page.tsx`
 - 確認用HTML：`preview.html`
-- 写真枠・余白・色・軽いフェードイン：`app/globals.css`
+- 写真枠・余白・色・軽いフェードイン・写真のゆるやかなズーム：`app/globals.css`
 - Hero写真：`public/images/hero-table.png`、`hero-rice.png`、`hero-rest.png`、`hero-movement.png`、`hero-community.png`
 - ロゴ：`public/images/logo-musubu-original.jpg`、`logo-musubu-mark.png`、`logo-musubu-full.png`
 - 起動方法：`README.md`
