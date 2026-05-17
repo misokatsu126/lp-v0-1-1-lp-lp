@@ -1,4 +1,5 @@
 import Image from "next/image";
+import mobile from "./mobile-hero.module.css";
 import styles from "./rice.module.css";
 
 const navItems = [
@@ -49,10 +50,11 @@ const introScript = `
 (() => {
   try {
     const root = document.documentElement;
+    const mobile = window.matchMedia("(max-width: 720px)").matches;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const seen = window.sessionStorage.getItem("musubu-rice-intro-seen");
 
-    if (seen || reduced) {
+    if (!mobile || seen || reduced) {
       root.classList.add("musubu-intro-skip");
       return;
     }
@@ -62,7 +64,7 @@ const introScript = `
 
     window.setTimeout(() => {
       root.classList.add("musubu-intro-done");
-    }, 1550);
+    }, 2300);
   } catch {
     document.documentElement.classList.add("musubu-intro-skip");
   }
@@ -94,24 +96,29 @@ export default function Home() {
   return (
     <div id="top" className={styles.page}>
       <script dangerouslySetInnerHTML={{ __html: introScript }} />
-      <div className={styles.openingIntro} aria-hidden="true">
-        <div className={styles.openingRice} />
+      <div className={mobile.openingIntro} aria-hidden="true">
+        <div className={`${mobile.openingPhase} ${mobile.openingFood}`} />
+        <div className={`${mobile.openingPhase} ${mobile.openingMove}`} />
+        <div className={`${mobile.openingPhase} ${mobile.openingBeauty}`} />
+        <div className={`${mobile.openingPhase} ${mobile.openingMind}`} />
+        <div className={`${mobile.openingPhase} ${mobile.openingRice}`} />
+        <div className={mobile.openingMarks}>
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
         <Image
-          className={styles.openingLogo}
+          className={mobile.openingLogo}
           src="/images/logo-musubu-full.png"
           alt=""
           width={250}
           height={229}
           priority
         />
-        <p className={styles.openingCopy}>
-          暮らしを整え、
-          <br />
-          人と人を結ぶ。
-        </p>
       </div>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
+      <header className={`${styles.header} ${mobile.header}`}>
+        <div className={`${styles.headerInner} ${mobile.headerInner}`}>
           <Logo />
           <nav className={styles.nav} aria-label="主要ナビゲーション">
             {navItems.map((item) => (
@@ -120,14 +127,36 @@ export default function Home() {
               </a>
             ))}
           </nav>
+          <details className={mobile.menu}>
+            <summary>Menu</summary>
+            <nav aria-label="スマホナビゲーション">
+              {navItems.map((item) => (
+                <a href={item.href} key={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </details>
         </div>
       </header>
 
       <main>
-        <section className={styles.hero}>
+        <section className={`${styles.hero} ${mobile.hero}`}>
           <div className={styles.riceImage} aria-hidden="true" />
           <div className={styles.riceVeil} aria-hidden="true" />
-          <div className={styles.heroInner}>
+          <div className={mobile.visual} aria-hidden="true">
+            <div className={mobile.visualRice} />
+            <div className={mobile.visualVeil} />
+            <Image
+              className={mobile.visualLogo}
+              src="/images/logo-musubu-full.png"
+              alt=""
+              width={250}
+              height={229}
+              priority
+            />
+          </div>
+          <div className={`${styles.heroInner} ${mobile.copy}`}>
             <p className={styles.eyebrow}>MUSUBU WELLNESS CIRCLE</p>
             <h1>
               暮らしを整え、
@@ -140,7 +169,11 @@ export default function Home() {
                 <br />
                 毎日のすこやかさを育てる。
               </span>
-              <span className={styles.mobileLead}>食・動・美・心の調和から。</span>
+              <span className={styles.mobileLead}>
+                食・動・美・心の調和から、
+                <br />
+                毎日のすこやかさを育てる。
+              </span>
             </p>
             <a className={styles.button} href="#about">
               結について
