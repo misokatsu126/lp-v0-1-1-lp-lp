@@ -17,7 +17,7 @@
 .visualSlides {
   overflow: hidden;
   background-color: #fffdf8;
-  background-image: url("/images/hero-table.png");
+  background-image: url("/images/hero-rice.png");
   background-position: center center;
   background-size: cover;
   filter: brightness(1.08) contrast(0.94) saturate(0.86);
@@ -31,7 +31,7 @@
   opacity: 0;
   transform: translateY(-2%) scale(1.012);
   transform-origin: center;
-  animation: quietImageCycle 24s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: quietImageCycle 30s cubic-bezier(0.22, 1, 0.36, 1) infinite;
   will-change: clip-path, opacity, transform;
 }
 
@@ -56,21 +56,21 @@
   background-image: url("/images/hero-movement.png");
   background-position: 58% 42%;
   filter: brightness(1.08) contrast(0.9) saturate(0.78);
-  animation-delay: 6s;
+  animation-delay: 7.5s;
 }
 
 .slideBeauty {
-  background-image: url("/images/hero-beauty.jpg");
+  background-image: url("/images/element-beauty.jpg");
   background-position: center center;
   filter: brightness(1.12) contrast(0.9) saturate(0.78);
-  animation-delay: 12s;
+  animation-delay: 15s;
 }
 
 .slideMind {
-  background-image: url("/images/hero-rest.png");
+  background-image: url("/images/element-heart.jpg");
   background-position: 60% center;
   filter: brightness(1.1) contrast(0.92) saturate(0.78);
-  animation-delay: 18s;
+  animation-delay: 22.5s;
 }
 
 .visualVeil {
@@ -139,15 +139,16 @@
 
   .header a {
     display: flex !important;
-    width: clamp(58px, 15vw, 72px) !important;
-    min-height: 46px !important;
+    width: 84px !important;
+    min-height: 52px !important;
     align-items: center !important;
+    justify-content: flex-start !important;
     overflow: visible !important;
   }
 
   .header img {
     display: block !important;
-    width: clamp(58px, 15vw, 72px) !important;
+    width: 72px !important;
     height: auto !important;
     max-width: none !important;
     object-fit: contain !important;
@@ -256,11 +257,5 @@
   .visualSlide {
     animation: none !important;
     opacity: 0 !important;
-  }
-
-  .slideFood {
-    clip-path: inset(0 0 0 0) !important;
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
