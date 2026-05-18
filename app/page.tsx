@@ -16,35 +16,35 @@ const elements = [
     title: "食",
     label: "Food",
     image: "/images/element-food.webp",
-    body: "一粒の食から、からだと暮らしをやさしく整える。"
+    body: "食べることを無理なく整え、毎日のからだを支える。"
   },
   {
     title: "動",
     label: "Movement",
     image: "/images/hero-movement.png",
-    body: "無理のない動きで、日々にしなやかな巡りをつくる。"
+    body: "できる範囲で動き、心身にしなやかな巡りをつくる。"
   },
   {
     title: "美",
     label: "Care",
     image: "/images/element-beauty.jpg",
-    body: "整える時間を、自分らしく健やかに過ごす力へ。"
+    body: "整える時間を楽しみ、その人らしい輝きにつなげる。"
   },
   {
     title: "心",
     label: "Rest",
     image: "/images/element-heart.webp",
-    body: "休むこと、話すこと、深く息をすることを大切に。"
+    body: "休むこと、話すこと、深く息をする時間を大切にする。"
   }
 ];
 
 const activities = [
-  ["Learning", "暮らしに近い学び", "食、運動、セルフケア、休養を、日常に持ち帰れる小さな体験へ。"],
-  ["Gathering", "人が自然に集まる場", "マルシェ、講座、対話の時間を通じて、地域の中にゆるやかなつながりをつくります。"],
-  ["Co-creation", "想いを企画に結ぶ", "企業、自治体、専門家、クリエイターとともに、健康づくりの場を形にします。"]
+  ["Learning", "暮らしに近い学び", "管理栄養士の視点を、日常に持ち帰れるやさしい学びへ。"],
+  ["Gathering", "安心して集まれる場", "講座やマルシェ、対話の時間を通じて、地域の中にあたたかなつながりをつくります。"],
+  ["Co-creation", "続いていく形へ", "専門家、地域、参加者を結び、一度きりで終わらない健康づくりへ育てます。"]
 ];
 
-const partners = ["健康づくり企画", "食育・運動・休養の講座", "地域マルシェ", "福利厚生・健康経営", "専門家との連携"];
+const partners = ["健康づくり企画", "食・動・美・心の講座", "地域マルシェ", "専門家との連携", "続いていく場づくり"];
 
 function Logo() {
   return (
@@ -163,8 +163,8 @@ export default function Home() {
               暮らしから、結びへ。
             </h2>
             <p>
-              食べることを入口に、からだを動かし、美しく整え、心を休める。
-              結は、その小さな循環を人とのつながりの中で育てます。
+              食は、暮らしを整える小さな入口。
+              動くこと、美しく整えること、心を休めることと結びながら、毎日のすこやかさを育てます。
             </p>
           </div>
         </section>
@@ -176,8 +176,8 @@ export default function Home() {
               <p className={styles.eyebrow}>ABOUT</p>
               <h2>結について。</h2>
               <p>
-                一般社団法人 結は、あわじ結びの想いを大切に、
-                食・動・美・心から健康づくりを支える団体です。
+                一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての専門性と、
+                生活者に寄り添う想いを中心にした健康づくりの場です。
               </p>
               <dl className={styles.facts}>
                 <div>
@@ -227,7 +227,7 @@ export default function Home() {
                 <br />
                 つながる。
               </h2>
-              <p>暮らしに近い場を、静かに育てていきます。</p>
+              <p>理事長の想いを中心に、暮らしの近くで続く場を育てます。</p>
             </div>
             <Photo src="/images/hero-food.webp" alt="自然光の食卓と一汁一菜の食事" label="Food / Place / Dialogue" />
           </div>
@@ -247,17 +247,17 @@ export default function Home() {
             <div>
               <p className={styles.eyebrow}>MESSAGE</p>
               <h2>
-                健やかな未来を、
+                その人らしく、
                 <br />
-                皆さまと
+                無理なく、
                 <br />
-                共に結ぶ。
+                健やかに。
               </h2>
             </div>
             <div>
               <p>
-                健康は、毎日の小さな選択から育まれるもの。
-                結は、誰もが自分らしく過ごせる未来を目指します。
+                健康は、特別なことではなく、毎日の暮らしの中で少しずつ育まれるもの。
+                食べること、動くこと、整えること、休むことを、地域や人とのつながりの中で支えます。
               </p>
               <p className={styles.signature}>理事長　渡邉裕子</p>
             </div>
@@ -270,13 +270,13 @@ export default function Home() {
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
-                企業・地域の
+                健康づくりを、
                 <br />
-                皆さまへ。
+                ひとりで抱えない形へ。
               </h2>
               <p>
-                まだ形になる前の想いを、対話しながら企画へ。
-                講座、地域連携、福利厚生などをご相談ください。
+                専門家、地域、参加者を結び、想いが一度きりで終わらない場へ。
+                講座や地域連携など、小さな相談から一緒に整えます。
               </p>
               <div className={styles.partnerList}>
                 {partners.map((item) => (
@@ -295,7 +295,7 @@ export default function Home() {
               <br />
               お問い合わせ
             </h2>
-            <p>講座、イベント、地域連携、企業との協業など、まずはお気軽にご相談ください。</p>
+            <p>講座、イベント、地域連携など、まだ形になる前の想いもお気軽にご相談ください。</p>
             <a className={styles.button} href="mailto:tcgmusubu@gmail.com">
               お問い合わせする
             </a>
