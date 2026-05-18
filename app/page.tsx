@@ -33,7 +33,7 @@ const elements = [
   {
     title: "心",
     label: "Rest",
-    image: "/images/element-heart.webp",
+    image: "/images/element-heart.jpg",
     body: "休むこと、話すこと、深く息をする時間を大切にする。"
   }
 ];
@@ -129,16 +129,9 @@ export default function Home() {
               人と人を結ぶ。
             </h1>
             <p className={styles.heroLead}>
-              <span className={styles.desktopLead}>
-                食・動・美・心の調和から、
-                <br />
-                毎日のすこやかさを育てる。
-              </span>
-              <span className={styles.mobileLead}>
-                食・動・美・心の調和から、
-                <br />
-                毎日のすこやかさを育てる。
-              </span>
+              食・動・美・心の調和から、
+              <br />
+              毎日のすこやかさを育てる。
             </p>
             <a className={styles.button} href="#about">
               結について
@@ -266,7 +259,7 @@ export default function Home() {
 
         <section id="partnership" className={styles.section}>
           <div className={styles.pair}>
-            <Photo src="/images/element-heart.webp" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
+            <Photo src="/images/element-heart.jpg" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
