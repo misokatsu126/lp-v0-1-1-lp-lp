@@ -49,7 +49,7 @@ const partners = ["健康づくり企画", "食育・運動・休養の講座", 
 function Logo() {
   return (
     <a className={styles.brand} href="#top" aria-label="一般社団法人 結 トップへ">
-      <Image src="/images/logo-musubu-mark.webp" alt="" width={150} height={82} aria-hidden="true" />
+      <Image src="/images/musubu-mark.webp" alt="" width={150} height={82} aria-hidden="true" />
       <span>
         <strong>MUSUBU</strong>
         <small>一般社団法人 結</small>
@@ -113,7 +113,7 @@ export default function Home() {
             <div className={mobile.visualVeil} />
             <Image
               className={mobile.visualLogo}
-              src="/images/logo-musubu-mark.webp"
+              src="/images/musubu-mark.webp"
               alt=""
               width={150}
               height={82}
