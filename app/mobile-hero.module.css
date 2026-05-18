@@ -44,10 +44,10 @@
 }
 
 .slideFood {
-  background-image: url("/images/rice-hero.svg");
-  background-position: 52% 45%;
-  background-size: auto 158%;
-  filter: brightness(1.1) contrast(0.96) saturate(0.86);
+  background-image: url("/images/hero-food.webp");
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(1.08) contrast(0.92) saturate(0.82);
   animation-delay: -1.2s;
 }
 
@@ -66,8 +66,8 @@
 }
 
 .slideMind {
-  background-image: url("/images/hero-heart.jpg");
-  background-position: 60% center;
+  background-image: url("/images/element-heart.webp");
+  background-position: center center;
   filter: brightness(1.1) contrast(0.92) saturate(0.78);
   animation-delay: 16.8s;
 }
