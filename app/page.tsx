@@ -15,7 +15,7 @@ const elements = [
   {
     title: "食",
     label: "Food",
-    image: "/images/hero-food.webp",
+    image: "/images/element-food.webp",
     body: "一粒の食から、からだと暮らしをやさしく整える。"
   },
   {
