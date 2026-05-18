@@ -15,7 +15,7 @@ const elements = [
   {
     title: "食",
     label: "Food",
-    image: "/images/hero-table.png",
+    image: "/images/hero-food.webp",
     body: "一粒の食から、からだと暮らしをやさしく整える。"
   },
   {
@@ -33,7 +33,7 @@ const elements = [
   {
     title: "心",
     label: "Rest",
-    image: "/images/element-heart.jpg",
+    image: "/images/element-heart.webp",
     body: "休むこと、話すこと、深く息をすることを大切に。"
   }
 ];
@@ -49,7 +49,7 @@ const partners = ["健康づくり企画", "食育・運動・休養の講座", 
 function Logo() {
   return (
     <a className={styles.brand} href="#top" aria-label="一般社団法人 結 トップへ">
-      <Image src="/images/logo-musubu-mark-transparent.png" alt="" width={150} height={82} aria-hidden="true" />
+      <Image src="/images/logo-musubu-mark.webp" alt="" width={150} height={82} aria-hidden="true" />
       <span>
         <strong>MUSUBU</strong>
         <small>一般社団法人 結</small>
@@ -113,7 +113,7 @@ export default function Home() {
             <div className={mobile.visualVeil} />
             <Image
               className={mobile.visualLogo}
-              src="/images/logo-musubu-mark-transparent.png"
+              src="/images/logo-musubu-mark.webp"
               alt=""
               width={150}
               height={82}
@@ -228,7 +228,7 @@ export default function Home() {
               </h2>
               <p>暮らしに近い場を、静かに育てていきます。</p>
             </div>
-            <Photo src="/images/hero-table.png" alt="自然光の食卓" label="Food / Place / Dialogue" />
+            <Photo src="/images/hero-food.webp" alt="自然光の食卓と一汁一菜の食事" label="Food / Place / Dialogue" />
           </div>
           <div className={styles.lines}>
             {activities.map(([label, title, body]) => (
@@ -265,7 +265,7 @@ export default function Home() {
 
         <section id="partnership" className={styles.section}>
           <div className={styles.pair}>
-            <Photo src="/images/element-heart.jpg" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
+            <Photo src="/images/element-heart.webp" alt="白い部屋の窓辺にある茶器と枝葉" label="Partnership" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
