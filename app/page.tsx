@@ -53,10 +53,10 @@ function Logo() {
         className={styles.brandMark}
         src="/images/musubu-mark.png"
         alt=""
-        width={220}
-        height={119}
+        width={971}
+        height={523}
         aria-hidden="true"
-        unoptimized
+        priority
       />
     </a>
   );
@@ -120,10 +120,9 @@ export default function Home() {
               className={mobile.visualLogo}
               src="/images/musubu-mark.png"
               alt=""
-              width={150}
-              height={82}
+              width={971}
+              height={523}
               priority
-              unoptimized
             />
           </div>
           <div className={`${styles.heroInner} ${mobile.copy}`}>
@@ -264,7 +263,7 @@ export default function Home() {
 
         <section id="partnership" className={styles.section}>
           <div className={styles.pair}>
-            <Photo src="/images/element-heart.jpg" alt="白い部屋の窓辺にある休息の時間" label="Partnership" />
+            <Photo src="/images/partnership.jpg" alt="白い部屋の窓辺にある休息の時間" label="Partnership" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
