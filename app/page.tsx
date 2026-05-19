@@ -15,7 +15,7 @@ const elements = [
   {
     title: "食",
     label: "Food",
-    image: "/images/element-food.webp",
+    image: "/images/hero-table.png",
     body: "食べることを無理なく整え、毎日のからだを支える。"
   },
   {
@@ -33,7 +33,7 @@ const elements = [
   {
     title: "心",
     label: "Rest",
-    image: "/images/element-heart.jpg",
+    image: "/images/hero-rest.png",
     body: "休むこと、話すこと、深く息をする時間を大切にする。"
   }
 ];
@@ -58,6 +58,10 @@ function Logo() {
         aria-hidden="true"
         unoptimized
       />
+      <span>
+        <strong>MUSUBU</strong>
+        <small>一般社団法人 結</small>
+      </span>
     </a>
   );
 }
@@ -109,7 +113,6 @@ export default function Home() {
           <div className={styles.riceVeil} aria-hidden="true" />
           <div className={mobile.visual} aria-hidden="true">
             <div className={mobile.visualSlides}>
-              <div className={`${mobile.visualSlide} ${mobile.slideRice}`} />
               <div className={`${mobile.visualSlide} ${mobile.slideFood}`} />
               <div className={`${mobile.visualSlide} ${mobile.slideMove}`} />
               <div className={`${mobile.visualSlide} ${mobile.slideBeauty}`} />
@@ -227,7 +230,7 @@ export default function Home() {
               </h2>
               <p>理事長の想いを中心に、暮らしの近くで続く場を育てます。</p>
             </div>
-            <Photo src="/images/element-food.webp" alt="自然光の食卓と一汁一菜の食事" label="Food / Place / Dialogue" />
+            <Photo src="/images/hero-table.png" alt="自然光の食卓と一汁一菜の食事" label="Food / Place / Dialogue" />
           </div>
           <div className={styles.lines}>
             {activities.map(([label, title, body]) => (
@@ -264,7 +267,7 @@ export default function Home() {
 
         <section id="partnership" className={styles.section}>
           <div className={styles.pair}>
-            <Photo src="/images/element-heart.jpg" alt="白い部屋の窓辺にある休息の時間" label="Partnership" />
+            <Photo src="/images/hero-rest.png" alt="白い部屋の窓辺にある休息の時間" label="Partnership" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
