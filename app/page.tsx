@@ -1,6 +1,25 @@
 import Image from "next/image";
 import mobile from "./mobile-hero.module.css";
 import styles from "./rice.module.css";
+import motion from "./motion.module.css";
+import MotionProvider from "./motion-provider";
+
+/** 日本語の文字列を1文字ずつ <span> に分解してスタッガード・フェードインさせる */
+function CharReveal({ text, startDelay = 0 }: { text: string; startDelay?: number }) {
+  return (
+    <span className={motion.charLine}>
+      {Array.from(text).map((ch, i) => (
+        <span
+          key={i}
+          className={motion.char}
+          style={{ animationDelay: `${startDelay + i * 0.05}s` }}
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 const navItems = [
   { href: "#about", label: "About" },
@@ -15,26 +34,30 @@ const elements = [
   {
     title: "食",
     label: "Food",
+    accent: "#E6CC4A",
     image: "/images/element-food.jpg",
-    body: "食べることを無理なく整え、毎日のからだを支える。"
+    body: "バランスの取れた食事で健康な身体を作る。"
   },
   {
     title: "動",
     label: "Movement",
+    accent: "#DCA0B4",
     image: "/images/element-move.jpg",
-    body: "できる範囲で動き、心身にしなやかな巡りをつくる。"
+    body: "適度な運動で心身を活性化する。"
   },
   {
     title: "美",
     label: "Care",
+    accent: "#8CB4A0",
     image: "/images/element-beauty.jpg",
-    body: "整える時間を楽しみ、その人らしい輝きにつなげる。"
+    body: "美に気を配ることで心も身体もいきいきと輝き、健康へと繋がる。"
   },
   {
     title: "心",
     label: "Rest",
+    accent: "#78B4DC",
     image: "/images/element-heart.jpg",
-    body: "休むこと、話すこと、深く息をする時間を大切にする。"
+    body: "十分な休養で心身を癒し、明日への活力へと繋がる。"
   }
 ];
 
@@ -50,7 +73,7 @@ function Logo() {
   return (
     <a className={styles.brand} href="#top" aria-label="一般社団法人 結 トップへ">
       <Image
-        className={styles.brandMark}
+        className={`${styles.brandMark} ${motion.breathe}`}
         src="/images/musubu-mark.png"
         alt=""
         width={971}
@@ -70,7 +93,7 @@ function Photo({ src, alt, label }: { src: string; alt: string; label?: string }
       : "";
 
   return (
-    <figure className={`${styles.photo} ${toneClass}`}>
+    <figure className={`${styles.photo} ${toneClass} ${motion.kenburns}`}>
       <Image src={src} alt={alt} fill sizes="(max-width: 720px) 92vw, 44vw" />
       {label ? <figcaption>{label}</figcaption> : null}
     </figure>
@@ -79,6 +102,7 @@ function Photo({ src, alt, label }: { src: string; alt: string; label?: string }
 
 export default function Home() {
   return (
+    <MotionProvider>
     <div id="top" className={styles.page}>
       <header className={`${styles.header} ${mobile.header}`}>
         <div className={`${styles.headerInner} ${mobile.headerInner}`}>
@@ -105,6 +129,13 @@ export default function Home() {
 
       <main>
         <section className={`${styles.hero} ${mobile.hero}`}>
+          <div className={motion.heroCrossfade} aria-hidden="true">
+            <div className={`${motion.heroSlide} ${motion.heroSlide1}`} />
+            <div className={`${motion.heroSlide} ${motion.heroSlide2}`} />
+            <div className={`${motion.heroSlide} ${motion.heroSlide3}`} />
+            <div className={`${motion.heroSlide} ${motion.heroSlide4}`} />
+            <div className={`${motion.heroSlide} ${motion.heroSlide5}`} />
+          </div>
           <div className={styles.riceImage} aria-hidden="true" />
           <div className={styles.riceVeil} aria-hidden="true" />
           <div className={mobile.visual} aria-hidden="true">
@@ -128,9 +159,9 @@ export default function Home() {
           <div className={`${styles.heroInner} ${mobile.copy}`}>
             <p className={styles.eyebrow}>MUSUBU WELLNESS CIRCLE</p>
             <h1>
-              暮らしを整え、
+              <CharReveal text="暮らしを整え、" />
               <br />
-              人と人を結ぶ。
+              <CharReveal text="人と人を結ぶ。" startDelay={0.5} />
             </h1>
             <p className={styles.heroLead}>
               食・動・美・心の調和から、
@@ -149,7 +180,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.philosophy}`}>
+        <section className={`${styles.section} ${styles.philosophy} ${motion.reveal}`}>
           <div className={styles.narrow}>
             <p className={styles.largeEn}>From One Grain</p>
             <h2>
@@ -166,12 +197,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className={styles.section}>
+        <section id="about" className={`${styles.section} ${motion.reveal}`}>
           <div className={styles.pair}>
             <Photo src="/images/hero-community.png" alt="お茶を囲む穏やかな交流" label="MUSUBU" />
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>ABOUT</p>
               <h2>結について。</h2>
+              <p className={styles.aboutTag}>人と人を結ぶ、健康づくりの輪。</p>
               <p>
                 一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての専門性と、
                 生活者に寄り添う想いを中心にした健康づくりの場です。
@@ -190,20 +222,41 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="elements" className={`${styles.section} ${styles.elements}`}>
+        <section id="elements" className={`${styles.section} ${styles.elements} ${motion.reveal}`}>
           <div className={styles.sectionHead}>
             <p className={styles.eyebrow}>FOUR ELEMENTS</p>
             <h2>
-              4つの調和から、
+              4色の結び紐が、
               <br />
               すこやかな毎日へ。
             </h2>
+            <p className={styles.sectionLede}>
+              ロゴモチーフの「あわじ結び」は、食・動・美・心の4要素が互いに支え合い、
+              一つの健やかさへと結ばれていく姿を表しています。
+              どれか一つではなく、4色が響き合うとき、その人らしい輝きが生まれます。
+            </p>
           </div>
           <div className={styles.elementList}>
             {elements.map((item) => (
-              <article className={styles.elementItem} key={item.title}>
+              <article
+                className={styles.elementItem}
+                key={item.title}
+                style={{ ["--accent" as string]: item.accent }}
+              >
                 <Photo src={item.image} alt={`${item.title}を象徴する自然光の写真`} />
                 <div>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: "inline-block",
+                      width: 28,
+                      height: 3,
+                      backgroundColor: item.accent,
+                      borderRadius: 2,
+                      marginBottom: 12,
+                      verticalAlign: "middle"
+                    }}
+                  />
                   <span>{item.label}</span>
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>
@@ -213,7 +266,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="activities" className={styles.section}>
+        <section id="activities" className={`${styles.section} ${motion.reveal}`}>
           <div className={styles.activityFeature}>
             <div className={styles.textBlock}>
               <p className={styles.eyebrow}>ACTIVITIES</p>
@@ -239,7 +292,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="message" className={`${styles.section} ${styles.message}`}>
+        <section id="message" className={`${styles.section} ${styles.message} ${motion.reveal}`}>
           <div className={styles.messageInner}>
             <div>
               <p className={styles.eyebrow}>MESSAGE</p>
@@ -253,15 +306,20 @@ export default function Home() {
             </div>
             <div>
               <p>
-                健康は、特別なことではなく、毎日の暮らしの中で少しずつ育まれるもの。
-                食べること、動くこと、整えること、休むことを、地域や人とのつながりの中で支えます。
+                食・動・美・心の4要素が響き合うとき、
+                総合的な健やかさが育まれていく。
+                食べること、動くこと、整えること、休むことを、
+                地域や人とのつながりの中で支えていきます。
+              </p>
+              <p>
+                皆さまと共に、健康で輝く未来を結んでいきたい。
               </p>
               <p className={styles.signature}>理事長　渡邉裕子</p>
             </div>
           </div>
         </section>
 
-        <section id="partnership" className={styles.section}>
+        <section id="partnership" className={`${styles.section} ${motion.reveal}`}>
           <div className={styles.pair}>
             <Photo src="/images/partnership.jpg" alt="白い部屋の窓辺にある休息の時間" label="Partnership" />
             <div className={styles.textBlock}>
@@ -284,7 +342,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className={styles.contact}>
+        <section id="contact" className={`${styles.contact} ${motion.reveal}`}>
           <div className={styles.narrow}>
             <p className={styles.largeEn}>Contact</p>
             <h2>
@@ -310,5 +368,6 @@ export default function Home() {
         <small>General Incorporated Association MUSUBU</small>
       </footer>
     </div>
+    </MotionProvider>
   );
 }
