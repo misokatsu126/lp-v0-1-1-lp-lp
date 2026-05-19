@@ -460,6 +460,26 @@
   margin: 0 auto;
 }
 
+.sectionLede {
+  margin: 24px 0 0;
+  max-width: 640px;
+  color: rgba(80, 70, 60, 0.78);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.95;
+}
+
+.aboutTag {
+  margin: 18px 0 26px;
+  padding-left: 18px;
+  border-left: 2px solid rgba(120, 100, 75, 0.35);
+  color: rgba(60, 50, 38, 0.86);
+  font-family: var(--font-heading);
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
 .largeEn {
   margin: 0;
   color: rgba(80, 70, 60, 0.23);
