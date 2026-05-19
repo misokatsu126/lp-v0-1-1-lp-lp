@@ -178,15 +178,13 @@ figure {
 }
 
 .hero::before {
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 42%),
-    linear-gradient(180deg, rgba(255, 253, 248, 0), rgba(239, 237, 231, 0.46));
+  background: none;
 }
 
 .hero::after {
   top: auto;
   height: 42%;
-  background: linear-gradient(180deg, rgba(255, 253, 248, 0), var(--paper));
+  background: none;
 }
 
 .hero__layout {

@@ -17,10 +17,9 @@
 .visualSlides {
   overflow: hidden;
   background-color: #fffdf8;
-  background-image: url("/images/hero-rice.png");
+  background-image: url("/images/hero-rice-grains.jpg");
   background-position: center center;
   background-size: cover;
-  filter: brightness(1.08) contrast(0.94) saturate(0.86);
 }
 
 .visualSlide {
@@ -38,17 +37,14 @@
 .visualSlide::after {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.12), rgba(255, 253, 248, 0.52)),
-    rgba(250, 248, 240, 0.18);
+  background: none;
   content: "";
 }
 
 .slideRice {
-  background-image: url("/images/hero-rice.png");
+  background-image: url("/images/hero-rice-grains.jpg");
   background-position: center center;
   background-size: cover;
-  filter: brightness(1.08) contrast(0.94) saturate(0.86);
   animation-delay: 0s;
 }
 
@@ -56,36 +52,30 @@
   background-image: url("/images/element-food.jpg");
   background-position: center center;
   background-size: cover;
-  filter: brightness(1.08) contrast(0.92) saturate(0.82);
   animation-delay: 6s;
 }
 
 .slideMove {
   background-image: url("/images/element-move.jpg");
   background-position: 58% 42%;
-  filter: brightness(1.08) contrast(0.9) saturate(0.78);
   animation-delay: 12s;
 }
 
 .slideBeauty {
   background-image: url("/images/element-beauty.jpg");
   background-position: center center;
-  filter: brightness(1.12) contrast(0.9) saturate(0.78);
   animation-delay: 18s;
 }
 
 .slideMind {
   background-image: url("/images/element-heart.jpg");
   background-position: 60% center;
-  filter: brightness(1.1) contrast(0.92) saturate(0.78);
   animation-delay: 24s;
 }
 
 .visualVeil {
   z-index: 2;
-  background:
-    radial-gradient(circle at 50% 44%, rgba(255, 253, 248, 0.02), rgba(255, 253, 248, 0.42) 74%),
-    linear-gradient(180deg, rgba(255, 253, 248, 0.08), rgba(247, 243, 236, 0.76));
+  background: none;
 }
 
 .visualLogo {
