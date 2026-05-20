@@ -262,6 +262,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* ヒーローを米のクローズアップ1枚で鮮明に見せるため、両方とも非表示 */
+  display: none;
 }
 
 .riceImage {
@@ -478,6 +480,48 @@
   font-weight: 400;
   line-height: 1.7;
   letter-spacing: 0.04em;
+}
+
+.entityName {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0 0 16px;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.brandJP {
+  color: rgba(50, 42, 32, 0.86);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.brandEN {
+  color: rgba(80, 70, 60, 0.55);
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+}
+
+/* スマホでは英字を隠して幅を節約 */
+@media (max-width: 720px) {
+  .brandJP {
+    font-size: 12px;
+  }
+  .brandEN {
+    display: none;
+  }
 }
 
 .largeEn {
