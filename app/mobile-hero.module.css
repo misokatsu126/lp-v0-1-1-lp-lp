@@ -137,11 +137,11 @@
 
   .header a {
     display: flex !important;
-    width: 84px !important;
     min-height: 52px !important;
     align-items: center !important;
     justify-content: flex-start !important;
     overflow: visible !important;
+    gap: 10px;
   }
 
   .header img {
@@ -152,10 +152,7 @@
     object-fit: contain !important;
     object-position: center center !important;
     filter: drop-shadow(0 4px 10px rgba(36, 34, 30, 0.08));
-  }
-
-  .header span {
-    display: none !important;
+    flex: 0 0 auto;
   }
 
   .menu {
