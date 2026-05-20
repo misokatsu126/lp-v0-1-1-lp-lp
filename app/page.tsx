@@ -1,3 +1,5 @@
+
+
 import Image from "next/image";
 import mobile from "./mobile-hero.module.css";
 import styles from "./rice.module.css";
@@ -81,6 +83,10 @@ function Logo() {
         aria-hidden="true"
         priority
       />
+      <span className={styles.brandText}>
+        <span className={styles.brandJP}>一般社団法人 結</span>
+        <span className={styles.brandEN}>MUSUBU</span>
+      </span>
     </a>
   );
 }
