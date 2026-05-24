@@ -299,28 +299,74 @@ export default function Home() {
         </section>
 
         <section id="message" className={`${styles.section} ${styles.message} ${motion.reveal}`}>
-          <div className={styles.messageInner}>
-            <div>
-              <p className={styles.eyebrow}>MESSAGE</p>
-              <h2>
-                その人らしく、
-                <br />
-                無理なく、
-                <br />
-                健やかに。
-              </h2>
+          <div className={styles.profileGrid}>
+            <div className={styles.profileVisuals}>
+              <figure className={styles.profilePortrait}>
+                <Image
+                  src="/images/director-watanabe-upload.jpg"
+                  alt="一般社団法人 結 理事長 渡邉裕子のプロフィール写真"
+                  fill
+                  sizes="(max-width: 720px) 92vw, 38vw"
+                />
+              </figure>
+              <div className={styles.profileSubImages} aria-label="渡邉裕子の活動イメージ">
+                <figure>
+                  <Image
+                    src="/images/director-work-upload.jpg"
+                    alt="Webデザインや情報発信に取り組む渡邉裕子"
+                    fill
+                    sizes="(max-width: 720px) 44vw, 16vw"
+                  />
+                  <figcaption>Information Design</figcaption>
+                </figure>
+                <figure>
+                  <Image
+                    src="/images/director-illustration-upload.jpg"
+                    alt="管理栄養士としての親しみを伝える渡邉裕子の似顔絵"
+                    fill
+                    sizes="(max-width: 720px) 44vw, 16vw"
+                  />
+                  <figcaption>Nutrition / Friendly Touch</figcaption>
+                </figure>
+              </div>
             </div>
-            <div>
-              <p>
-                食・動・美・心の4要素が響き合うとき、
-                総合的な健やかさが育まれていく。
-                食べること、動くこと、整えること、休むことを、
-                地域や人とのつながりの中で支えていきます。
+
+            <div className={styles.profileBody}>
+              <p className={styles.eyebrow}>PROFILE / MESSAGE</p>
+              <h2>
+                暮らしに寄り添い、
+                <br />
+                健康づくりの輪を結ぶ。
+              </h2>
+              <p className={styles.profileName}>
+                渡邉 裕子
+                <span>一般社団法人 結 理事長 / 管理栄養士</span>
               </p>
-              <p>
-                皆さまと共に、健康で輝く未来を結んでいきたい。
-              </p>
-              <p className={styles.signature}>理事長　渡邉裕子</p>
+              <div className={styles.profileText}>
+                <p>
+                  2015年、仙台白百合女子大学 人間学部 健康栄養学科卒業。
+                  管理栄養士として病院勤務を経て、給食管理・衛生管理・臨床栄養業務・栄養指導に従事しました。
+                </p>
+                <p>
+                  その後、調剤薬局にて健康相談や健康セミナー講師を担当。
+                  地域に寄り添った健康支援に携わりながら、一人ひとりの暮らしに合う整え方を大切にしてきました。
+                </p>
+                <p>
+                  2020年より名古屋へ移住。フリーランス管理栄養士として特定保健指導に従事するほか、
+                  接客・サービス・店舗運営、Webデザインやホームページ制作にも携わっています。
+                </p>
+                <p>
+                  2024年7月、一般社団法人 結を設立。
+                  現在は「食・動・美・心」をテーマに、健康寿命の延伸、地域の健康づくり、
+                  人と人がつながるコミュニティづくりに取り組んでいます。
+                </p>
+                <p>
+                  食・動・美・心の4要素が響き合うとき、総合的な健やかさが育まれていく。
+                  食べること、動くこと、整えること、休むことを、地域や人とのつながりの中で支えていきます。
+                </p>
+                <p>皆さまと、健やかな未来を結んでいきます。</p>
+              </div>
+              <p className={styles.signature}>理事長　渡邉 裕子</p>
             </div>
           </div>
         </section>
@@ -332,7 +378,6 @@ export default function Home() {
               <p className={styles.eyebrow}>PARTNERSHIP</p>
               <h2>
                 健康づくりを、
-                <br />
                 ひとりで抱えない形へ。
               </h2>
               <p>
