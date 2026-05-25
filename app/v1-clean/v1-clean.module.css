@@ -1,0 +1,957 @@
+.page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #fffdf8;
+  color: #27231f;
+  font-family: var(--font-body), "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  letter-spacing: 0;
+}
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  border-bottom: 1px solid rgba(39, 35, 31, 0.06);
+  background: rgba(255, 253, 248, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.headerInner {
+  width: min(1180px, calc(100% - 28px));
+  min-height: 72px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandMark {
+  width: 62px;
+  height: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.brandText {
+  display: grid;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.brandJP,
+.brandEN {
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.brandJP {
+  color: rgba(39, 35, 31, 0.9);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.brandEN {
+  color: rgba(39, 35, 31, 0.5);
+  font-size: 10px;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 24px;
+  color: rgba(39, 35, 31, 0.58);
+  font-size: 12px;
+}
+
+.nav a,
+.mobileMenu a {
+  transition: color 180ms ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible,
+.mobileMenu a:hover,
+.mobileMenu a:focus-visible {
+  color: #56777a;
+}
+
+.mobileMenu {
+  position: relative;
+  display: block;
+}
+
+.mobileMenu summary {
+  display: inline-flex;
+  min-width: 72px;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(39, 35, 31, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.56);
+  color: rgba(39, 35, 31, 0.68);
+  font-size: 12px;
+  list-style: none;
+}
+
+.mobileMenu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobileMenu nav {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  display: grid;
+  min-width: 180px;
+  overflow: hidden;
+  border: 1px solid rgba(39, 35, 31, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.94);
+  box-shadow: 0 18px 44px rgba(39, 35, 31, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.mobileMenu nav a {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(39, 35, 31, 0.06);
+  color: rgba(39, 35, 31, 0.72);
+  font-size: 12px;
+}
+
+.mobileMenu nav a:last-child {
+  border-bottom: 0;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+  background: #f7f3ec;
+}
+
+.heroMedia,
+.heroSlide,
+.heroVeil {
+  position: absolute;
+  inset: 0;
+}
+
+.heroMedia {
+  z-index: 0;
+  background: #f4f0e9;
+}
+
+.heroSlide {
+  opacity: 0;
+  animation: heroFade 35s ease-in-out infinite;
+  animation-delay: var(--delay);
+  will-change: opacity, transform;
+}
+
+.heroSlide img {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(1.07) contrast(0.96) saturate(0.86);
+}
+
+.heroVeil {
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.08) 0%, rgba(255, 253, 248, 0.36) 45%, rgba(255, 253, 248, 0.94) 100%),
+    linear-gradient(90deg, rgba(255, 253, 248, 0.9) 0%, rgba(255, 253, 248, 0.52) 54%, rgba(255, 253, 248, 0.14) 100%);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 3;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 132px 0 74px;
+}
+
+.eyebrow,
+.sectionLabel {
+  margin: 0;
+  color: rgba(39, 35, 31, 0.48);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+
+.heroTitle,
+.sectionTitle,
+.contactTitle {
+  margin: 0;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.heroTitle {
+  margin-top: 24px;
+  font-size: 3.1rem;
+  line-height: 1.25;
+}
+
+.heroLead {
+  margin: 28px 0 0;
+  max-width: 29em;
+  color: #5f574e;
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+.heroDescription {
+  margin: 24px 0 0;
+  max-width: 42em;
+  color: rgba(68, 61, 53, 0.84);
+  font-size: 0.95rem;
+  line-height: 2.05;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 34px;
+  border: 1px solid rgba(86, 119, 122, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.64);
+  padding: 13px 24px;
+  color: #456f73;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  backdrop-filter: blur(12px);
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.button::after {
+  content: "→";
+  margin-left: 12px;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: rgba(255, 253, 248, 0.9);
+  box-shadow: 0 14px 34px rgba(39, 35, 31, 0.08);
+  transform: translateY(-1px);
+}
+
+.section {
+  padding: 92px 0;
+}
+
+.sectionInner,
+.flowHead,
+.flowGrid,
+.contactInner,
+.footer {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  margin-top: 20px;
+  font-size: 2.25rem;
+  line-height: 1.45;
+}
+
+.bodyText,
+.aboutBody p,
+.elementText p,
+.trustText p,
+.profileText p,
+.messageBox p,
+.partnershipGrid p,
+.contactLead {
+  color: #6a6258;
+  font-size: 0.98rem;
+  line-height: 2.05;
+}
+
+.concept {
+  background: #fffdf8;
+}
+
+.conceptGrid {
+  display: grid;
+  gap: 48px;
+}
+
+.conceptCopy {
+  max-width: 640px;
+}
+
+.conceptPhotos {
+  position: relative;
+  min-height: 430px;
+}
+
+.photoFrame {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eeece5;
+  box-shadow: 0 18px 58px rgba(39, 35, 31, 0.055);
+}
+
+.photoFrame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms ease, filter 900ms ease;
+}
+
+.photoFrame:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.03) saturate(0.96);
+}
+
+.photoFrame figcaption {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 2;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.7);
+  padding: 6px 10px;
+  color: rgba(39, 35, 31, 0.58);
+  font-size: 11px;
+  backdrop-filter: blur(10px);
+}
+
+.conceptPhotoMain {
+  aspect-ratio: 4 / 5;
+  width: 72%;
+  min-height: 360px;
+}
+
+.conceptPhotoSub {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 4 / 3;
+  width: 48%;
+  min-height: 180px;
+}
+
+.imageFlow {
+  padding: 70px 0 100px;
+  background: #f8f6f1;
+}
+
+.flowHead {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 42px;
+}
+
+.flowHead p:last-child {
+  max-width: 34em;
+  margin: 0;
+  color: #756d62;
+  line-height: 1.9;
+}
+
+.flowGrid {
+  display: grid;
+  gap: 18px;
+}
+
+.flowItem {
+  aspect-ratio: 4 / 5;
+  min-height: 270px;
+}
+
+.flowItem2,
+.flowItem4 {
+  aspect-ratio: 1 / 1;
+}
+
+.flowItem5 {
+  aspect-ratio: 3 / 2;
+}
+
+.about {
+  background: #fffdf8;
+}
+
+.aboutGrid {
+  display: grid;
+  gap: 38px;
+}
+
+.aboutBody {
+  max-width: 720px;
+}
+
+.facts {
+  display: grid;
+  margin-top: 38px;
+  border-top: 1px solid rgba(39, 35, 31, 0.12);
+}
+
+.facts div {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(39, 35, 31, 0.12);
+}
+
+.facts dt {
+  color: #56777a;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.facts dd {
+  margin: 8px 0 0;
+  color: #2c2823;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", serif;
+  font-size: 1rem;
+}
+
+.elements {
+  background: #f7f3ec;
+}
+
+.elementsIntro {
+  max-width: 760px;
+}
+
+.elementList {
+  display: grid;
+  gap: 72px;
+  margin-top: 72px;
+}
+
+.elementRow {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+}
+
+.elementPhoto {
+  aspect-ratio: 4 / 5;
+  min-height: 360px;
+}
+
+.elementText {
+  max-width: 560px;
+}
+
+.accentLine {
+  display: block;
+  width: 54px;
+  height: 2px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.elementMark {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--font-heading), "Hiragino Mincho ProN", serif;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.elementText h3 {
+  margin: 18px 0 0;
+  color: #2b2722;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.supportText {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(39, 35, 31, 0.12);
+}
+
+.activities {
+  background: #fffdf8;
+}
+
+.activitiesGrid {
+  display: grid;
+  gap: 42px;
+}
+
+.activitiesCopy {
+  max-width: 680px;
+}
+
+.activityPhotos {
+  display: grid;
+  grid-template-columns: 1fr 0.78fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.activityPhotoLarge {
+  aspect-ratio: 4 / 5;
+  min-height: 340px;
+}
+
+.activityPhotoSmall {
+  aspect-ratio: 1 / 1;
+  min-height: 190px;
+  transform: translateY(28px);
+}
+
+.activityPhotoWide {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+  min-height: 210px;
+  width: 82%;
+  justify-self: end;
+}
+
+.activityList {
+  border-top: 1px solid rgba(39, 35, 31, 0.12);
+}
+
+.activityList p {
+  margin: 0;
+  border-bottom: 1px solid rgba(39, 35, 31, 0.12);
+  padding: 18px 0;
+  color: #4f4840;
+  line-height: 1.85;
+}
+
+.activityCta {
+  margin-top: -12px;
+}
+
+.trustSection {
+  background:
+    linear-gradient(180deg, rgba(247, 243, 236, 0.92), rgba(255, 253, 248, 0.96)),
+    #f7f3ec;
+}
+
+.trustGrid {
+  display: grid;
+  gap: 30px;
+}
+
+.trustText {
+  display: grid;
+  gap: 18px;
+  max-width: 720px;
+  margin-top: 34px;
+}
+
+.trustText p {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid rgba(86, 119, 122, 0.28);
+}
+
+.profileSection {
+  background: #fffdf8;
+}
+
+.profileGrid {
+  display: grid;
+  gap: 42px;
+  align-items: start;
+}
+
+.profilePortrait {
+  position: relative;
+  width: min(420px, 88vw);
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eeece5;
+  box-shadow: 0 18px 58px rgba(39, 35, 31, 0.06);
+}
+
+.profilePortrait img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.profileBody {
+  max-width: 680px;
+}
+
+.profileName {
+  margin: 30px 0 0;
+  color: #2c2823;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", serif;
+  font-size: 1.45rem;
+  line-height: 1.7;
+}
+
+.profileName span {
+  display: block;
+  margin-top: 6px;
+  color: #6a6258;
+  font-family: var(--font-body), "Hiragino Sans", sans-serif;
+  font-size: 0.92rem;
+}
+
+.profileText {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.profileText p,
+.messageBox p {
+  margin: 0;
+}
+
+.messageBox {
+  display: grid;
+  gap: 16px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(39, 35, 31, 0.12);
+  padding-top: 28px;
+}
+
+.partnershipSection {
+  background: #f8f6f1;
+}
+
+.partnershipGrid {
+  display: grid;
+  gap: 40px;
+}
+
+.partnershipList,
+.consultList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.partnershipList span,
+.consultList span {
+  border-bottom: 1px solid rgba(39, 35, 31, 0.14);
+  padding: 10px 0;
+  color: #5f574e;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.contact {
+  padding: 104px 0;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(247, 243, 236, 0.96)),
+    #f7f3ec;
+}
+
+.contactInner {
+  max-width: 840px;
+}
+
+.contactTitle {
+  margin-top: 20px;
+  font-size: 2.45rem;
+  line-height: 1.45;
+}
+
+.contactLead {
+  margin: 34px 0 18px;
+  color: #2c2823;
+}
+
+.consultList {
+  margin-bottom: 6px;
+}
+
+.footer {
+  display: flex;
+  padding: 52px 0 60px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid rgba(39, 35, 31, 0.1);
+  color: rgba(39, 35, 31, 0.5);
+  font-size: 11px;
+}
+
+.footerLogo {
+  width: min(190px, 58vw);
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes heroFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.045);
+  }
+  28%,
+  100% {
+    opacity: 0;
+    transform: scale(1.07);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroSlide,
+  .photoFrame img,
+  .reveal {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .heroSlide {
+    opacity: 0;
+  }
+
+  .heroSlide:first-child {
+    opacity: 1;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0.001;
+      transform: translateY(28px);
+      animation: revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-range: entry 8% cover 28%;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 680px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .facts div:nth-child(odd) {
+    padding-right: 24px;
+  }
+
+  .facts div:nth-child(even) {
+    padding-left: 24px;
+  }
+
+  .flowGrid {
+    grid-template-columns: repeat(6, 1fr);
+    align-items: end;
+  }
+
+  .flowItem1 {
+    grid-column: span 2;
+    min-height: 470px;
+  }
+
+  .flowItem2 {
+    grid-column: span 2;
+    min-height: 330px;
+    transform: translateY(44px);
+  }
+
+  .flowItem3 {
+    grid-column: span 2;
+    min-height: 430px;
+  }
+
+  .flowItem4 {
+    grid-column: 2 / span 2;
+    min-height: 300px;
+    transform: translateY(24px);
+  }
+
+  .flowItem5 {
+    grid-column: 4 / span 3;
+    min-height: 310px;
+  }
+}
+
+@media (min-width: 860px) {
+  .nav {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+
+  .brandMark {
+    width: 78px;
+  }
+
+  .headerInner {
+    min-height: 84px;
+  }
+
+  .heroTitle {
+    font-size: 5rem;
+  }
+
+  .heroLead {
+    font-size: 1.35rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 130px 0;
+  }
+
+  .sectionTitle {
+    font-size: 3.35rem;
+  }
+
+  .conceptGrid,
+  .aboutGrid,
+  .trustGrid,
+  .profileGrid,
+  .partnershipGrid {
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    gap: 78px;
+  }
+
+  .conceptPhotos {
+    min-height: 610px;
+  }
+
+  .conceptPhotoMain {
+    min-height: 540px;
+  }
+
+  .conceptPhotoSub {
+    min-height: 250px;
+  }
+
+  .elementRow {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    gap: 76px;
+  }
+
+  .elementRow:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  }
+
+  .elementRow:nth-child(even) .elementPhoto {
+    order: 2;
+  }
+
+  .elementRow:nth-child(even) .elementText {
+    justify-self: end;
+  }
+
+  .elementPhoto {
+    min-height: 500px;
+  }
+
+  .activitiesGrid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 70px;
+    align-items: start;
+  }
+
+  .activityPhotos {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+
+  .activityList,
+  .activityCta {
+    grid-column: 1;
+  }
+
+  .profilePortrait {
+    position: sticky;
+    top: 112px;
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .contact {
+    padding: 148px 0;
+  }
+
+  .contactTitle {
+    font-size: 3.55rem;
+  }
+}
+
+@media (min-width: 1180px) {
+  .heroTitle {
+    font-size: 5.8rem;
+  }
+
+  .sectionTitle {
+    font-size: 3.8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .brandMark {
+    width: 56px;
+  }
+
+  .brandJP {
+    font-size: 12px;
+  }
+
+  .brandEN {
+    display: none;
+  }
+
+  .heroTitle {
+    font-size: 2.75rem;
+  }
+
+  .sectionTitle,
+  .contactTitle {
+    font-size: 2.05rem;
+  }
+
+  .activityPhotos {
+    grid-template-columns: 1fr;
+  }
+
+  .activityPhotoSmall {
+    transform: none;
+  }
+
+  .activityPhotoWide {
+    width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}

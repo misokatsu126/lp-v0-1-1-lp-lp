@@ -1,9 +1,125 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
-import mobile from "../mobile-hero.module.css";
-import styles from "../rice.module.css";
-import motion from "../motion.module.css";
-import MotionProvider from "../motion-provider";
+import styles from "./v1-clean.module.css";
+
+type ImageItem = {
+  src: string;
+  alt: string;
+  label?: string;
+};
+
+const navItems = [
+  { href: "#concept", label: "Concept" },
+  { href: "#about", label: "About" },
+  { href: "#elements", label: "Elements" },
+  { href: "#activities", label: "Activities" },
+  { href: "#profile", label: "Profile" },
+  { href: "#contact", label: "Contact" }
+];
+
+const heroSlides: ImageItem[] = [
+  {
+    src: "/images/partnership.jpg",
+    alt: "自然光の入る白い空間"
+  },
+  {
+    src: "/images/element-food.jpg",
+    alt: "自然光の食卓と食事"
+  },
+  {
+    src: "/images/element-move.jpg",
+    alt: "やわらかな光の中の動きのイメージ"
+  },
+  {
+    src: "/images/element-beauty.jpg",
+    alt: "自分を整える美容とケアのイメージ"
+  },
+  {
+    src: "/images/element-heart.jpg",
+    alt: "心を休める静かな時間のイメージ"
+  }
+];
+
+const flowImages: ImageItem[] = [
+  { src: "/images/element-food.jpg", alt: "食のイメージ", label: "食" },
+  { src: "/images/element-move.jpg", alt: "動のイメージ", label: "動" },
+  { src: "/images/element-beauty.jpg", alt: "美のイメージ", label: "美" },
+  { src: "/images/element-heart.jpg", alt: "心のイメージ", label: "心" },
+  { src: "/images/hero-community.png", alt: "結びを感じる穏やかな交流のイメージ", label: "結" }
+];
+
+const conceptImages: ImageItem[] = [
+  { src: "/images/hero-rice-grains.jpg", alt: "白い米粒に自然光が差し込む写真", label: "From one grain" },
+  { src: "/images/partnership.jpg", alt: "白い室内に光が入る写真", label: "Quiet place" }
+];
+
+const elements = [
+  {
+    title: "食から、暮らしへ。",
+    label: "Food",
+    mark: "食",
+    accent: "#d8bf4f",
+    image: "/images/element-food.jpg",
+    body: "栄養は、毎日の選択をやさしく整える入口です。",
+    support: "栄養講座 / 食生活相談 / 健康レシピ / 地域食材を活かした企画"
+  },
+  {
+    title: "動きから、めぐりへ。",
+    label: "Movement",
+    mark: "動",
+    accent: "#d7a3b5",
+    image: "/images/element-move.jpg",
+    body: "無理なく続く小さな運動が、心身を目覚めさせます。",
+    support: "運動習慣づくり / 健康イベント / 日常で続けやすい身体づくり"
+  },
+  {
+    title: "美しさから、自信へ。",
+    label: "Care",
+    mark: "美",
+    accent: "#8fb39b",
+    image: "/images/element-beauty.jpg",
+    body: "自分を整える時間は、心の健やかさにもつながります。",
+    support: "美容と健康の講座 / セルフケア / 年齢に合わせた整え方"
+  },
+  {
+    title: "休むことから、明日へ。",
+    label: "Rest",
+    mark: "心",
+    accent: "#7fb1cf",
+    image: "/images/element-heart.jpg",
+    body: "心をゆるめる時間が、また歩き出す力になります。",
+    support: "休養 / 睡眠 / 対話の場 / 心身を整えるワークショップ"
+  }
+];
+
+const activityItems = [
+  "管理栄養士による健康講座",
+  "食生活・予防に関するセミナー",
+  "地域マルシェや交流イベント",
+  "美容・健康・休養をテーマにしたワークショップ",
+  "企業・店舗・専門家とのコラボ企画",
+  "健康づくりを続けるためのコミュニティづくり"
+];
+
+const partnershipItems = [
+  "結 × 地域イベント",
+  "結 × 企業",
+  "結 × 美容サロン",
+  "結 × 医療・福祉",
+  "結 × 学校",
+  "結 × マルシェ",
+  "結 × 店舗",
+  "結 × 情報発信"
+];
+
+const consultItems = [
+  "健康講座を開催したい",
+  "食や栄養のセミナーを依頼したい",
+  "地域イベントで健康企画を行いたい",
+  "美容・健康・休養をテーマに連携したい",
+  "一般社団法人 結と一緒に企画をつくりたい"
+];
 
 export const metadata: Metadata = {
   title: "v1 clean | 一般社団法人 結 / MUSUBU",
@@ -11,90 +127,11 @@ export const metadata: Metadata = {
     "一般社団法人 結は、管理栄養士の専門性をもとに、食・動・美・心の4つの視点から、地域や人のつながりを通じた健康づくりを支える団体です。"
 };
 
-function CharReveal({ text, startDelay = 0 }: { text: string; startDelay?: number }) {
-  return (
-    <span className={motion.charLine}>
-      {Array.from(text).map((ch, i) => (
-        <span
-          key={i}
-          className={motion.char}
-          style={{ animationDelay: `${startDelay + i * 0.05}s` }}
-        >
-          {ch === " " ? "\u00A0" : ch}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#elements", label: "Elements" },
-  { href: "#activities", label: "Activities" },
-  { href: "#message", label: "Message" },
-  { href: "#partnership", label: "Partnership" },
-  { href: "#contact", label: "Contact" }
-];
-
-const elements = [
-  {
-    title: "食",
-    label: "Food",
-    accent: "#E6CC4A",
-    image: "/images/element-food.jpg",
-    body: "バランスの取れた食事で、健康な身体をつくる。",
-    support: "栄養講座 / 食生活相談 / 健康レシピ / 地域食材を活かした企画"
-  },
-  {
-    title: "動",
-    label: "Movement",
-    accent: "#DCA0B4",
-    image: "/images/element-move.jpg",
-    body: "適度な運動で、心身をいきいきと活性化する。",
-    support: "運動習慣づくり / 健康イベント / 日常で続けやすい身体づくり"
-  },
-  {
-    title: "美",
-    label: "Care",
-    accent: "#8CB4A0",
-    image: "/images/element-beauty.jpg",
-    body: "美に気を配ることで、自分らしく輝く力を育てる。",
-    support: "美容と健康の講座 / セルフケア / 年齢に合わせた整え方"
-  },
-  {
-    title: "心",
-    label: "Rest",
-    accent: "#78B4DC",
-    image: "/images/element-heart.jpg",
-    body: "十分な休養で心身を癒し、明日への活力へつなげる。",
-    support: "休養 / 睡眠 / 対話の場 / 心身を整えるワークショップ"
-  }
-];
-
-const activities = [
-  ["Lecture", "管理栄養士による健康講座", "食事や栄養を、暮らしに取り入れやすい言葉で届けます。"],
-  ["Seminar", "食生活・予防に関するセミナー", "予防や生活習慣をテーマに、今日から続けやすい整え方を共有します。"],
-  ["Event", "地域マルシェや交流イベント", "地域の人や専門家が自然につながる、参加しやすい場をつくります。"],
-  ["Workshop", "美容・健康・休養のワークショップ", "自分らしく整える時間を、身体と心の健やかさにつなげます。"],
-  ["Collaboration", "企業・店舗・専門家とのコラボ企画", "それぞれの強みを結び、地域に届く健康づくりの企画へ育てます。"],
-  ["Community", "続けるためのコミュニティづくり", "一人では続けにくい健康づくりを、人とのつながりの中で支えます。"]
-];
-
-const partners = ["健康づくり企画", "食・動・美・心の講座", "地域マルシェ", "専門家との連携", "続いていく場づくり"];
-
-const consultItems = [
-  "健康講座を開催したい",
-  "食や栄養のセミナーを依頼したい",
-  "地域イベントで健康企画を行いたい",
-  "美容・健康・休養をテーマに連携したい",
-  "一般社団法人 結と一緒に企画を作りたい"
-];
-
 function Logo() {
   return (
     <a className={styles.brand} href="#top" aria-label="一般社団法人 結 トップへ">
       <Image
-        className={`${styles.brandMark} ${motion.breathe}`}
+        className={styles.brandMark}
         src="/images/musubu-mark.png"
         alt=""
         width={971}
@@ -110,348 +147,356 @@ function Logo() {
   );
 }
 
-function Photo({ src, alt, label }: { src: string; alt: string; label?: string }) {
-  const toneClass = src.includes("heart")
-    ? styles.photoHeart
-    : src.includes("beauty")
-      ? styles.photoBeauty
-      : "";
-
+function PhotoFrame({
+  item,
+  className = "",
+  sizes = "(max-width: 720px) 92vw, 44vw",
+  priority = false
+}: {
+  item: ImageItem;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+}) {
   return (
-    <figure className={`${styles.photo} ${toneClass} ${motion.kenburns}`}>
-      <Image src={src} alt={alt} fill sizes="(max-width: 720px) 92vw, 44vw" />
-      {label ? <figcaption>{label}</figcaption> : null}
+    <figure className={`${styles.photoFrame} ${className}`}>
+      <Image src={item.src} alt={item.alt} fill sizes={sizes} priority={priority} />
+      {item.label ? <figcaption>{item.label}</figcaption> : null}
     </figure>
   );
 }
 
 export default function V1CleanPage() {
   return (
-    <MotionProvider>
-      <div id="top" className={styles.page}>
-        <header className={`${styles.header} ${mobile.header}`}>
-          <div className={`${styles.headerInner} ${mobile.headerInner}`}>
-            <Logo />
-            <nav className={styles.nav} aria-label="主要ナビゲーション">
+    <div id="top" className={styles.page}>
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <Logo />
+          <nav className={styles.nav} aria-label="主要ナビゲーション">
+            {navItems.map((item) => (
+              <a href={item.href} key={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <details className={styles.mobileMenu}>
+            <summary>Menu</summary>
+            <nav aria-label="スマホナビゲーション">
               {navItems.map((item) => (
                 <a href={item.href} key={item.href}>
                   {item.label}
                 </a>
               ))}
             </nav>
-            <details className={mobile.menu}>
-              <summary>Menu</summary>
-              <nav aria-label="スマホナビゲーション">
-                {navItems.map((item) => (
-                  <a href={item.href} key={item.href}>
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </details>
+          </details>
+        </div>
+      </header>
+
+      <main>
+        <section className={styles.hero} aria-label="一般社団法人 結 メインビジュアル">
+          <div className={styles.heroMedia} aria-hidden="true">
+            {heroSlides.map((slide, index) => (
+              <div
+                className={styles.heroSlide}
+                key={slide.src}
+                style={{ "--delay": `${index * 7}s` } as CSSProperties}
+              >
+                <Image
+                  src={slide.src}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+            <div className={styles.heroVeil} />
           </div>
-        </header>
+          <div className={styles.heroInner}>
+            <p className={styles.eyebrow}>MUSUBU WELLNESS CIRCLE</p>
+            <h1 className={styles.heroTitle}>
+              暮らしを整え、
+              <br />
+              人と人を結ぶ。
+            </h1>
+            <p className={styles.heroLead}>
+              食・動・美・心の調和から、
+              <br />
+              毎日のすこやかさを育てる。
+            </p>
+            <p className={styles.heroDescription}>
+              一般社団法人 結は、管理栄養士の専門性をもとに、食・動・美・心の4つの視点から、地域や人のつながりを通じた健康づくりを支える団体です。
+            </p>
+            <a className={styles.button} href="#contact">
+              活動について相談する
+            </a>
+          </div>
+        </section>
 
-        <main>
-          <section className={`${styles.hero} ${mobile.hero}`}>
-            <div className={motion.heroCrossfade} aria-hidden="true">
-              <div className={`${motion.heroSlide} ${motion.heroSlide1}`} />
-              <div className={`${motion.heroSlide} ${motion.heroSlide2}`} />
-              <div className={`${motion.heroSlide} ${motion.heroSlide3}`} />
-              <div className={`${motion.heroSlide} ${motion.heroSlide4}`} />
-              <div className={`${motion.heroSlide} ${motion.heroSlide5}`} />
-            </div>
-            <div className={styles.riceImage} aria-hidden="true" />
-            <div className={styles.riceVeil} aria-hidden="true" />
-            <div className={mobile.visual} aria-hidden="true">
-              <div className={mobile.visualSlides}>
-                <div className={`${mobile.visualSlide} ${mobile.slideRice}`} />
-                <div className={`${mobile.visualSlide} ${mobile.slideFood}`} />
-                <div className={`${mobile.visualSlide} ${mobile.slideMove}`} />
-                <div className={`${mobile.visualSlide} ${mobile.slideBeauty}`} />
-                <div className={`${mobile.visualSlide} ${mobile.slideMind}`} />
-              </div>
-              <div className={mobile.visualVeil} />
-              <Image
-                className={mobile.visualLogo}
-                src="/images/musubu-mark.png"
-                alt=""
-                width={971}
-                height={523}
-                priority
-              />
-            </div>
-            <div className={`${styles.heroInner} ${mobile.copy}`}>
-              <p className={styles.eyebrow}>MUSUBU WELLNESS CIRCLE</p>
-              <h1>
-                <CharReveal text="暮らしを整え、" />
-                <br />
-                <CharReveal text="人と人を結ぶ。" startDelay={0.5} />
-              </h1>
-              <p className={styles.heroLead}>
-                食・動・美・心の調和から、
-                <br />
-                毎日のすこやかさを育てる。
-              </p>
-              <p className={styles.sectionLede}>
-                一般社団法人 結は、管理栄養士の専門性をもとに、食・動・美・心の4つの視点から、地域や人のつながりを通じた健康づくりを支える団体です。
-              </p>
-              <a className={styles.button} href="#about">
-                結について
-              </a>
-              <div className={styles.heroDots} aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-          </section>
-
-          <section className={`${styles.section} ${styles.philosophy} ${motion.reveal}`}>
-            <div className={styles.narrow}>
-              <p className={styles.largeEn}>From One Grain</p>
-              <h2>
+        <section id="concept" className={`${styles.section} ${styles.concept} ${styles.reveal}`}>
+          <div className={`${styles.sectionInner} ${styles.conceptGrid}`}>
+            <div className={styles.conceptCopy}>
+              <p className={styles.sectionLabel}>Concept</p>
+              <h2 className={styles.sectionTitle}>
                 一粒の食から、
                 <br />
                 暮らしへ。
                 <br />
                 暮らしから、結びへ。
               </h2>
-              <p>
-                食は、暮らしを整える小さな入口。
-                動くこと、美しく整えること、心を休めることと結びながら、毎日のすこやかさを育てます。
+              <p className={styles.bodyText}>
+                食べること、動くこと、自分を整えること、心を休めること。
+                その一つひとつが、人とのつながりの中で、毎日の健やかさへと結ばれていきます。
               </p>
             </div>
-          </section>
-
-          <section id="about" className={`${styles.section} ${motion.reveal}`}>
-            <div className={styles.pair}>
-              <Photo src="/images/hero-community.png" alt="お茶を囲む穏やかな交流" label="MUSUBU" />
-              <div className={styles.textBlock}>
-                <p className={styles.eyebrow}>ABOUT</p>
-                <h2>結について。</h2>
-                <p className={styles.aboutTag}>人と人を結ぶ、健康づくりの輪。</p>
-                <p>
-                  一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての専門性と、生活者に寄り添う想いを中心にした健康づくりの場です。食・動・美・心の4つの視点から、講座、相談、イベント、地域連携を通じて、一人では続けにくい健康づくりを、人とのつながりの中で支えていきます。
-                </p>
-                <dl className={styles.facts}>
-                  <div>
-                    <dt>Founded</dt>
-                    <dd>2024年7月29日</dd>
-                  </div>
-                  <div>
-                    <dt>Director</dt>
-                    <dd>渡邉裕子</dd>
-                  </div>
-                </dl>
-              </div>
+            <div className={styles.conceptPhotos} aria-label="結の世界観を表す写真">
+              <PhotoFrame item={conceptImages[0]} className={styles.conceptPhotoMain} priority />
+              <PhotoFrame item={conceptImages[1]} className={styles.conceptPhotoSub} />
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section id="elements" className={`${styles.section} ${styles.elements} ${motion.reveal}`}>
-            <div className={styles.sectionHead}>
-              <p className={styles.eyebrow}>FOUR ELEMENTS</p>
-              <h2>
+        <section className={`${styles.imageFlow} ${styles.reveal}`} aria-label="食・動・美・心・結のイメージ">
+          <div className={styles.flowHead}>
+            <p className={styles.sectionLabel}>Image Flow</p>
+            <p>食、動、美、心。静かな写真の連なりから、結の輪郭へ。</p>
+          </div>
+          <div className={styles.flowGrid}>
+            {flowImages.map((item, index) => (
+              <PhotoFrame
+                item={item}
+                key={item.label}
+                className={`${styles.flowItem} ${styles[`flowItem${index + 1}`]}`}
+                sizes="(max-width: 720px) 88vw, 30vw"
+              />
+            ))}
+          </div>
+        </section>
+
+        <section id="about" className={`${styles.section} ${styles.about} ${styles.reveal}`}>
+          <div className={`${styles.sectionInner} ${styles.aboutGrid}`}>
+            <div>
+              <p className={styles.sectionLabel}>About</p>
+              <h2 className={styles.sectionTitle}>結について。</h2>
+            </div>
+            <div className={styles.aboutBody}>
+              <p className={styles.bodyText}>
+                一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての専門性と、生活者に寄り添う想いを中心にした健康づくりの場です。食・動・美・心の4つの視点から、講座、相談、イベント、地域連携を通じて、一人では続けにくい健康づくりを、人とのつながりの中で支えていきます。
+              </p>
+              <dl className={styles.facts}>
+                <div>
+                  <dt>正式名称</dt>
+                  <dd>一般社団法人 結</dd>
+                </div>
+                <div>
+                  <dt>設立日</dt>
+                  <dd>2024年7月29日</dd>
+                </div>
+                <div>
+                  <dt>理事長</dt>
+                  <dd>渡邉 裕子</dd>
+                </div>
+                <div>
+                  <dt>Theme</dt>
+                  <dd>食・動・美・心</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section id="elements" className={`${styles.section} ${styles.elements} ${styles.reveal}`}>
+          <div className={styles.sectionInner}>
+            <div className={styles.elementsIntro}>
+              <p className={styles.sectionLabel}>Four Elements</p>
+              <h2 className={styles.sectionTitle}>
                 4色の結び紐が、
                 <br />
                 すこやかな毎日へ。
               </h2>
-              <p className={styles.sectionLede}>
-                ロゴモチーフの「あわじ結び」は、食・動・美・心の4要素が互いに支え合い、
-                一つの健やかさへと結ばれていく姿を表しています。
-                どれか一つではなく、4色が響き合うとき、その人らしい輝きが生まれます。
+              <p className={styles.bodyText}>
+                ロゴモチーフの「あわじ結び」は、食・動・美・心の4要素が互いに支え合い、一つの健やかさへと結ばれていく姿を表しています。
               </p>
             </div>
             <div className={styles.elementList}>
               {elements.map((item) => (
                 <article
-                  className={styles.elementItem}
+                  className={styles.elementRow}
                   key={item.title}
-                  style={{ ["--accent" as string]: item.accent }}
+                  style={{ "--accent": item.accent } as CSSProperties}
                 >
-                  <Photo src={item.image} alt={`${item.title}を象徴する自然光の写真`} />
-                  <div>
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        display: "inline-block",
-                        width: 28,
-                        height: 3,
-                        backgroundColor: item.accent,
-                        borderRadius: 2,
-                        marginBottom: 12,
-                        verticalAlign: "middle"
-                      }}
-                    />
-                    <span>{item.label}</span>
+                  <PhotoFrame
+                    item={{ src: item.image, alt: `${item.mark}を象徴する白いイメージ写真`, label: item.label }}
+                    className={styles.elementPhoto}
+                    sizes="(max-width: 720px) 92vw, 44vw"
+                  />
+                  <div className={styles.elementText}>
+                    <span className={styles.accentLine} aria-hidden="true" />
+                    <p className={styles.elementMark}>{item.mark}</p>
                     <h3>{item.title}</h3>
                     <p>{item.body}</p>
-                    <p>できること：{item.support}</p>
+                    <p className={styles.supportText}>できること：{item.support}</p>
                   </div>
                 </article>
               ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section id="activities" className={`${styles.section} ${motion.reveal}`}>
-            <div className={styles.activityFeature}>
-              <div className={styles.textBlock}>
-                <p className={styles.eyebrow}>ACTIVITIES</p>
-                <h2>
-                  学び、
-                  <br />
-                  体験し、
-                  <br />
-                  つながる。
-                </h2>
-                <p>理事長の想いを中心に、暮らしの近くで続く場を育てます。</p>
-                <p>健康づくりの活動や想いを、必要に応じてWebや情報発信の形でも支えます。</p>
-              </div>
-              <Photo src="/images/element-food.jpg" alt="自然光の食卓と一汁一菜の食事" label="Food / Place / Dialogue" />
+        <section id="activities" className={`${styles.section} ${styles.activities} ${styles.reveal}`}>
+          <div className={`${styles.sectionInner} ${styles.activitiesGrid}`}>
+            <div className={styles.activitiesCopy}>
+              <p className={styles.sectionLabel}>Activities</p>
+              <h2 className={styles.sectionTitle}>
+                学び、体験し、
+                <br />
+                人がつながる。
+              </h2>
+              <p className={styles.bodyText}>
+                結は、講座やイベントを一度きりで終わらせるのではなく、参加した人の暮らしに小さな変化が残る場を育てます。
+              </p>
             </div>
-            <div className={styles.lines}>
-              {activities.map(([label, title, body]) => (
-                <article className={styles.line} key={title}>
-                  <span>{label}</span>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                </article>
+            <div className={styles.activityPhotos} aria-label="活動の空気感を表す写真">
+              <PhotoFrame item={{ src: "/images/element-food.jpg", alt: "食を通じた学びのイメージ", label: "learn" }} className={styles.activityPhotoLarge} />
+              <PhotoFrame item={{ src: "/images/hero-community.png", alt: "人と人がつながる場のイメージ", label: "connect" }} className={styles.activityPhotoSmall} />
+              <PhotoFrame item={{ src: "/images/partnership.jpg", alt: "静かな対話と休息の場のイメージ", label: "place" }} className={styles.activityPhotoWide} />
+            </div>
+            <div className={styles.activityList}>
+              {activityItems.map((item) => (
+                <p key={item}>{item}</p>
               ))}
             </div>
-          </section>
-
-          <section id="message" className={`${styles.section} ${styles.message} ${motion.reveal}`}>
-            <div className={styles.profileGrid}>
-              <div className={styles.profileVisuals}>
-                <figure className={styles.profilePortrait}>
-                  <Image
-                    src="/images/director-watanabe-upload.jpg"
-                    alt="一般社団法人 結 理事長 渡邉裕子のプロフィール写真"
-                    fill
-                    sizes="(max-width: 720px) 92vw, 38vw"
-                  />
-                </figure>
-                <div className={styles.profileSubImages} aria-label="渡邉裕子の活動イメージ">
-                  <figure>
-                    <Image
-                      src="/images/director-work-upload.jpg"
-                      alt="情報発信に取り組む渡邉裕子"
-                      fill
-                      sizes="(max-width: 720px) 44vw, 16vw"
-                    />
-                    <figcaption>Information Design</figcaption>
-                  </figure>
-                  <figure>
-                    <Image
-                      src="/images/director-illustration-upload.jpg"
-                      alt="管理栄養士としての親しみを伝える渡邉裕子の似顔絵"
-                      fill
-                      sizes="(max-width: 720px) 44vw, 16vw"
-                    />
-                    <figcaption>Nutrition / Friendly Touch</figcaption>
-                  </figure>
-                </div>
-              </div>
-
-              <div className={styles.profileBody}>
-                <p className={styles.eyebrow}>PROFILE / MESSAGE</p>
-                <h2>
-                  暮らしに寄り添い、
-                  <br />
-                  健康づくりの輪を結ぶ。
-                </h2>
-                <p className={styles.profileName}>
-                  渡邉 裕子
-                  <span>一般社団法人 結 理事長 / 管理栄養士</span>
-                </p>
-                <div className={styles.profileText}>
-                  <p>
-                    2015年、仙台白百合女子大学 人間学部 健康栄養学科卒業。
-                    管理栄養士として病院勤務を経て、給食管理・衛生管理・臨床栄養業務・栄養指導に従事しました。
-                  </p>
-                  <p>
-                    その後、調剤薬局にて健康相談や健康セミナー講師を担当。
-                    地域に寄り添った健康支援に携わりながら、一人ひとりの暮らしに合う整え方を大切にしてきました。
-                  </p>
-                  <p>
-                    2020年より名古屋へ移住。フリーランス管理栄養士として特定保健指導に従事するほか、
-                    接客・サービス・店舗運営など幅広い現場経験を積み、美容・健康・ライフスタイル分野での活動を開始しました。
-                  </p>
-                  <p>
-                    Webデザインやホームページ制作にも携わり、健康分野を中心とした情報発信やブランディング支援も行っています。
-                  </p>
-                  <p>
-                    2024年7月、一般社団法人 結を設立。
-                    現在は「食・動・美・心」をテーマに、健康寿命の延伸、地域の健康づくり、
-                    人と人がつながるコミュニティづくりに取り組んでいます。
-                  </p>
-                  <p>
-                    食・動・美・心の4要素が響き合うとき、総合的な健やかさが育まれていく。
-                    食べること、動くこと、整えること、休むことを、地域や人とのつながりの中で支えていきます。
-                  </p>
-                  <p>皆さまと、健やかな未来を結んでいきます。</p>
-                </div>
-                <p className={styles.signature}>理事長　渡邉 裕子</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="partnership" className={`${styles.section} ${motion.reveal}`}>
-            <div className={styles.pair}>
-              <Photo src="/images/partnership.jpg" alt="白い部屋の窓辺にある休息の時間" label="Partnership" />
-              <div className={styles.textBlock}>
-                <p className={styles.eyebrow}>PARTNERSHIP</p>
-                <h2>
-                  健康づくりを、
-                  <br />
-                  ひとりで抱えない形へ。
-                </h2>
-                <p>
-                  専門家、地域、参加者を結び、想いが一度きりで終わらない場へ。
-                  講座や地域連携など、小さな相談から一緒に整えます。
-                </p>
-                <div className={styles.partnerList}>
-                  {partners.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="contact" className={`${styles.contact} ${motion.reveal}`}>
-            <div className={styles.narrow}>
-              <p className={styles.largeEn}>Contact</p>
-              <h2>
-                ご相談・
-                <br />
-                お問い合わせ
-              </h2>
-              <p>相談できること</p>
-              <div className={styles.partnerList}>
-                {consultItems.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-              <p>講座、イベント、地域連携など、まだ形になる前の想いもお気軽にご相談ください。</p>
-              <a className={styles.button} href="mailto:tcgmusubu@gmail.com">
-                お問い合わせする
+            <div className={styles.activityCta}>
+              <a className={styles.button} href="#contact">
+                活動について相談する
               </a>
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
 
-        <footer className={styles.footer}>
-          <Image
-            src="/images/logo-musubu-full.png"
-            alt="一般社団法人 結 General Incorporated Association MUSUBU ロゴ"
-            width={250}
-            height={229}
-          />
-          <small>General Incorporated Association MUSUBU</small>
-        </footer>
-      </div>
-    </MotionProvider>
+        <section className={`${styles.section} ${styles.trustSection} ${styles.reveal}`}>
+          <div className={`${styles.sectionInner} ${styles.trustGrid}`}>
+            <p className={styles.sectionLabel}>Reason / Trust</p>
+            <div>
+              <h2 className={styles.sectionTitle}>
+                いま、暮らしを整える力が
+                <br />
+                必要とされています。
+              </h2>
+              <div className={styles.trustText}>
+                <p>
+                  健康情報は増えているのに、続けることは簡単ではありません。
+                </p>
+                <p>
+                  食事だけ、運動だけ、美容だけ、休養だけでは、毎日は整いきらないことがあります。
+                </p>
+                <p>
+                  だから結は、食・動・美・心を切り離さず、人とのつながりの中で続いていく健康づくりを大切にしています。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="profile" className={`${styles.section} ${styles.profileSection} ${styles.reveal}`}>
+          <div className={`${styles.sectionInner} ${styles.profileGrid}`}>
+            <figure className={styles.profilePortrait}>
+              <Image
+                src="/images/director-watanabe-upload.jpg"
+                alt="一般社団法人 結 理事長 渡邉裕子のプロフィール写真"
+                fill
+                sizes="(max-width: 720px) 88vw, 34vw"
+              />
+            </figure>
+            <div className={styles.profileBody}>
+              <p className={styles.sectionLabel}>Profile / Message</p>
+              <h2 className={styles.sectionTitle}>
+                暮らしに寄り添い、
+                <br />
+                健康づくりの輪を結ぶ。
+              </h2>
+              <p className={styles.profileName}>
+                渡邉 裕子
+                <span>一般社団法人 結 理事長 / 管理栄養士</span>
+              </p>
+              <div className={styles.profileText}>
+                <p>2015年、仙台白百合女子大学 人間学部 健康栄養学科卒業。</p>
+                <p>
+                  管理栄養士として病院勤務を経て、給食管理・衛生管理・臨床栄養業務・栄養指導に従事しました。その後、調剤薬局にて健康相談や健康セミナー講師を担当。
+                </p>
+                <p>
+                  現在は、特定保健指導を中心に、食・美容・予防の視点から健康支援を行っています。2024年7月、一般社団法人 結を設立しました。
+                </p>
+                <p>
+                  健康分野の情報発信やWebでの見せ方にも携わり、想いが必要な人へ届くための形づくりも行っています。
+                </p>
+              </div>
+              <div className={styles.messageBox}>
+                <p>
+                  食べること、動くこと、整えること、休むこと。
+                  その一つひとつを、人とのつながりの中で支えていきたい。
+                </p>
+                <p>
+                  一般社団法人 結は、食・動・美・心の調和から、毎日の暮らしをやさしく整え、皆さまと共に健やかな未来を結んでいきます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="partnership" className={`${styles.section} ${styles.partnershipSection} ${styles.reveal}`}>
+          <div className={`${styles.sectionInner} ${styles.partnershipGrid}`}>
+            <div>
+              <p className={styles.sectionLabel}>Partnership</p>
+              <h2 className={styles.sectionTitle}>
+                食・動・美・心 × 地域で、
+                <br />
+                新しい健康づくりを。
+              </h2>
+              <p className={styles.bodyText}>
+                専門家、地域、参加者を結び、想いが一度きりで終わらない場へ。
+                講座や地域連携など、小さな相談から一緒に整えます。
+              </p>
+            </div>
+            <div className={styles.partnershipList}>
+              {partnershipItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className={`${styles.contact} ${styles.reveal}`}>
+          <div className={styles.contactInner}>
+            <p className={styles.sectionLabel}>Contact</p>
+            <h2 className={styles.contactTitle}>
+              小さな相談から、
+              <br />
+              一緒に結んでいく。
+            </h2>
+            <p className={styles.contactLead}>相談できること</p>
+            <div className={styles.consultList}>
+              {consultItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+            <a className={styles.button} href="mailto:tcgmusubu@gmail.com">
+              お問い合わせする
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className={styles.footer}>
+        <Image
+          className={styles.footerLogo}
+          src="/images/logo-musubu-full.png"
+          alt="一般社団法人 結 General Incorporated Association MUSUBU ロゴ"
+          width={250}
+          height={229}
+        />
+        <small>General Incorporated Association MUSUBU</small>
+      </footer>
+    </div>
   );
 }
