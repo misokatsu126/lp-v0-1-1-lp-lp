@@ -1,0 +1,35 @@
+#top main > section[aria-label="一般社団法人 結 メインビジュアル"] > div[aria-hidden="true"] > div:not(:last-child) img {
+  filter: brightness(1.03) contrast(1.05) saturate(1.02) !important;
+}
+
+#top main > section[aria-label="一般社団法人 結 メインビジュアル"] > div[aria-hidden="true"] > div:last-child {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0) 0%, rgba(255, 253, 248, 0.14) 45%, rgba(255, 253, 248, 0.82) 100%),
+    linear-gradient(90deg, rgba(255, 253, 248, 0.82) 0%, rgba(255, 253, 248, 0.34) 54%, rgba(255, 253, 248, 0.04) 100%) !important;
+}
+
+#profile figure {
+  position: relative !important;
+  top: auto !important;
+  width: min(420px, 92vw) !important;
+  max-width: 420px !important;
+  aspect-ratio: 2 / 3 !important;
+  justify-self: center;
+}
+
+#profile figure img {
+  object-fit: cover !important;
+  object-position: center !important;
+  filter: none !important;
+}
+
+#profile figure:hover img {
+  filter: none !important;
+}
+
+@media (max-width: 720px) {
+  #profile figure {
+    width: min(420px, 92vw) !important;
+    margin-inline: auto;
+  }
+}

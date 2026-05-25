@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./v1-clean-overrides.css";
 
 export const metadata: Metadata = {
   title: "一般社団法人 結 | 人と人を結ぶ、健康づくりの輪。",
