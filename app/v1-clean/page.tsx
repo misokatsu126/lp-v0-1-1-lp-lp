@@ -20,38 +20,38 @@ const navItems = [
 
 const heroSlides: ImageItem[] = [
   {
-    src: "/images/hero-community.png",
-    alt: "自然光の入る食卓で人が集う穏やかな時間"
+    src: "/images/hero-rice-grains.jpg",
+    alt: "白い米粒のマクロ写真"
   },
   {
-    src: "/images/hero-table.png",
-    alt: "自然光の食卓に並ぶやさしい食事"
+    src: "/images/hero-food.webp",
+    alt: "白い食卓に並ぶ和食"
   },
   {
     src: "/images/hero-movement.png",
     alt: "白い空間で身体を整える動き"
   },
   {
-    src: "/images/element-food.jpg",
-    alt: "自然光の中で暮らしに寄り添う食の時間"
+    src: "/images/hero-beauty.jpg",
+    alt: "自然光の中で自分を整えるセルフケア"
   },
   {
-    src: "/images/element-beauty.jpg",
-    alt: "自然光の中で自分を整えるセルフケア"
+    src: "/images/hero-mind-tea.svg",
+    alt: "白い空間で心を休めるお茶の時間"
   }
 ];
 
 const flowImages: ImageItem[] = [
-  { src: "/images/hero-table.png", alt: "白い朝と暮らしの食卓", label: "食" },
+  { src: "/images/hero-food.webp", alt: "白い朝と暮らしの食卓", label: "食" },
   { src: "/images/hero-movement.png", alt: "身体を整える動き", label: "動" },
-  { src: "/images/element-beauty.jpg", alt: "セルフケアの静かな時間", label: "美" },
-  { src: "/images/hero-rest.png", alt: "心を休める深呼吸の時間", label: "心" },
+  { src: "/images/hero-beauty.jpg", alt: "セルフケアの静かな時間", label: "美" },
+  { src: "/images/hero-mind-tea.svg", alt: "心を休めるお茶の時間", label: "心" },
   { src: "/images/hero-community.png", alt: "人と人がつながる場", label: "結" }
 ];
 
 const conceptImages: ImageItem[] = [
-  { src: "/images/hero-rice.png", alt: "稲を手に取り食の始まりを感じる写真", label: "食べること" },
-  { src: "/images/partnership.jpg", alt: "白い室内に光が入る写真", label: "つながる場" }
+  { src: "/images/hero-rice-grains.jpg", alt: "白い米粒のマクロ写真", label: "食べること" },
+  { src: "/images/hero-community.png", alt: "自然光の中で食卓を囲む人たち", label: "つながる場" }
 ];
 
 const elements = [
@@ -60,7 +60,7 @@ const elements = [
     label: "Food",
     mark: "食",
     accent: "#d8bf4f",
-    image: "/images/element-food.jpg",
+    image: "/images/hero-food.webp",
     body: "栄養は、毎日の選択をやさしく整える入口です。",
     tags: ["栄養講座", "食生活相談", "健康レシピ"]
   },
@@ -69,7 +69,7 @@ const elements = [
     label: "Movement",
     mark: "動",
     accent: "#d7a3b5",
-    image: "/images/element-move.jpg",
+    image: "/images/hero-movement.png",
     body: "無理なく続く小さな運動が、心身を目覚めさせます。",
     tags: ["運動習慣", "健康イベント", "身体づくり"]
   },
@@ -78,7 +78,7 @@ const elements = [
     label: "Care",
     mark: "美",
     accent: "#8fb39b",
-    image: "/images/element-beauty.jpg",
+    image: "/images/hero-beauty.jpg",
     body: "自分を整える時間は、心の健やかさにもつながります。",
     tags: ["美容と健康", "セルフケア", "整え方"]
   },
@@ -87,7 +87,7 @@ const elements = [
     label: "Rest",
     mark: "心",
     accent: "#7fb1cf",
-    image: "/images/element-heart.jpg",
+    image: "/images/hero-mind-tea.svg",
     body: "心をゆるめる時間が、また歩き出す力になります。",
     tags: ["休養", "睡眠", "対話の場"]
   }
@@ -332,7 +332,7 @@ export default function V1CleanPage() {
                   style={{ "--accent": item.accent } as CSSProperties}
                 >
                   <PhotoFrame
-                    item={{ src: item.image, alt: `${item.mark}を象徴する白いイメージ写真`, label: item.label }}
+                    item={{ src: item.image, alt: `${item.mark}を象徴する白いイメージ写真`, label: item.mark }}
                     className={styles.elementPhoto}
                     sizes="(max-width: 720px) 92vw, 44vw"
                   />
@@ -367,9 +367,9 @@ export default function V1CleanPage() {
               </p>
             </div>
             <div className={styles.activityPhotos} aria-label="活動の空気感を表す写真">
-              <PhotoFrame item={{ src: "/images/element-food.jpg", alt: "食を通じた学びのイメージ", label: "learn" }} className={styles.activityPhotoLarge} />
-              <PhotoFrame item={{ src: "/images/hero-community.png", alt: "人と人がつながる場のイメージ", label: "connect" }} className={styles.activityPhotoSmall} />
-              <PhotoFrame item={{ src: "/images/partnership.jpg", alt: "静かな対話と休息の場のイメージ", label: "place" }} className={styles.activityPhotoWide} />
+              <PhotoFrame item={{ src: "/images/hero-community.png", alt: "人と人がつながる食卓のイメージ", label: "結" }} className={styles.activityPhotoLarge} />
+              <PhotoFrame item={{ src: "/images/hero-food.webp", alt: "食を通じた学びのイメージ", label: "食" }} className={styles.activityPhotoSmall} />
+              <PhotoFrame item={{ src: "/images/hero-mind-tea.svg", alt: "静かな対話と休息の場のイメージ", label: "心" }} className={styles.activityPhotoWide} />
             </div>
             <div className={styles.activityList}>
               {activityItems.map((item) => (
@@ -416,7 +416,7 @@ export default function V1CleanPage() {
                 </p>
               </div>
               <PhotoFrame
-                item={{ src: "/images/hero-rest.png", alt: "静かに心を休める時間" }}
+                item={{ src: "/images/hero-mind-tea.svg", alt: "静かに心を休めるお茶の時間" }}
                 className={styles.trustPhoto}
                 sizes="(max-width: 720px) 92vw, 42vw"
               />
