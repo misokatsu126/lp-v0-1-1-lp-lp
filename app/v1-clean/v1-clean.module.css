@@ -66,7 +66,7 @@
 .nav {
   display: none;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
   color: rgba(39, 35, 31, 0.58);
   font-size: 12px;
 }
@@ -96,7 +96,7 @@
   justify-content: center;
   border: 1px solid rgba(39, 35, 31, 0.14);
   border-radius: 999px;
-  background: rgba(255, 253, 248, 0.56);
+  background: rgba(255, 253, 248, 0.58);
   color: rgba(39, 35, 31, 0.68);
   font-size: 12px;
   list-style: none;
@@ -111,7 +111,7 @@
   right: 0;
   top: calc(100% + 10px);
   display: grid;
-  min-width: 180px;
+  min-width: 190px;
   overflow: hidden;
   border: 1px solid rgba(39, 35, 31, 0.08);
   border-radius: 8px;
@@ -162,14 +162,14 @@
 .heroSlide img {
   object-fit: cover;
   object-position: center;
-  filter: brightness(1.07) contrast(0.96) saturate(0.86);
+  filter: brightness(1.05) contrast(1.08) saturate(0.94);
 }
 
 .heroVeil {
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.08) 0%, rgba(255, 253, 248, 0.36) 45%, rgba(255, 253, 248, 0.94) 100%),
-    linear-gradient(90deg, rgba(255, 253, 248, 0.9) 0%, rgba(255, 253, 248, 0.52) 54%, rgba(255, 253, 248, 0.14) 100%);
+    linear-gradient(180deg, rgba(255, 253, 248, 0.02) 0%, rgba(255, 253, 248, 0.14) 48%, rgba(255, 253, 248, 0.76) 100%),
+    linear-gradient(90deg, rgba(255, 253, 248, 0.8) 0%, rgba(255, 253, 248, 0.36) 50%, rgba(255, 253, 248, 0.04) 100%);
 }
 
 .heroInner {
@@ -213,10 +213,10 @@
   line-height: 2;
 }
 
-.heroDescription {
+.heroPoem {
   margin: 24px 0 0;
-  max-width: 42em;
-  color: rgba(68, 61, 53, 0.84);
+  max-width: 40em;
+  color: rgba(68, 61, 53, 0.82);
   font-size: 0.95rem;
   line-height: 2.05;
 }
@@ -229,7 +229,7 @@
   margin-top: 34px;
   border: 1px solid rgba(86, 119, 122, 0.34);
   border-radius: 999px;
-  background: rgba(255, 253, 248, 0.64);
+  background: rgba(255, 253, 248, 0.66);
   padding: 13px 24px;
   color: #456f73;
   font-size: 0.9rem;
@@ -239,13 +239,13 @@
 }
 
 .button::after {
-  content: "→";
+  content: ">";
   margin-left: 12px;
 }
 
 .button:hover,
 .button:focus-visible {
-  background: rgba(255, 253, 248, 0.9);
+  background: rgba(255, 253, 248, 0.92);
   box-shadow: 0 14px 34px rgba(39, 35, 31, 0.08);
   transform: translateY(-1px);
 }
@@ -270,6 +270,7 @@
 }
 
 .bodyText,
+.conceptText p,
 .aboutBody p,
 .elementText p,
 .trustText p,
@@ -288,11 +289,21 @@
 
 .conceptGrid {
   display: grid;
-  gap: 48px;
+  gap: 52px;
 }
 
 .conceptCopy {
-  max-width: 640px;
+  max-width: 680px;
+}
+
+.conceptText {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.conceptText p {
+  margin: 0;
 }
 
 .conceptPhotos {
@@ -314,12 +325,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 900ms ease, filter 900ms ease;
+  filter: brightness(1.03) contrast(1.04) saturate(0.92);
+  transition: transform 1000ms ease, filter 1000ms ease;
 }
 
 .photoFrame:hover img {
   transform: scale(1.025);
-  filter: brightness(1.03) saturate(0.96);
+  filter: brightness(1.05) contrast(1.06) saturate(0.96);
 }
 
 .photoFrame figcaption {
@@ -328,7 +340,7 @@
   bottom: 14px;
   z-index: 2;
   border-radius: 999px;
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 253, 248, 0.72);
   padding: 6px 10px;
   color: rgba(39, 35, 31, 0.58);
   font-size: 11px;
@@ -351,31 +363,32 @@
 }
 
 .imageFlow {
-  padding: 70px 0 100px;
+  padding: 78px 0 110px;
   background: #f8f6f1;
 }
 
 .flowHead {
-  display: grid;
-  gap: 14px;
-  margin-bottom: 42px;
+  margin-bottom: 46px;
 }
 
-.flowHead p:last-child {
-  max-width: 34em;
+.flowHead p {
+  max-width: 680px;
   margin: 0;
-  color: #756d62;
+  color: #3f3932;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 1.55rem;
+  font-weight: 400;
   line-height: 1.9;
 }
 
 .flowGrid {
   display: grid;
-  gap: 18px;
+  gap: 22px;
 }
 
 .flowItem {
   aspect-ratio: 4 / 5;
-  min-height: 270px;
+  min-height: 290px;
 }
 
 .flowItem2,
@@ -384,7 +397,7 @@
 }
 
 .flowItem5 {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
 }
 
 .about {
@@ -397,7 +410,7 @@
 }
 
 .aboutBody {
-  max-width: 720px;
+  max-width: 740px;
 }
 
 .facts {
@@ -434,7 +447,7 @@
 
 .elementList {
   display: grid;
-  gap: 72px;
+  gap: 62px;
   margin-top: 72px;
 }
 
@@ -442,11 +455,17 @@
   display: grid;
   gap: 28px;
   align-items: center;
+  border: 1px solid rgba(39, 35, 31, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.62);
+  padding: 16px;
+  box-shadow: 0 20px 56px rgba(39, 35, 31, 0.04);
 }
 
 .elementPhoto {
   aspect-ratio: 4 / 5;
   min-height: 360px;
+  box-shadow: none;
 }
 
 .elementText {
@@ -479,10 +498,23 @@
   line-height: 1.5;
 }
 
-.supportText {
-  margin-top: 20px;
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
   padding-top: 18px;
   border-top: 1px solid rgba(39, 35, 31, 0.12);
+}
+
+.tagList span {
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.72);
+  padding: 7px 11px;
+  color: #5f574e;
+  font-size: 0.78rem;
+  line-height: 1.4;
 }
 
 .activities {
@@ -495,7 +527,7 @@
 }
 
 .activitiesCopy {
-  max-width: 680px;
+  max-width: 700px;
 }
 
 .activityPhotos {
@@ -525,15 +557,31 @@
 }
 
 .activityList {
-  border-top: 1px solid rgba(39, 35, 31, 0.12);
+  display: grid;
+  gap: 12px;
 }
 
-.activityList p {
+.activityCard {
+  border: 1px solid rgba(39, 35, 31, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.78);
+  padding: 20px;
+}
+
+.activityCard h3 {
   margin: 0;
-  border-bottom: 1px solid rgba(39, 35, 31, 0.12);
-  padding: 18px 0;
-  color: #4f4840;
-  line-height: 1.85;
+  color: #2c2823;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", serif;
+  font-size: 1.18rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.activityCard p {
+  margin: 10px 0 0;
+  color: #6a6258;
+  font-size: 0.9rem;
+  line-height: 1.9;
 }
 
 .activityCta {
@@ -542,26 +590,40 @@
 
 .trustSection {
   background:
-    linear-gradient(180deg, rgba(247, 243, 236, 0.92), rgba(255, 253, 248, 0.96)),
+    linear-gradient(180deg, rgba(247, 243, 236, 0.88), rgba(255, 253, 248, 0.96)),
     #f7f3ec;
 }
 
 .trustGrid {
   display: grid;
-  gap: 30px;
+  gap: 34px;
+}
+
+.trustCopy {
+  max-width: 760px;
+}
+
+.trustPanel {
+  display: grid;
+  gap: 32px;
+  align-items: end;
 }
 
 .trustText {
   display: grid;
   gap: 18px;
   max-width: 720px;
-  margin-top: 34px;
 }
 
 .trustText p {
   margin: 0;
   padding-left: 18px;
   border-left: 1px solid rgba(86, 119, 122, 0.28);
+}
+
+.trustPhoto {
+  aspect-ratio: 16 / 10;
+  min-height: 240px;
 }
 
 .profileSection {
@@ -576,8 +638,8 @@
 
 .profilePortrait {
   position: relative;
-  width: min(420px, 88vw);
-  aspect-ratio: 3 / 4;
+  width: min(520px, 92vw);
+  aspect-ratio: 2 / 3;
   margin: 0;
   overflow: hidden;
   border-radius: 8px;
@@ -587,11 +649,12 @@
 
 .profilePortrait img {
   object-fit: cover;
-  object-position: center;
+  object-position: center 38%;
+  filter: none;
 }
 
 .profileBody {
-  max-width: 680px;
+  max-width: 700px;
 }
 
 .profileName {
@@ -638,20 +701,62 @@
   gap: 40px;
 }
 
-.partnershipList,
-.consultList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
+.partnershipList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.partnershipList span,
+.partnershipCard {
+  position: relative;
+  min-height: 108px;
+  border: 1px solid rgba(39, 35, 31, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.74);
+  padding: 18px;
+  overflow: hidden;
+}
+
+.partnershipCard span {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: color-mix(in srgb, var(--accent) 68%, transparent);
+}
+
+.partnershipCard p {
+  margin: 0;
+  color: #3f3932;
+  font-family: var(--font-heading), "Hiragino Mincho ProN", serif;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.consultList {
+  display: grid;
+  gap: 10px;
+}
+
 .consultList span {
-  border-bottom: 1px solid rgba(39, 35, 31, 0.14);
-  padding: 10px 0;
+  border: 1px solid rgba(39, 35, 31, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.72);
+  padding: 15px 16px;
   color: #5f574e;
   font-size: 0.94rem;
   line-height: 1.5;
+}
+
+.consultList span::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 999px;
+  background: #8fb39b;
+  vertical-align: 0.1em;
 }
 
 .contact {
@@ -662,7 +767,7 @@
 }
 
 .contactInner {
-  max-width: 840px;
+  max-width: 880px;
 }
 
 .contactTitle {
@@ -674,10 +779,6 @@
 .contactLead {
   margin: 34px 0 18px;
   color: #2c2823;
-}
-
-.consultList {
-  margin-bottom: 6px;
 }
 
 .footer {
@@ -702,21 +803,45 @@
     opacity: 1;
     transform: scale(1);
   }
-  20% {
+
+  16% {
     opacity: 1;
-    transform: scale(1.045);
+    transform: scale(1.035);
   }
-  28%,
+
+  21%,
   100% {
     opacity: 0;
-    transform: scale(1.07);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heroSlide,
   .photoFrame img,
-  .reveal {
+  .reveal,
+  .flowItem,
+  .activityCard,
+  .partnershipCard,
+  .consultList span {
     animation: none !important;
     transition: none !important;
     transform: none !important;
@@ -740,13 +865,16 @@
       animation-range: entry 8% cover 28%;
       animation-timeline: view();
     }
-  }
-}
 
-@keyframes revealUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    .activityCard,
+    .partnershipCard,
+    .consultList span {
+      opacity: 0.001;
+      transform: translateY(22px);
+      animation: revealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-range: entry 10% cover 24%;
+      animation-timeline: view();
+    }
   }
 }
 
@@ -764,35 +892,43 @@
   }
 
   .flowGrid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     align-items: end;
   }
 
   .flowItem1 {
-    grid-column: span 2;
-    min-height: 470px;
+    grid-column: span 4;
+    min-height: 540px;
   }
 
   .flowItem2 {
-    grid-column: span 2;
-    min-height: 330px;
-    transform: translateY(44px);
+    grid-column: span 3;
+    min-height: 350px;
+    transform: translateY(56px);
   }
 
   .flowItem3 {
-    grid-column: span 2;
-    min-height: 430px;
+    grid-column: span 5;
+    min-height: 440px;
   }
 
   .flowItem4 {
-    grid-column: 2 / span 2;
-    min-height: 300px;
+    grid-column: 2 / span 3;
+    min-height: 320px;
     transform: translateY(24px);
   }
 
   .flowItem5 {
-    grid-column: 4 / span 3;
-    min-height: 310px;
+    grid-column: 5 / span 7;
+    min-height: 360px;
+  }
+
+  .partnershipList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .consultList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -821,7 +957,7 @@
     font-size: 1.35rem;
   }
 
-  .heroDescription {
+  .heroPoem {
     font-size: 1rem;
   }
 
@@ -835,11 +971,19 @@
 
   .conceptGrid,
   .aboutGrid,
-  .trustGrid,
   .profileGrid,
   .partnershipGrid {
     grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
     gap: 78px;
+  }
+
+  .trustGrid {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 78px;
+  }
+
+  .trustPanel {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .conceptPhotos {
@@ -854,9 +998,14 @@
     min-height: 250px;
   }
 
+  .flowHead p {
+    font-size: 2rem;
+  }
+
   .elementRow {
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
-    gap: 76px;
+    gap: 62px;
+    padding: 24px;
   }
 
   .elementRow:nth-child(even) {
@@ -891,11 +1040,14 @@
     grid-column: 1;
   }
 
+  .activityList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .profilePortrait {
-    position: sticky;
-    top: 112px;
     width: 100%;
-    max-width: 430px;
+    max-width: 520px;
+    justify-self: center;
   }
 
   .contact {
@@ -949,6 +1101,10 @@
 
   .activityPhotoWide {
     width: 100%;
+  }
+
+  .partnershipList {
+    grid-template-columns: 1fr;
   }
 
   .footer {
