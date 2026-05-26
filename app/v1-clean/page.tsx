@@ -10,48 +10,48 @@ type ImageItem = {
 };
 
 const navItems = [
-  { href: "#concept", label: "Concept" },
-  { href: "#about", label: "About" },
-  { href: "#elements", label: "Elements" },
-  { href: "#activities", label: "Activities" },
-  { href: "#profile", label: "Profile" },
-  { href: "#contact", label: "Contact" }
+  { href: "#concept", label: "結の想い" },
+  { href: "#elements", label: "食・動・美・心" },
+  { href: "#activities", label: "できること" },
+  { href: "#profile", label: "理事長" },
+  { href: "#partnership", label: "連携" },
+  { href: "#contact", label: "お問い合わせ" }
 ];
 
 const heroSlides: ImageItem[] = [
   {
-    src: "/images/partnership.jpg",
-    alt: "自然光の入る白い空間"
+    src: "/images/hero-community.png",
+    alt: "自然光の入る食卓で人が集う穏やかな時間"
   },
   {
-    src: "/images/element-food.jpg",
-    alt: "自然光の食卓と食事"
+    src: "/images/hero-table.png",
+    alt: "自然光の食卓に並ぶやさしい食事"
   },
   {
-    src: "/images/element-move.jpg",
-    alt: "やわらかな光の中の動きのイメージ"
+    src: "/images/hero-movement.png",
+    alt: "白い空間で身体を整える動き"
   },
   {
     src: "/images/element-beauty.jpg",
-    alt: "自分を整える美容とケアのイメージ"
+    alt: "自然光の中で自分を整えるセルフケア"
   },
   {
-    src: "/images/element-heart.jpg",
-    alt: "心を休める静かな時間のイメージ"
+    src: "/images/hero-rest.png",
+    alt: "心を休める静かな時間"
   }
 ];
 
 const flowImages: ImageItem[] = [
-  { src: "/images/element-food.jpg", alt: "食のイメージ", label: "食" },
-  { src: "/images/element-move.jpg", alt: "動のイメージ", label: "動" },
-  { src: "/images/element-beauty.jpg", alt: "美のイメージ", label: "美" },
-  { src: "/images/element-heart.jpg", alt: "心のイメージ", label: "心" },
-  { src: "/images/hero-community.png", alt: "結びを感じる穏やかな交流のイメージ", label: "結" }
+  { src: "/images/hero-table.png", alt: "白い朝と暮らしの食卓", label: "食" },
+  { src: "/images/hero-movement.png", alt: "身体を整える動き", label: "動" },
+  { src: "/images/element-beauty.jpg", alt: "セルフケアの静かな時間", label: "美" },
+  { src: "/images/hero-rest.png", alt: "心を休める深呼吸の時間", label: "心" },
+  { src: "/images/hero-community.png", alt: "人と人がつながる場", label: "結" }
 ];
 
 const conceptImages: ImageItem[] = [
-  { src: "/images/hero-rice-grains.jpg", alt: "白い米粒に自然光が差し込む写真", label: "From one grain" },
-  { src: "/images/partnership.jpg", alt: "白い室内に光が入る写真", label: "Quiet place" }
+  { src: "/images/hero-rice.png", alt: "稲を手に取り食の始まりを感じる写真", label: "食べること" },
+  { src: "/images/partnership.jpg", alt: "白い室内に光が入る写真", label: "つながる場" }
 ];
 
 const elements = [
@@ -62,7 +62,7 @@ const elements = [
     accent: "#d8bf4f",
     image: "/images/element-food.jpg",
     body: "栄養は、毎日の選択をやさしく整える入口です。",
-    support: "栄養講座 / 食生活相談 / 健康レシピ / 地域食材を活かした企画"
+    tags: ["栄養講座", "食生活相談", "健康レシピ"]
   },
   {
     title: "動きから、めぐりへ。",
@@ -71,7 +71,7 @@ const elements = [
     accent: "#d7a3b5",
     image: "/images/element-move.jpg",
     body: "無理なく続く小さな運動が、心身を目覚めさせます。",
-    support: "運動習慣づくり / 健康イベント / 日常で続けやすい身体づくり"
+    tags: ["運動習慣", "健康イベント", "身体づくり"]
   },
   {
     title: "美しさから、自信へ。",
@@ -80,7 +80,7 @@ const elements = [
     accent: "#8fb39b",
     image: "/images/element-beauty.jpg",
     body: "自分を整える時間は、心の健やかさにもつながります。",
-    support: "美容と健康の講座 / セルフケア / 年齢に合わせた整え方"
+    tags: ["美容と健康", "セルフケア", "整え方"]
   },
   {
     title: "休むことから、明日へ。",
@@ -89,28 +89,28 @@ const elements = [
     accent: "#7fb1cf",
     image: "/images/element-heart.jpg",
     body: "心をゆるめる時間が、また歩き出す力になります。",
-    support: "休養 / 睡眠 / 対話の場 / 心身を整えるワークショップ"
+    tags: ["休養", "睡眠", "対話の場"]
   }
 ];
 
 const activityItems = [
-  "管理栄養士による健康講座",
-  "食生活・予防に関するセミナー",
-  "地域マルシェや交流イベント",
-  "美容・健康・休養をテーマにしたワークショップ",
-  "企業・店舗・専門家とのコラボ企画",
-  "健康づくりを続けるためのコミュニティづくり"
+  { title: "健康講座", body: "管理栄養士の視点から、毎日の選択をやさしく整える学びを届けます。" },
+  { title: "食生活・予防", body: "病気になる前のからだづくりを、暮らしに近い言葉で支えます。" },
+  { title: "地域イベント", body: "マルシェや交流の場で、健康づくりを人とのつながりへ広げます。" },
+  { title: "美容・休養", body: "自分を整える時間や心を休める時間を、健やかさの入口として扱います。" },
+  { title: "コラボ企画", body: "企業、店舗、専門家と連携し、想いが続いていく場を一緒につくります。" },
+  { title: "コミュニティ", body: "一人で頑張る健康づくりから、人と続ける健康づくりへ育てます。" }
 ];
 
 const partnershipItems = [
-  "結 × 地域イベント",
-  "結 × 企業",
-  "結 × 美容サロン",
-  "結 × 医療・福祉",
-  "結 × 学校",
-  "結 × マルシェ",
-  "結 × 店舗",
-  "結 × 情報発信"
+  { title: "結 × 地域イベント", accent: "#d8bf4f" },
+  { title: "結 × 企業", accent: "#d7a3b5" },
+  { title: "結 × 美容サロン", accent: "#8fb39b" },
+  { title: "結 × 医療・福祉", accent: "#7fb1cf" },
+  { title: "結 × 学校", accent: "#d8bf4f" },
+  { title: "結 × マルシェ", accent: "#d7a3b5" },
+  { title: "結 × 店舗", accent: "#8fb39b" },
+  { title: "結 × 情報発信", accent: "#7fb1cf" }
 ];
 
 const consultItems = [
@@ -122,9 +122,9 @@ const consultItems = [
 ];
 
 export const metadata: Metadata = {
-  title: "v1 clean | 一般社団法人 結 / MUSUBU",
+  title: "一般社団法人 結 / MUSUBU | 人と人を結ぶ、健康づくりの輪",
   description:
-    "一般社団法人 結は、管理栄養士の専門性をもとに、食・動・美・心の4つの視点から、地域や人のつながりを通じた健康づくりを支える団体です。"
+    "一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての実務経験と想いから生まれた、食・動・美・心を結ぶウェルビーイング団体です。"
 };
 
 function Logo() {
@@ -180,7 +180,7 @@ export default function V1CleanPage() {
             ))}
           </nav>
           <details className={styles.mobileMenu}>
-            <summary>Menu</summary>
+            <summary>目次</summary>
             <nav aria-label="スマホナビゲーション">
               {navItems.map((item) => (
                 <a href={item.href} key={item.href}>
@@ -222,10 +222,12 @@ export default function V1CleanPage() {
             <p className={styles.heroLead}>
               食・動・美・心の調和から、
               <br />
-              毎日のすこやかさを育てる。
+              その人らしい健やかさへ。
             </p>
-            <p className={styles.heroDescription}>
-              一般社団法人 結は、管理栄養士の専門性をもとに、食・動・美・心の4つの視点から、地域や人のつながりを通じた健康づくりを支える団体です。
+            <p className={styles.heroPoem}>
+              食べること。動くこと。整えること。休むこと。
+              <br />
+              そのすべてを、人とのつながりの中で。
             </p>
             <a className={styles.button} href="#contact">
               活動について相談する
@@ -236,18 +238,23 @@ export default function V1CleanPage() {
         <section id="concept" className={`${styles.section} ${styles.concept} ${styles.reveal}`}>
           <div className={`${styles.sectionInner} ${styles.conceptGrid}`}>
             <div className={styles.conceptCopy}>
-              <p className={styles.sectionLabel}>Concept</p>
+              <p className={styles.sectionLabel}>結の想い</p>
               <h2 className={styles.sectionTitle}>
-                一粒の食から、
+                健康は、食事だけで
                 <br />
-                暮らしへ。
-                <br />
-                暮らしから、結びへ。
+                できているわけではありません。
               </h2>
-              <p className={styles.bodyText}>
-                食べること、動くこと、自分を整えること、心を休めること。
-                その一つひとつが、人とのつながりの中で、毎日の健やかさへと結ばれていきます。
-              </p>
+              <div className={styles.conceptText}>
+                <p>
+                  食べること。動くこと。自分を整えること。心を休めること。
+                </p>
+                <p>
+                  そして、ひとりで抱え込まず、誰かとつながりながら続けていくこと。
+                </p>
+                <p>
+                  一般社団法人 結は、食・動・美・心の調和から、一人ひとりが自分らしく健やかに生きるための輪を育てていきます。
+                </p>
+              </div>
             </div>
             <div className={styles.conceptPhotos} aria-label="結の世界観を表す写真">
               <PhotoFrame item={conceptImages[0]} className={styles.conceptPhotoMain} priority />
@@ -258,8 +265,7 @@ export default function V1CleanPage() {
 
         <section className={`${styles.imageFlow} ${styles.reveal}`} aria-label="食・動・美・心・結のイメージ">
           <div className={styles.flowHead}>
-            <p className={styles.sectionLabel}>Image Flow</p>
-            <p>食、動、美、心。静かな写真の連なりから、結の輪郭へ。</p>
+            <p>食、動、美、心。暮らしの一つひとつが、人とつながる健やかさへ結ばれていく。</p>
           </div>
           <div className={styles.flowGrid}>
             {flowImages.map((item, index) => (
@@ -276,12 +282,12 @@ export default function V1CleanPage() {
         <section id="about" className={`${styles.section} ${styles.about} ${styles.reveal}`}>
           <div className={`${styles.sectionInner} ${styles.aboutGrid}`}>
             <div>
-              <p className={styles.sectionLabel}>About</p>
-              <h2 className={styles.sectionTitle}>結について。</h2>
+              <p className={styles.sectionLabel}>一般社団法人 結</p>
+              <h2 className={styles.sectionTitle}>人と人を結ぶ、健康づくりの輪。</h2>
             </div>
             <div className={styles.aboutBody}>
               <p className={styles.bodyText}>
-                一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての専門性と、生活者に寄り添う想いを中心にした健康づくりの場です。食・動・美・心の4つの視点から、講座、相談、イベント、地域連携を通じて、一人では続けにくい健康づくりを、人とのつながりの中で支えていきます。
+                理事長・渡邉裕子の管理栄養士としての実務経験と、生活者に寄り添う想いから生まれたウェルビーイング団体です。食・動・美・心の4つの視点から、講座、相談、イベント、地域連携を通じて、一人では続けにくい健康づくりを、人とのつながりの中で支えていきます。
               </p>
               <dl className={styles.facts}>
                 <div>
@@ -308,7 +314,7 @@ export default function V1CleanPage() {
         <section id="elements" className={`${styles.section} ${styles.elements} ${styles.reveal}`}>
           <div className={styles.sectionInner}>
             <div className={styles.elementsIntro}>
-              <p className={styles.sectionLabel}>Four Elements</p>
+              <p className={styles.sectionLabel}>食・動・美・心</p>
               <h2 className={styles.sectionTitle}>
                 4色の結び紐が、
                 <br />
@@ -335,7 +341,11 @@ export default function V1CleanPage() {
                     <p className={styles.elementMark}>{item.mark}</p>
                     <h3>{item.title}</h3>
                     <p>{item.body}</p>
-                    <p className={styles.supportText}>できること：{item.support}</p>
+                    <div className={styles.tagList} aria-label={`${item.mark}でできること`}>
+                      {item.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
                   </div>
                 </article>
               ))}
@@ -346,14 +356,14 @@ export default function V1CleanPage() {
         <section id="activities" className={`${styles.section} ${styles.activities} ${styles.reveal}`}>
           <div className={`${styles.sectionInner} ${styles.activitiesGrid}`}>
             <div className={styles.activitiesCopy}>
-              <p className={styles.sectionLabel}>Activities</p>
+              <p className={styles.sectionLabel}>結ができること</p>
               <h2 className={styles.sectionTitle}>
                 学び、体験し、
                 <br />
                 人がつながる。
               </h2>
               <p className={styles.bodyText}>
-                結は、講座やイベントを一度きりで終わらせるのではなく、参加した人の暮らしに小さな変化が残る場を育てます。
+                結がつくるのは、一度きりの講座ではなく、暮らしに小さな変化が残る場。学び、体験し、人とつながることで、健康づくりは少しずつ続いていきます。
               </p>
             </div>
             <div className={styles.activityPhotos} aria-label="活動の空気感を表す写真">
@@ -363,7 +373,10 @@ export default function V1CleanPage() {
             </div>
             <div className={styles.activityList}>
               {activityItems.map((item) => (
-                <p key={item}>{item}</p>
+                <article className={styles.activityCard} key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
               ))}
             </div>
             <div className={styles.activityCta}>
@@ -376,24 +389,37 @@ export default function V1CleanPage() {
 
         <section className={`${styles.section} ${styles.trustSection} ${styles.reveal}`}>
           <div className={`${styles.sectionInner} ${styles.trustGrid}`}>
-            <p className={styles.sectionLabel}>Reason / Trust</p>
-            <div>
+            <div className={styles.trustCopy}>
+              <p className={styles.sectionLabel}>なぜ、いま結なのか</p>
               <h2 className={styles.sectionTitle}>
                 いま、暮らしを整える力が
                 <br />
                 必要とされています。
               </h2>
+            </div>
+            <div className={styles.trustPanel}>
               <div className={styles.trustText}>
                 <p>
                   健康情報は増えているのに、続けることは簡単ではありません。
                 </p>
                 <p>
-                  食事だけ、運動だけ、美容だけ、休養だけでは、毎日は整いきらないことがあります。
+                  正しい食事を知っていても、心が疲れていれば続かないことがあります。
+                </p>
+                <p>
+                  運動が大切だと分かっていても、一人では始めにくいことがあります。
+                </p>
+                <p>
+                  美容や自分を整える時間が、心を前向きにしてくれることもあります。
                 </p>
                 <p>
                   だから結は、食・動・美・心を切り離さず、人とのつながりの中で続いていく健康づくりを大切にしています。
                 </p>
               </div>
+              <PhotoFrame
+                item={{ src: "/images/hero-rest.png", alt: "静かに心を休める時間" }}
+                className={styles.trustPhoto}
+                sizes="(max-width: 720px) 92vw, 42vw"
+              />
             </div>
           </div>
         </section>
@@ -409,7 +435,7 @@ export default function V1CleanPage() {
               />
             </figure>
             <div className={styles.profileBody}>
-              <p className={styles.sectionLabel}>Profile / Message</p>
+              <p className={styles.sectionLabel}>理事長メッセージ</p>
               <h2 className={styles.sectionTitle}>
                 暮らしに寄り添い、
                 <br />
@@ -420,24 +446,29 @@ export default function V1CleanPage() {
                 <span>一般社団法人 結 理事長 / 管理栄養士</span>
               </p>
               <div className={styles.profileText}>
-                <p>2015年、仙台白百合女子大学 人間学部 健康栄養学科卒業。</p>
+                <p>2015年、仙台白百合女子大学 人間学部 健康栄養学科を卒業。</p>
                 <p>
-                  管理栄養士として病院勤務を経て、給食管理・衛生管理・臨床栄養業務・栄養指導に従事しました。その後、調剤薬局にて健康相談や健康セミナー講師を担当。
+                  管理栄養士として病院に勤務し、給食管理・衛生管理・臨床栄養業務・栄養指導に従事しました。
                 </p>
                 <p>
-                  現在は、特定保健指導を中心に、食・美容・予防の視点から健康支援を行っています。2024年7月、一般社団法人 結を設立しました。
+                  その後、調剤薬局にて健康相談や健康セミナー講師を担当。病気になった後の支援だけでなく、病気になる前の予防や、地域に寄り添った健康づくりの大切さを学びました。
                 </p>
                 <p>
-                  健康分野の情報発信やWebでの見せ方にも携わり、想いが必要な人へ届くための形づくりも行っています。
+                  2020年より名古屋へ移住。フリーランス管理栄養士として特定保健指導に携わるほか、接客・サービス・店舗運営、健康を届けるための場づくりや伝え方にも取り組んでいます。
+                </p>
+                <p>
+                  2024年7月、一般社団法人 結を設立。現在は「食・動・美・心」をテーマに、健康寿命の延伸、地域の健康づくり、人と人がつながるコミュニティづくりに取り組んでいます。
                 </p>
               </div>
               <div className={styles.messageBox}>
                 <p>
-                  食べること、動くこと、整えること、休むこと。
-                  その一つひとつを、人とのつながりの中で支えていきたい。
+                  食べること、動くこと、自分を整えること、心を休めること。その一つひとつが響き合うことで、総合的な健やかさは育まれていく。
                 </p>
                 <p>
-                  一般社団法人 結は、食・動・美・心の調和から、毎日の暮らしをやさしく整え、皆さまと共に健やかな未来を結んでいきます。
+                  一般社団法人 結は、地域や人とのつながりの中で、一人ひとりが自分らしく健やかに生きるための輪を広げていきます。
+                </p>
+                <p>
+                  皆さまと、健やかな未来を結んでいきます。
                 </p>
               </div>
             </div>
@@ -447,7 +478,7 @@ export default function V1CleanPage() {
         <section id="partnership" className={`${styles.section} ${styles.partnershipSection} ${styles.reveal}`}>
           <div className={`${styles.sectionInner} ${styles.partnershipGrid}`}>
             <div>
-              <p className={styles.sectionLabel}>Partnership</p>
+              <p className={styles.sectionLabel}>ともにつくる健康づくり</p>
               <h2 className={styles.sectionTitle}>
                 食・動・美・心 × 地域で、
                 <br />
@@ -460,7 +491,14 @@ export default function V1CleanPage() {
             </div>
             <div className={styles.partnershipList}>
               {partnershipItems.map((item) => (
-                <span key={item}>{item}</span>
+                <article
+                  className={styles.partnershipCard}
+                  key={item.title}
+                  style={{ "--accent": item.accent } as CSSProperties}
+                >
+                  <span aria-hidden="true" />
+                  <p>{item.title}</p>
+                </article>
               ))}
             </div>
           </div>
@@ -468,7 +506,7 @@ export default function V1CleanPage() {
 
         <section id="contact" className={`${styles.contact} ${styles.reveal}`}>
           <div className={styles.contactInner}>
-            <p className={styles.sectionLabel}>Contact</p>
+            <p className={styles.sectionLabel}>お問い合わせ</p>
             <h2 className={styles.contactTitle}>
               小さな相談から、
               <br />
