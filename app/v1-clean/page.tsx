@@ -32,12 +32,12 @@ const heroSlides: ImageItem[] = [
     alt: "白い空間で身体を整える動き"
   },
   {
-    src: "/images/element-beauty.jpg",
-    alt: "自然光の中で自分を整えるセルフケア"
+    src: "/images/element-food.jpg",
+    alt: "自然光の中で暮らしに寄り添う食の時間"
   },
   {
-    src: "/images/hero-rest.png",
-    alt: "心を休める静かな時間"
+    src: "/images/element-beauty.jpg",
+    alt: "自然光の中で自分を整えるセルフケア"
   }
 ];
 
