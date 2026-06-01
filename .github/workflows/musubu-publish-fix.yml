@@ -2,8 +2,6 @@ name: One-time Musubu publish fix
 
 on:
   push:
-    paths:
-      - ".github/workflows/musubu-publish-fix.yml"
   workflow_dispatch:
 
 permissions:
@@ -41,7 +39,6 @@ jobs:
               css.write_text(c, encoding='utf-8')
           PY
 
-          # Create compatibility image names when the exact new filenames are absent.
           if [ ! -f public/images/hero-move.jpg ] && [ -f public/images/hero-movement.png ]; then
             if command -v magick >/dev/null 2>&1; then
               magick public/images/hero-movement.png public/images/hero-move.jpg || cp public/images/hero-movement.png public/images/hero-move.jpg
@@ -60,7 +57,6 @@ jobs:
             fi
           fi
 
-          # Avoid broken links if conversion is unavailable.
           if [ ! -f public/images/hero-move.jpg ]; then
             python3 - <<'PY'
             from pathlib import Path
