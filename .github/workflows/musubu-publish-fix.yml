@@ -1,0 +1,96 @@
+name: One-time Musubu publish fix
+
+on:
+  push:
+    paths:
+      - ".github/workflows/musubu-publish-fix.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize Musubu LP image paths and tone
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          page = Path('app/v1-clean/page.tsx')
+          s = page.read_text(encoding='utf-8')
+          s = s.replace('/images/hero-rice-grains.jpg', '/images/hero-rice.png')
+          s = s.replace('/images/hero-movement.png', '/images/hero-move.jpg')
+          s = s.replace('/images/hero-mind-tea.svg', '/images/hero-mind-tea.png')
+          page.write_text(s, encoding='utf-8')
+
+          css = Path('app/v1-clean/v1-clean.module.css')
+          if css.exists():
+              c = css.read_text(encoding='utf-8')
+              c = c.replace('filter: brightness(1.05) contrast(1.08) saturate(0.94);', 'filter: brightness(1.02) contrast(1.04) saturate(0.98);')
+              c = c.replace('filter: brightness(1.03) contrast(1.04) saturate(0.92);', 'filter: brightness(1.02) contrast(1.04) saturate(0.98);')
+              c = c.replace('filter: brightness(1.05) contrast(1.06) saturate(0.96);', 'filter: brightness(1.03) contrast(1.05) saturate(1);')
+              css.write_text(c, encoding='utf-8')
+          PY
+
+          # Create compatibility image names when the exact new filenames are absent.
+          if [ ! -f public/images/hero-move.jpg ] && [ -f public/images/hero-movement.png ]; then
+            if command -v magick >/dev/null 2>&1; then
+              magick public/images/hero-movement.png public/images/hero-move.jpg || cp public/images/hero-movement.png public/images/hero-move.jpg
+            elif command -v convert >/dev/null 2>&1; then
+              convert public/images/hero-movement.png public/images/hero-move.jpg || cp public/images/hero-movement.png public/images/hero-move.jpg
+            else
+              cp public/images/hero-movement.png public/images/hero-move.jpg
+            fi
+          fi
+
+          if [ ! -f public/images/hero-mind-tea.png ] && [ -f public/images/hero-mind-tea.svg ]; then
+            if command -v magick >/dev/null 2>&1; then
+              magick -background white public/images/hero-mind-tea.svg public/images/hero-mind-tea.png || true
+            elif command -v convert >/dev/null 2>&1; then
+              convert -background white public/images/hero-mind-tea.svg public/images/hero-mind-tea.png || true
+            fi
+          fi
+
+          # Avoid broken links if conversion is unavailable.
+          if [ ! -f public/images/hero-move.jpg ]; then
+            python3 - <<'PY'
+            from pathlib import Path
+            p = Path('app/v1-clean/page.tsx')
+            s = p.read_text(encoding='utf-8').replace('/images/hero-move.jpg', '/images/hero-movement.png')
+            p.write_text(s, encoding='utf-8')
+            PY
+          fi
+
+          if [ ! -f public/images/hero-mind-tea.png ]; then
+            python3 - <<'PY'
+            from pathlib import Path
+            p = Path('app/v1-clean/page.tsx')
+            s = p.read_text(encoding='utf-8').replace('/images/hero-mind-tea.png', '/images/hero-mind-tea.svg')
+            p.write_text(s, encoding='utf-8')
+            PY
+          fi
+
+          git status --short
+
+      - name: Commit fixed public LP
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet && [ -z "$(git status --short)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/v1-clean/page.tsx app/v1-clean/v1-clean.module.css public/images/hero-move.jpg public/images/hero-mind-tea.png
+          git commit -m "Fix Musubu public LP image paths"
+          git push
