@@ -1,0 +1,1565 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>一般社団法人 結 / MUSUBU</title>
+    <meta
+      name="description"
+      content="一般社団法人 結は、理事長・渡邉裕子の管理栄養士としての実務経験と想いから生まれた、食・動・美・心を結ぶウェルビーイング団体です。"
+    />
+    <style>
+      :root {
+        --ink: #27231f;
+        --muted: #6a6258;
+        --soft: #fffdf8;
+        --cream: #f8f6f1;
+        --beige: #f1ece3;
+        --line: rgba(39, 35, 31, 0.1);
+        --green: #56777a;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--soft);
+        color: var(--ink);
+        font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        letter-spacing: 0;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 40;
+        border-bottom: 1px solid rgba(39, 35, 31, 0.06);
+        background: rgba(255, 253, 248, 0.72);
+        backdrop-filter: blur(18px);
+      }
+
+      .header-inner {
+        width: min(1180px, calc(100% - 28px));
+        min-height: 72px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        min-width: 0;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 62px;
+        height: auto;
+        object-fit: contain;
+        flex: 0 0 auto;
+      }
+
+      .brand-text {
+        display: grid;
+        gap: 2px;
+        line-height: 1.2;
+      }
+
+      .brand-jp {
+        color: rgba(39, 35, 31, 0.9);
+        font-size: 13px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .brand-en {
+        color: rgba(39, 35, 31, 0.5);
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
+      .nav {
+        display: none;
+        align-items: center;
+        gap: 22px;
+        color: rgba(39, 35, 31, 0.58);
+        font-size: 12px;
+      }
+
+      .nav a,
+      .mobile-menu a {
+        transition: color 180ms ease;
+      }
+
+      .nav a:hover,
+      .mobile-menu a:hover {
+        color: var(--green);
+      }
+
+      .mobile-menu {
+        position: relative;
+        display: block;
+      }
+
+      .mobile-menu summary {
+        display: inline-flex;
+        min-width: 72px;
+        min-height: 36px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(39, 35, 31, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.58);
+        color: rgba(39, 35, 31, 0.68);
+        font-size: 12px;
+        list-style: none;
+        cursor: pointer;
+      }
+
+      .mobile-menu summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .mobile-menu nav {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 10px);
+        display: grid;
+        min-width: 190px;
+        overflow: hidden;
+        border: 1px solid rgba(39, 35, 31, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.94);
+        box-shadow: 0 18px 44px rgba(39, 35, 31, 0.08);
+        backdrop-filter: blur(18px);
+      }
+
+      .mobile-menu nav a {
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(39, 35, 31, 0.06);
+        color: rgba(39, 35, 31, 0.72);
+        font-size: 12px;
+      }
+
+      .mobile-menu nav a:last-child {
+        border-bottom: 0;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        overflow: hidden;
+        display: grid;
+        align-items: end;
+        background: #f7f3ec;
+      }
+
+      .hero-media,
+      .hero-slide,
+      .hero-veil {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-media {
+        z-index: 0;
+        background: #f4f0e9;
+      }
+
+      .hero-slide {
+        opacity: 0;
+        animation: hero-fade 35s ease-in-out infinite;
+        animation-delay: var(--delay);
+        will-change: opacity, transform;
+      }
+
+      .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: none;
+      }
+
+      .hero-veil {
+        z-index: 2;
+        background:
+          linear-gradient(180deg, rgba(255, 253, 248, 0.02) 0%, rgba(255, 253, 248, 0.11) 48%, rgba(255, 253, 248, 0.68) 100%),
+          linear-gradient(90deg, rgba(255, 253, 248, 0.68) 0%, rgba(255, 253, 248, 0.26) 52%, rgba(255, 253, 248, 0.02) 100%);
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 3;
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 132px 0 74px;
+      }
+
+      .eyebrow,
+      .section-label {
+        margin: 0;
+        color: rgba(39, 35, 31, 0.48);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.7;
+      }
+
+      .hero-title,
+      .section-title,
+      .contact-title {
+        margin: 0;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-weight: 400;
+        letter-spacing: 0;
+      }
+
+      .hero-title {
+        margin-top: 24px;
+        font-size: 3.1rem;
+        line-height: 1.25;
+      }
+
+      .hero-lead {
+        margin: 28px 0 0;
+        max-width: 29em;
+        color: #5f574e;
+        font-size: 1.08rem;
+        line-height: 2;
+      }
+
+      .hero-poem {
+        margin: 24px 0 0;
+        max-width: 40em;
+        color: rgba(68, 61, 53, 0.82);
+        font-size: 0.95rem;
+        line-height: 2.05;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 34px;
+        border: 1px solid rgba(86, 119, 122, 0.34);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.66);
+        padding: 13px 24px;
+        color: #456f73;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        backdrop-filter: blur(12px);
+        transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+      }
+
+      .button::after {
+        content: ">";
+        margin-left: 12px;
+      }
+
+      .button:hover {
+        background: rgba(255, 253, 248, 0.92);
+        box-shadow: 0 14px 34px rgba(39, 35, 31, 0.08);
+        transform: translateY(-1px);
+      }
+
+      .section {
+        padding: 92px 0;
+      }
+
+      .section-inner,
+      .flow-head,
+      .flow-grid,
+      .contact-inner,
+      .footer {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section-title {
+        margin-top: 20px;
+        font-size: 2.25rem;
+        line-height: 1.45;
+      }
+
+      .body-text,
+      .concept-text p,
+      .about-body p,
+      .element-text p,
+      .trust-text p,
+      .profile-text p,
+      .message-box p,
+      .partnership-copy p,
+      .contact-lead {
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 2.05;
+      }
+
+      .concept {
+        background: var(--soft);
+      }
+
+      .concept-grid {
+        display: grid;
+        gap: 52px;
+      }
+
+      .concept-copy {
+        max-width: 680px;
+      }
+
+      .concept-text {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .concept-text p {
+        margin: 0;
+      }
+
+      .concept-photos {
+        position: relative;
+        min-height: 430px;
+      }
+
+      .photo-frame {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #eeece5;
+        box-shadow: 0 18px 58px rgba(39, 35, 31, 0.055);
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: none;
+        transition: transform 1000ms ease;
+      }
+
+      .photo-frame:hover img {
+        transform: scale(1.012);
+      }
+
+      .photo-frame figcaption {
+        position: absolute;
+        left: 16px;
+        bottom: 14px;
+        z-index: 2;
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.72);
+        padding: 6px 10px;
+        color: rgba(39, 35, 31, 0.58);
+        font-size: 11px;
+        backdrop-filter: blur(10px);
+      }
+
+      .concept-photo-main {
+        aspect-ratio: 4 / 5;
+        width: 72%;
+        min-height: 360px;
+      }
+
+      .concept-photo-sub {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        aspect-ratio: 4 / 3;
+        width: 48%;
+        min-height: 180px;
+      }
+
+      .image-flow {
+        padding: 78px 0 110px;
+        background: var(--cream);
+      }
+
+      .flow-head {
+        margin-bottom: 46px;
+      }
+
+      .flow-head p {
+        max-width: 680px;
+        margin: 0;
+        color: #3f3932;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 1.55rem;
+        font-weight: 400;
+        line-height: 1.9;
+      }
+
+      .flow-grid {
+        display: grid;
+        gap: 22px;
+      }
+
+      .flow-item {
+        aspect-ratio: 4 / 5;
+        min-height: 290px;
+      }
+
+      .flow-item-2,
+      .flow-item-4 {
+        aspect-ratio: 1 / 1;
+      }
+
+      .flow-item-5 {
+        aspect-ratio: 16 / 10;
+      }
+
+      .about {
+        background: var(--soft);
+      }
+
+      .about-grid {
+        display: grid;
+        gap: 38px;
+      }
+
+      .about-body {
+        max-width: 740px;
+      }
+
+      .facts {
+        display: grid;
+        margin-top: 38px;
+        border-top: 1px solid rgba(39, 35, 31, 0.12);
+      }
+
+      .facts div {
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(39, 35, 31, 0.12);
+      }
+
+      .facts dt {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .facts dd {
+        margin: 8px 0 0;
+        color: #2c2823;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 1rem;
+      }
+
+      .elements {
+        background: #f7f3ec;
+      }
+
+      .elements-intro {
+        max-width: 760px;
+      }
+
+      .element-list {
+        display: grid;
+        gap: 62px;
+        margin-top: 72px;
+      }
+
+      .element-row {
+        display: grid;
+        gap: 28px;
+        align-items: center;
+        border: 1px solid rgba(39, 35, 31, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.62);
+        padding: 16px;
+        box-shadow: 0 20px 56px rgba(39, 35, 31, 0.04);
+      }
+
+      .element-photo {
+        aspect-ratio: 4 / 5;
+        min-height: 360px;
+        box-shadow: none;
+      }
+
+      .element-text {
+        max-width: 560px;
+      }
+
+      .accent-line {
+        display: block;
+        width: 54px;
+        height: 2px;
+        margin-bottom: 20px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .element-mark {
+        margin: 0;
+        color: var(--accent);
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 3rem;
+        line-height: 1;
+      }
+
+      .element-text h3 {
+        margin: 18px 0 0;
+        color: #2b2722;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 1.85rem;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(39, 35, 31, 0.12);
+      }
+
+      .tag-list span {
+        border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.72);
+        padding: 7px 11px;
+        color: #5f574e;
+        font-size: 0.78rem;
+        line-height: 1.4;
+      }
+
+      .activities {
+        background: var(--soft);
+      }
+
+      .activities-grid {
+        display: grid;
+        gap: 42px;
+      }
+
+      .activities-copy {
+        max-width: 700px;
+      }
+
+      .activity-photos {
+        display: grid;
+        grid-template-columns: 1fr 0.78fr;
+        gap: 16px;
+        align-items: end;
+      }
+
+      .activity-photo-large {
+        aspect-ratio: 4 / 5;
+        min-height: 340px;
+      }
+
+      .activity-photo-small {
+        aspect-ratio: 1 / 1;
+        min-height: 190px;
+        transform: translateY(28px);
+      }
+
+      .activity-photo-wide {
+        grid-column: 1 / -1;
+        aspect-ratio: 16 / 9;
+        min-height: 210px;
+        width: 82%;
+        justify-self: end;
+      }
+
+      .activity-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .activity-card {
+        border: 1px solid rgba(39, 35, 31, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.78);
+        padding: 20px;
+      }
+
+      .activity-card h3 {
+        margin: 0;
+        color: #2c2823;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 1.18rem;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      .activity-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.9;
+      }
+
+      .activity-cta {
+        margin-top: -12px;
+      }
+
+      .trust-section {
+        background:
+          linear-gradient(180deg, rgba(247, 243, 236, 0.88), rgba(255, 253, 248, 0.96)),
+          #f7f3ec;
+      }
+
+      .trust-grid {
+        display: grid;
+        gap: 34px;
+      }
+
+      .trust-copy {
+        max-width: 760px;
+      }
+
+      .trust-panel {
+        display: grid;
+        gap: 32px;
+        align-items: end;
+      }
+
+      .trust-text {
+        display: grid;
+        gap: 18px;
+        max-width: 720px;
+      }
+
+      .trust-text p {
+        margin: 0;
+        padding-left: 18px;
+        border-left: 1px solid rgba(86, 119, 122, 0.28);
+      }
+
+      .trust-photo {
+        aspect-ratio: 16 / 10;
+        min-height: 240px;
+      }
+
+      .profile-section {
+        background: var(--soft);
+      }
+
+      .profile-grid {
+        display: grid;
+        gap: 42px;
+        align-items: start;
+      }
+
+      .profile-portrait {
+        position: relative;
+        width: min(520px, 92vw);
+        aspect-ratio: 2 / 3;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #eeece5;
+        box-shadow: 0 18px 58px rgba(39, 35, 31, 0.06);
+      }
+
+      .profile-portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 38%;
+        filter: none;
+      }
+
+      .profile-body {
+        max-width: 700px;
+      }
+
+      .profile-name {
+        margin: 30px 0 0;
+        color: #2c2823;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 1.45rem;
+        line-height: 1.7;
+      }
+
+      .profile-name span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        font-size: 0.92rem;
+      }
+
+      .profile-text {
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .profile-text p,
+      .message-box p {
+        margin: 0;
+      }
+
+      .message-box {
+        display: grid;
+        gap: 16px;
+        margin-top: 30px;
+        border-top: 1px solid rgba(39, 35, 31, 0.12);
+        padding-top: 28px;
+      }
+
+      .partnership-section {
+        background: var(--cream);
+      }
+
+      .partnership-grid {
+        display: grid;
+        gap: 40px;
+      }
+
+      .partnership-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .partnership-card {
+        position: relative;
+        min-height: 108px;
+        border: 1px solid rgba(39, 35, 31, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.74);
+        padding: 18px;
+        overflow: hidden;
+      }
+
+      .partnership-card span {
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 3px;
+        background: color-mix(in srgb, var(--accent) 68%, transparent);
+      }
+
+      .partnership-card p {
+        margin: 0;
+        color: #3f3932;
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .consult-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .consult-list span {
+        border: 1px solid rgba(39, 35, 31, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.72);
+        padding: 15px 16px;
+        color: #5f574e;
+        font-size: 0.94rem;
+        line-height: 1.5;
+      }
+
+      .consult-list span::before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-right: 10px;
+        border-radius: 999px;
+        background: #8fb39b;
+        vertical-align: 0.1em;
+      }
+
+      .contact {
+        padding: 104px 0;
+        background:
+          linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(247, 243, 236, 0.96)),
+          #f7f3ec;
+      }
+
+      .contact-inner {
+        max-width: 880px;
+      }
+
+      .contact-title {
+        margin-top: 20px;
+        font-size: 2.45rem;
+        line-height: 1.45;
+      }
+
+      .contact-lead {
+        margin: 34px 0 18px;
+        color: #2c2823;
+      }
+
+      .footer {
+        display: flex;
+        padding: 52px 0 60px;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid rgba(39, 35, 31, 0.1);
+        color: rgba(39, 35, 31, 0.5);
+        font-size: 11px;
+      }
+
+      .footer-logo {
+        width: min(190px, 58vw);
+        height: auto;
+        object-fit: contain;
+      }
+
+      .reveal {
+        opacity: 0.001;
+        transform: translateY(28px);
+        transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes hero-fade {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        16% {
+          opacity: 1;
+          transform: scale(1.035);
+        }
+
+        21%,
+        100% {
+          opacity: 0;
+          transform: scale(1.06);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .hero-slide,
+        .photo-frame img,
+        .reveal {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+        }
+
+        .hero-slide {
+          opacity: 0;
+        }
+
+        .hero-slide:first-child {
+          opacity: 1;
+        }
+
+        .reveal {
+          opacity: 1;
+        }
+      }
+
+      @media (min-width: 680px) {
+        .facts {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .facts div:nth-child(odd) {
+          padding-right: 24px;
+        }
+
+        .facts div:nth-child(even) {
+          padding-left: 24px;
+        }
+
+        .flow-grid {
+          grid-template-columns: repeat(12, 1fr);
+          align-items: end;
+        }
+
+        .flow-item-1 {
+          grid-column: span 4;
+          min-height: 540px;
+        }
+
+        .flow-item-2 {
+          grid-column: span 3;
+          min-height: 350px;
+          transform: translateY(56px);
+        }
+
+        .flow-item-3 {
+          grid-column: span 5;
+          min-height: 440px;
+        }
+
+        .flow-item-4 {
+          grid-column: 2 / span 3;
+          min-height: 320px;
+          transform: translateY(24px);
+        }
+
+        .flow-item-5 {
+          grid-column: 5 / span 7;
+          min-height: 360px;
+        }
+
+        .partnership-list {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .consult-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 860px) {
+        .nav {
+          display: flex;
+        }
+
+        .mobile-menu {
+          display: none;
+        }
+
+        .brand-mark {
+          width: 78px;
+        }
+
+        .header-inner {
+          min-height: 84px;
+        }
+
+        .hero-title {
+          font-size: 5rem;
+        }
+
+        .hero-lead {
+          font-size: 1.35rem;
+        }
+
+        .hero-poem {
+          font-size: 1rem;
+        }
+
+        .section {
+          padding: 130px 0;
+        }
+
+        .section-title {
+          font-size: 3.35rem;
+        }
+
+        .concept-grid,
+        .about-grid,
+        .profile-grid,
+        .partnership-grid {
+          grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+          gap: 78px;
+        }
+
+        .trust-grid {
+          grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+          gap: 78px;
+        }
+
+        .concept-photos {
+          min-height: 610px;
+        }
+
+        .concept-photo-main {
+          min-height: 540px;
+        }
+
+        .concept-photo-sub {
+          min-height: 250px;
+        }
+
+        .flow-head p {
+          font-size: 2rem;
+        }
+
+        .element-row {
+          grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+          gap: 62px;
+          padding: 24px;
+        }
+
+        .element-row:nth-child(even) {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+        }
+
+        .element-row:nth-child(even) .element-photo {
+          order: 2;
+        }
+
+        .element-row:nth-child(even) .element-text {
+          justify-self: end;
+        }
+
+        .element-photo {
+          min-height: 500px;
+        }
+
+        .activities-grid {
+          grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+          gap: 70px;
+          align-items: start;
+        }
+
+        .activity-photos {
+          grid-column: 2;
+          grid-row: 1 / span 3;
+        }
+
+        .activity-list,
+        .activity-cta {
+          grid-column: 1;
+        }
+
+        .activity-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .profile-portrait {
+          width: 100%;
+          max-width: 520px;
+          justify-self: center;
+        }
+
+        .contact {
+          padding: 148px 0;
+        }
+
+        .contact-title {
+          font-size: 3.55rem;
+        }
+      }
+
+      @media (min-width: 1180px) {
+        .hero-title {
+          font-size: 5.8rem;
+        }
+
+        .section-title {
+          font-size: 3.8rem;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .brand-mark {
+          width: 56px;
+        }
+
+        .brand-jp {
+          font-size: 12px;
+        }
+
+        .brand-en {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 2.75rem;
+        }
+
+        .section-title,
+        .contact-title {
+          font-size: 2.05rem;
+        }
+
+        .activity-photos {
+          grid-template-columns: 1fr;
+        }
+
+        .activity-photo-small {
+          transform: none;
+        }
+
+        .activity-photo-wide {
+          width: 100%;
+        }
+
+        .partnership-list {
+          grid-template-columns: 1fr;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="top" class="page">
+      <header class="header">
+        <div class="header-inner">
+          <a class="brand" href="#top" aria-label="一般社団法人 結 トップへ">
+            <img class="brand-mark" src="images/musubu-mark.png" alt="" aria-hidden="true" />
+            <span class="brand-text">
+              <span class="brand-jp">一般社団法人 結</span>
+              <span class="brand-en">MUSUBU</span>
+            </span>
+          </a>
+          <nav class="nav" aria-label="主要ナビゲーション">
+            <a href="#concept">結の想い</a>
+            <a href="#elements">食・動・美・心</a>
+            <a href="#activities">できること</a>
+            <a href="#profile">理事長</a>
+            <a href="#partnership">連携</a>
+            <a href="#contact">お問い合わせ</a>
+          </nav>
+          <details class="mobile-menu">
+            <summary>目次</summary>
+            <nav aria-label="スマホナビゲーション">
+              <a href="#concept">結の想い</a>
+              <a href="#elements">食・動・美・心</a>
+              <a href="#activities">できること</a>
+              <a href="#profile">理事長</a>
+              <a href="#partnership">連携</a>
+              <a href="#contact">お問い合わせ</a>
+            </nav>
+          </details>
+        </div>
+      </header>
+
+      <main>
+        <!-- Hero: 1枚目は必ず米の写真です -->
+        <section class="hero" aria-label="一般社団法人 結 メインビジュアル">
+          <div class="hero-media" aria-hidden="true">
+            <div class="hero-slide" style="--delay: 0s">
+              <img src="images/hero-rice.png" alt="" fetchpriority="high" />
+            </div>
+            <div class="hero-slide" style="--delay: 7s">
+              <img src="images/hero-food.webp" alt="" loading="lazy" />
+            </div>
+            <div class="hero-slide" style="--delay: 14s">
+              <img src="images/hero-move.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="hero-slide" style="--delay: 21s">
+              <img src="images/hero-beauty.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="hero-slide" style="--delay: 28s">
+              <img src="images/hero-mind-tea.png" alt="" loading="lazy" />
+            </div>
+            <div class="hero-veil"></div>
+          </div>
+          <div class="hero-inner">
+            <p class="eyebrow">MUSUBU WELLNESS CIRCLE</p>
+            <h1 class="hero-title">
+              暮らしを整え、<br />
+              人と人を結ぶ。
+            </h1>
+            <p class="hero-lead">
+              食・動・美・心の調和から、<br />
+              その人らしい健やかさへ。
+            </p>
+            <p class="hero-poem">
+              食べること。動くこと。整えること。休むこと。<br />
+              そのすべてを、人とのつながりの中で。
+            </p>
+            <a class="button" href="#contact">活動について相談する</a>
+          </div>
+        </section>
+
+        <section id="concept" class="section concept reveal">
+          <div class="section-inner concept-grid">
+            <div class="concept-copy">
+              <p class="section-label">結の想い</p>
+              <h2 class="section-title">
+                健康は、食事だけで<br />
+                できているわけではありません。
+              </h2>
+              <div class="concept-text">
+                <p>食べること。動くこと。自分を整えること。心を休めること。</p>
+                <p>そして、ひとりで抱え込まず、誰かとつながりながら続けていくこと。</p>
+                <p>
+                  一般社団法人 結は、食・動・美・心の調和から、一人ひとりが自分らしく健やかに生きるための輪を育てていきます。
+                </p>
+              </div>
+            </div>
+            <div class="concept-photos" aria-label="結の世界観を表す写真">
+              <figure class="photo-frame concept-photo-main">
+                <img src="images/hero-rice.png" alt="白い米粒のマクロ写真" loading="lazy" />
+                <figcaption>食べること</figcaption>
+              </figure>
+              <figure class="photo-frame concept-photo-sub">
+                <img src="images/hero-community.png" alt="自然光の中で食卓を囲む人たち" loading="lazy" />
+                <figcaption>つながる場</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="image-flow reveal" aria-label="食・動・美・心・結のイメージ">
+          <div class="flow-head">
+            <p>食、動、美、心。暮らしの一つひとつが、人とつながる健やかさへ結ばれていく。</p>
+          </div>
+          <div class="flow-grid">
+            <figure class="photo-frame flow-item flow-item-1">
+              <img src="images/hero-food.webp" alt="白い朝と暮らしの食卓" loading="lazy" />
+              <figcaption>食</figcaption>
+            </figure>
+            <figure class="photo-frame flow-item flow-item-2">
+              <img src="images/hero-move.jpg" alt="身体を整える動き" loading="lazy" />
+              <figcaption>動</figcaption>
+            </figure>
+            <figure class="photo-frame flow-item flow-item-3">
+              <img src="images/hero-beauty.jpg" alt="セルフケアの静かな時間" loading="lazy" />
+              <figcaption>美</figcaption>
+            </figure>
+            <figure class="photo-frame flow-item flow-item-4">
+              <img src="images/hero-mind-tea.png" alt="心を休めるお茶の時間" loading="lazy" />
+              <figcaption>心</figcaption>
+            </figure>
+            <figure class="photo-frame flow-item flow-item-5">
+              <img src="images/hero-community.png" alt="人と人がつながる場" loading="lazy" />
+              <figcaption>結</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="about" class="section about reveal">
+          <div class="section-inner about-grid">
+            <div>
+              <p class="section-label">一般社団法人 結</p>
+              <h2 class="section-title">人と人を結ぶ、健康づくりの輪。</h2>
+            </div>
+            <div class="about-body">
+              <p class="body-text">
+                理事長・渡邉裕子の管理栄養士としての実務経験と、生活者に寄り添う想いから生まれたウェルビーイング団体です。食・動・美・心の4つの視点から、講座、相談、イベント、地域連携を通じて、一人では続けにくい健康づくりを、人とのつながりの中で支えていきます。
+              </p>
+              <dl class="facts">
+                <div>
+                  <dt>正式名称</dt>
+                  <dd>一般社団法人 結</dd>
+                </div>
+                <div>
+                  <dt>設立日</dt>
+                  <dd>2024年7月29日</dd>
+                </div>
+                <div>
+                  <dt>理事長</dt>
+                  <dd>渡邉 裕子</dd>
+                </div>
+                <div>
+                  <dt>Theme</dt>
+                  <dd>食・動・美・心</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section id="elements" class="section elements reveal">
+          <div class="section-inner">
+            <div class="elements-intro">
+              <p class="section-label">食・動・美・心</p>
+              <h2 class="section-title">
+                4色の結び紐が、<br />
+                すこやかな毎日へ。
+              </h2>
+              <p class="body-text">
+                ロゴモチーフの「あわじ結び」は、食・動・美・心の4要素が互いに支え合い、一つの健やかさへと結ばれていく姿を表しています。
+              </p>
+            </div>
+            <div class="element-list">
+              <article class="element-row" style="--accent: #d8bf4f">
+                <figure class="photo-frame element-photo">
+                  <img src="images/hero-food.webp" alt="食を象徴する白いイメージ写真" loading="lazy" />
+                  <figcaption>食</figcaption>
+                </figure>
+                <div class="element-text">
+                  <span class="accent-line" aria-hidden="true"></span>
+                  <p class="element-mark">食</p>
+                  <h3>食から、暮らしへ。</h3>
+                  <p>栄養は、毎日の選択をやさしく整える入口です。</p>
+                  <div class="tag-list" aria-label="食でできること">
+                    <span>栄養講座</span>
+                    <span>食生活相談</span>
+                    <span>健康レシピ</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="element-row" style="--accent: #d7a3b5">
+                <figure class="photo-frame element-photo">
+                  <img src="images/hero-move.jpg" alt="動を象徴する白いイメージ写真" loading="lazy" />
+                  <figcaption>動</figcaption>
+                </figure>
+                <div class="element-text">
+                  <span class="accent-line" aria-hidden="true"></span>
+                  <p class="element-mark">動</p>
+                  <h3>動きから、めぐりへ。</h3>
+                  <p>無理なく続く小さな運動が、心身を目覚めさせます。</p>
+                  <div class="tag-list" aria-label="動でできること">
+                    <span>運動習慣</span>
+                    <span>健康イベント</span>
+                    <span>身体づくり</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="element-row" style="--accent: #8fb39b">
+                <figure class="photo-frame element-photo">
+                  <img src="images/hero-beauty.jpg" alt="美を象徴する白いイメージ写真" loading="lazy" />
+                  <figcaption>美</figcaption>
+                </figure>
+                <div class="element-text">
+                  <span class="accent-line" aria-hidden="true"></span>
+                  <p class="element-mark">美</p>
+                  <h3>美しさから、自信へ。</h3>
+                  <p>自分を整える時間は、心の健やかさにもつながります。</p>
+                  <div class="tag-list" aria-label="美でできること">
+                    <span>美容と健康</span>
+                    <span>セルフケア</span>
+                    <span>整え方</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="element-row" style="--accent: #7fb1cf">
+                <figure class="photo-frame element-photo">
+                  <img src="images/hero-mind-tea.png" alt="心を象徴する白いイメージ写真" loading="lazy" />
+                  <figcaption>心</figcaption>
+                </figure>
+                <div class="element-text">
+                  <span class="accent-line" aria-hidden="true"></span>
+                  <p class="element-mark">心</p>
+                  <h3>休むことから、明日へ。</h3>
+                  <p>心をゆるめる時間が、また歩き出す力になります。</p>
+                  <div class="tag-list" aria-label="心でできること">
+                    <span>休養</span>
+                    <span>睡眠</span>
+                    <span>対話の場</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="activities" class="section activities reveal">
+          <div class="section-inner activities-grid">
+            <div class="activities-copy">
+              <p class="section-label">結ができること</p>
+              <h2 class="section-title">
+                学び、体験し、<br />
+                人がつながる。
+              </h2>
+              <p class="body-text">
+                結がつくるのは、一度きりの講座ではなく、暮らしに小さな変化が残る場。学び、体験し、人とつながることで、健康づくりは少しずつ続いていきます。
+              </p>
+            </div>
+            <div class="activity-photos" aria-label="活動の空気感を表す写真">
+              <figure class="photo-frame activity-photo-large">
+                <img src="images/hero-community.png" alt="人と人がつながる食卓のイメージ" loading="lazy" />
+                <figcaption>結</figcaption>
+              </figure>
+              <figure class="photo-frame activity-photo-small">
+                <img src="images/hero-food.webp" alt="食を通じた学びのイメージ" loading="lazy" />
+                <figcaption>食</figcaption>
+              </figure>
+              <figure class="photo-frame activity-photo-wide">
+                <img src="images/hero-mind-tea.png" alt="静かな対話と休息の場のイメージ" loading="lazy" />
+                <figcaption>心</figcaption>
+              </figure>
+            </div>
+            <div class="activity-list">
+              <article class="activity-card">
+                <h3>健康講座</h3>
+                <p>管理栄養士の視点から、毎日の選択をやさしく整える学びを届けます。</p>
+              </article>
+              <article class="activity-card">
+                <h3>食生活・予防</h3>
+                <p>病気になる前のからだづくりを、暮らしに近い言葉で支えます。</p>
+              </article>
+              <article class="activity-card">
+                <h3>地域イベント</h3>
+                <p>マルシェや交流の場で、健康づくりを人とのつながりへ広げます。</p>
+              </article>
+              <article class="activity-card">
+                <h3>美容・休養</h3>
+                <p>自分を整える時間や心を休める時間を、健やかさの入口として扱います。</p>
+              </article>
+              <article class="activity-card">
+                <h3>コラボ企画</h3>
+                <p>企業、店舗、専門家と連携し、想いが続いていく場を一緒につくります。</p>
+              </article>
+              <article class="activity-card">
+                <h3>コミュニティ</h3>
+                <p>一人で頑張る健康づくりから、人と続ける健康づくりへ育てます。</p>
+              </article>
+            </div>
+            <div class="activity-cta">
+              <a class="button" href="#contact">活動について相談する</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section trust-section reveal">
+          <div class="section-inner trust-grid">
+            <div class="trust-copy">
+              <p class="section-label">なぜ、いま結なのか</p>
+              <h2 class="section-title">
+                いま、暮らしを整える力が<br />
+                必要とされています。
+              </h2>
+            </div>
+            <div class="trust-panel">
+              <div class="trust-text">
+                <p>健康情報は増えているのに、続けることは簡単ではありません。</p>
+                <p>正しい食事を知っていても、心が疲れていれば続かないことがあります。</p>
+                <p>運動が大切だと分かっていても、一人では始めにくいことがあります。</p>
+                <p>美容や自分を整える時間が、心を前向きにしてくれることもあります。</p>
+                <p>
+                  だから結は、食・動・美・心を切り離さず、人とのつながりの中で続いていく健康づくりを大切にしています。
+                </p>
+              </div>
+              <figure class="photo-frame trust-photo">
+                <img src="images/hero-mind-tea.png" alt="静かに心を休めるお茶の時間" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 理事長写真はこのセクションだけで使っています -->
+        <section id="profile" class="section profile-section reveal">
+          <div class="section-inner profile-grid">
+            <figure class="profile-portrait">
+              <img src="images/director-watanabe-upload.jpg" alt="一般社団法人 結 理事長 渡邉裕子のプロフィール写真" loading="lazy" />
+            </figure>
+            <div class="profile-body">
+              <p class="section-label">理事長メッセージ</p>
+              <h2 class="section-title">
+                暮らしに寄り添い、<br />
+                健康づくりの輪を結ぶ。
+              </h2>
+              <p class="profile-name">
+                渡邉 裕子
+                <span>一般社団法人 結 理事長 / 管理栄養士</span>
+              </p>
+              <div class="profile-text">
+                <p>2015年、仙台白百合女子大学 人間学部 健康栄養学科を卒業。</p>
+                <p>管理栄養士として病院に勤務し、給食管理・衛生管理・臨床栄養業務・栄養指導に従事しました。</p>
+                <p>
+                  その後、調剤薬局にて健康相談や健康セミナー講師を担当。病気になった後の支援だけでなく、病気になる前の予防や、地域に寄り添った健康づくりの大切さを学びました。
+                </p>
+                <p>
+                  2020年より名古屋へ移住。フリーランス管理栄養士として特定保健指導に携わるほか、接客・サービス・店舗運営、健康を届けるための場づくりや伝え方にも取り組んでいます。
+                </p>
+                <p>
+                  2024年7月、一般社団法人 結を設立。現在は「食・動・美・心」をテーマに、健康寿命の延伸、地域の健康づくり、人と人がつながるコミュニティづくりに取り組んでいます。
+                </p>
+              </div>
+              <div class="message-box">
+                <p>食べること、動くこと、自分を整えること、心を休めること。その一つひとつが響き合うことで、総合的な健やかさは育まれていく。</p>
+                <p>一般社団法人 結は、地域や人とのつながりの中で、一人ひとりが自分らしく健やかに生きるための輪を広げていきます。</p>
+                <p>皆さまと、健やかな未来を結んでいきます。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="partnership" class="section partnership-section reveal">
+          <div class="section-inner partnership-grid">
+            <div class="partnership-copy">
+              <p class="section-label">ともにつくる健康づくり</p>
+              <h2 class="section-title">
+                食・動・美・心 × 地域で、<br />
+                新しい健康づくりを。
+              </h2>
+              <p>
+                専門家、地域、参加者を結び、想いが一度きりで終わらない場へ。講座や地域連携など、小さな相談から一緒に整えます。
+              </p>
+            </div>
+            <div class="partnership-list">
+              <article class="partnership-card" style="--accent: #d8bf4f"><span></span><p>結 × 地域イベント</p></article>
+              <article class="partnership-card" style="--accent: #d7a3b5"><span></span><p>結 × 企業</p></article>
+              <article class="partnership-card" style="--accent: #8fb39b"><span></span><p>結 × 美容サロン</p></article>
+              <article class="partnership-card" style="--accent: #7fb1cf"><span></span><p>結 × 医療・福祉</p></article>
+              <article class="partnership-card" style="--accent: #d8bf4f"><span></span><p>結 × 学校</p></article>
+              <article class="partnership-card" style="--accent: #d7a3b5"><span></span><p>結 × マルシェ</p></article>
+              <article class="partnership-card" style="--accent: #8fb39b"><span></span><p>結 × 店舗</p></article>
+              <article class="partnership-card" style="--accent: #7fb1cf"><span></span><p>結 × 情報発信</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="contact reveal">
+          <div class="contact-inner">
+            <p class="section-label">お問い合わせ</p>
+            <h2 class="contact-title">
+              小さな相談から、<br />
+              一緒に結んでいく。
+            </h2>
+            <p class="contact-lead">相談できること</p>
+            <div class="consult-list">
+              <span>健康講座を開催したい</span>
+              <span>食や栄養のセミナーを依頼したい</span>
+              <span>地域イベントで健康企画を行いたい</span>
+              <span>美容・健康・休養をテーマに連携したい</span>
+              <span>一般社団法人 結と一緒に企画をつくりたい</span>
+            </div>
+            <a class="button" href="mailto:tcgmusubu@gmail.com">お問い合わせする</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <img class="footer-logo" src="images/logo-musubu-full.png" alt="一般社団法人 結 General Incorporated Association MUSUBU ロゴ" loading="lazy" />
+        <small>General Incorporated Association MUSUBU</small>
+      </footer>
+    </div>
+
+    <script>
+      const targets = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      targets.forEach((target) => observer.observe(target));
+    </script>
+  </body>
+</html>
