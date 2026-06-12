@@ -9,16 +9,6 @@ const nextConfig = {
       }
     ];
   },
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-source: "/",
-destination: "/index.html"
-        }
-      ]
-    };
-  },
   experimental: {
     cpus: 1,
     parallelServerBuildTraces: false,
