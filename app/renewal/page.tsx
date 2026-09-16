@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "一般社団法人 結 / MUSUBU — 暮らしを整え、人と人を結ぶ。",
   description: "食・動・美・心の調和から、健やかな毎日へ。一般社団法人 結は、管理栄養士の専門性を軸に、地域・企業・専門家と健康づくりの輪を育てます。",
   robots: { index: false, follow: false },
-  icons: { icon: "/images/logo-musubu-mark-transparent.png" }
+  icons: { icon: "/images/renewal-musubu-mark.png" }
 };
 
 const nav = [["about", "結の想い"], ["elements", "食・動・美・心"], ["activities", "できること"], ["message", "代表メッセージ"]];
@@ -28,7 +28,7 @@ const services = [
 ];
 function Label({children}:{children:React.ReactNode}) {return <p className={s.label}>{children}</p>;}
 function Photo({src,alt,className="",priority=false}:{src:string;alt:string;className?:string;priority?:boolean}) {return <div className={`${s.photo} ${className}`}><Image src={`/images/${src}`} alt={alt} fill sizes="(max-width: 700px) 100vw, 55vw" priority={priority}/></div>;}
-function Mark({className=""}:{className?:string}) {return <Image className={className} src="/images/logo-musubu-mark-transparent.png" width={190} height={105} alt=""/>;}
+function Mark({className=""}:{className?:string}) {return <Image className={className} src="/images/renewal-musubu-mark.png" width={190} height={105} alt=""/>;}
 
 export default function RenewalPage(){return <div className={s.page} id="top">
   <a className={s.skip} href="#main">本文へ移動</a>
@@ -58,5 +58,6 @@ export default function RenewalPage(){return <div className={s.page} id="top">
     <section id="organization" className={`${s.section} ${s.organization}`}><div><Label>09 — ORGANIZATION</Label><h2>結について</h2></div><dl>{[["法人名","一般社団法人 結（むすぶ）"],["英字表記","MUSUBU"],["設立","2024年7月29日"],["理事長","渡邉 裕子"],["主なテーマ","食・動・美・心"],["主な活動","健康講座、食生活相談、地域イベント、企業・店舗との連携、美容・休養に関する企画、コミュニティづくり"]].map(([t,d])=><div key={t}><dt>{t}</dt><dd>{d}</dd></div>)}</dl></section>
   </main><footer className={s.footer}><div><Mark/><p>食べること。動くこと。<br/>整えること。休むこと。</p><p>人とのつながりの中で、<br/>健やかな毎日を結んでいく。</p></div><div className={s.footerLinks}><a href="#about">結の想い</a><a href="#activities">結ができること</a><a href="#reports">活動レポート</a><a href="#organization">法人概要</a><a href="#contact">お問い合わせ</a><a href="https://www.instagram.com/musubu_kenkou/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://x.com/musubu_kenkou" target="_blank" rel="noopener noreferrer">X ↗</a></div><div className={s.footerBottom}><span>一般社団法人 結 / MUSUBU</span><small>© MUSUBU</small><a href="#top">ページの先頭へ ↑</a></div></footer>
 </div>;}
+
 
 
