@@ -29,7 +29,7 @@ export default function Opening() {
       el.dataset.still=String(reduced);
       if(!reduced){
         const vh=innerHeight;
-        if(hero){const r=hero.getBoundingClientRect();hero.style.setProperty("--drift",`${clamp(-r.top/r.height)*60}px`);}
+        if(hero){const r=hero.getBoundingClientRect();hero.style.setProperty("--drift",`${clamp(-r.top/r.height)*80}px`);hero.style.setProperty("--hero-progress",String(clamp(-r.top/r.height)));}
         if(scene){const r=scene.getBoundingClientRect();const p=clamp(-r.top/Math.max(1,r.height-vh));
           scene.style.setProperty("--open",String(ease(clamp(p/.62))));
           scene.style.setProperty("--first",String(1-ease(clamp((p-.28)/.2))));
@@ -49,7 +49,7 @@ export default function Opening() {
   return <div ref={ref} className={s.opening}>
     <section data-opening-hero className={s.hero} aria-labelledby="opening-title">
       <div className={s.heroImage}>
-        <Image src="/images/rice-original-may19.png" fill priority sizes="(max-width: 760px) 100vw, 65vw" alt="光を含んだ白い米粒の重なり"/>
+        <Image src="/images/rice-hero-v2.png" fill priority sizes="100vw" alt="光を含んだ白い米粒の重なり"/>
         <div className={s.imageNotation} aria-hidden="true">THE BEGINNING OF EVERYDAY WELLBEING</div>
       </div>
       <div className={s.heroText}>
@@ -85,7 +85,7 @@ export default function Opening() {
 
     <section data-table-scene className={s.tableScene} aria-labelledby="table-title">
       <div className={s.tableHeading}><span className={s.eyebrow}>AROUND THE TABLE</span><span className={s.smallIndex}>03 / 食卓から、つながりへ。</span></div>
-      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-dining-edited.png" fill sizes="100vw" alt="自然光が差す部屋で、3人が食卓を囲むイメージ（提供写真をAI加工）"/></div><figcaption>食卓を囲むイメージ / 提供写真をAI加工</figcaption></figure>
+      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-dining-edited.png" fill sizes="100vw" alt="自然光が差す部屋で、3人が食卓を囲むイメージ"/></div><figcaption>食べること。話すこと。つながること。</figcaption></figure>
       <div className={s.tableCopy}><div><p className={s.tableEnglish} aria-hidden="true">Better,<br/><em>together.</em></p><h2 id="table-title">誰かと囲む食卓に、<br/>健やかな明日の種がある。</h2></div><div className={s.tableBody}><p>食べること。話すこと。<br/>一緒に、笑うこと。</p><p>何気ない時間の中にある、<br/>人と人のつながりを大切に。</p><a className={s.roundLink} href="#elements">食・動・美・心を知る <span aria-hidden="true">↗</span></a></div></div>
     </section>
     <div className={s.transition}><span>EVERYDAY WELLBEING, TOGETHER.</span><span className={s.dots} aria-hidden="true"><i/><i/><i/><i/></span><span>ここから、結の健康づくり。</span></div>
