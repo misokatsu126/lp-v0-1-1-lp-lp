@@ -168,3 +168,42 @@
 .thread path:nth-child(3),.manifestoThread path:nth-child(3){opacity:.85}
 .thread path:nth-child(4),.manifestoThread path:nth-child(4){opacity:.8}
 @media(prefers-reduced-motion:reduce){.opening .manifestoThread path{stroke-dashoffset:0!important}}
+/* A quieter editorial rhythm, inspired by the space between moving scenes. */
+.experience .tableScene{background:#f0f1e9;padding-top:65px}
+.experience .tableImage{height:auto;aspect-ratio:16/9;border-radius:2px}
+.experience .tableImage img{object-position:center;transform:translateY(var(--table-drift,0px)) scale(1.035)}
+.experience .tableEnglish{font-size:clamp(44px,5vw,76px);color:#6b7864}
+.experience .tableCopy h2{font-family:'Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;font-weight:500;font-size:clamp(24px,2.3vw,34px);letter-spacing:.055em}
+.experience [data-layout=circle]{display:none}
+.healthBridge{padding:130px 8% 115px;text-align:center;background:linear-gradient(#f0f1e9,#edf0e5 60%,#f3f1e9);overflow:hidden}
+.healthBridge h2{font:500 clamp(28px,3vw,43px)/1.85 'Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;letter-spacing:.06em;margin:35px 0 0}
+.bridgeDrawing{position:relative;max-width:740px;margin:35px auto 20px;height:170px}
+.bridgeThread{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.bridgeThread path{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--unfold,1))}
+.bridgeElements{display:flex;justify-content:center;gap:42px;position:relative;padding-top:45px}
+.bridgeElements span{width:66px;height:66px;display:grid;place-items:center;border-radius:50%;border:1px solid #b4b9a7;background:#f4f4ebeb;font-size:19px;color:#8f793c;transform:translateY(calc((1 - var(--unfold,1))*(20px + var(--order)*9px)));opacity:var(--unfold,1)}
+.bridgeElements span:nth-child(2){color:#a16f64}.bridgeElements span:nth-child(3){color:#647c60}.bridgeElements span:nth-child(4){color:#657f8a}
+.bridgeCopy{font-size:15px;line-height:2.5;letter-spacing:.08em}
+.bridgeNote{font-size:12px;line-height:2.2;color:#717b6c;margin-top:25px}
+.experience [data-layout] h2,.experience [data-story] h3{font-family:'Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;font-weight:500;letter-spacing:.045em}
+.experience [data-layout=elements]{padding-top:80px}
+.opening[data-still=true] .bridgeElements span,.opening:not([data-enhanced=true]) .bridgeElements span{opacity:1;transform:none}
+.opening[data-still=true] .bridgeThread path{stroke-dashoffset:0}
+@media(max-width:760px){
+.experience .tableScene{padding:35px 5% 65px}
+.experience .tableImage{height:auto;aspect-ratio:16/10}
+.experience .tableImage img{object-position:50% center;transform:none}
+.experience .tableEnglish{font-size:48px;line-height:1.06}
+.experience .tableCopy h2{font-size:22px;line-height:1.9}
+.healthBridge{padding:80px 6% 65px}
+.healthBridge h2{font-size:23px;letter-spacing:.015em;line-height:1.95;margin-top:25px}
+.healthBridge .eyebrow{font-size:8px}
+.bridgeDrawing{height:130px;margin:25px auto 15px}
+.bridgeElements{gap:17px;padding-top:32px}
+.bridgeElements span{width:50px;height:50px;font-size:16px}
+.bridgeCopy{font-size:12px;line-height:2.45}
+.bridgeNote{font-size:10px;margin-top:22px}
+.experience [data-layout=elements]{padding-top:50px}
+}
+@media(prefers-reduced-motion:reduce){.bridgeThread path{stroke-dashoffset:0!important}.bridgeElements span{opacity:1!important;transform:none!important}}
+@media(max-width:760px){.healthBridge h2{font-size:20px;letter-spacing:0;line-height:1.95}}

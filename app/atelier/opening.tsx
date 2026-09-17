@@ -21,6 +21,7 @@ export default function Opening() {
     const scene=el.querySelector<HTMLElement>("[data-grain-scene]");
     const hero=el.querySelector<HTMLElement>("[data-opening-hero]");
     const table=el.querySelector<HTMLElement>("[data-table-scene]");
+    const bridge=el.querySelector<HTMLElement>("[data-health-bridge]");
     const philosophy=el.querySelector<HTMLElement>("#about");
     const query=matchMedia("(prefers-reduced-motion: reduce)");
     let frame=0;
@@ -38,6 +39,7 @@ export default function Opening() {
           scene.style.setProperty("--thread",String(ease(clamp((p-.4)/.55))));
         }
         if(table){const r=table.getBoundingClientRect();const p=clamp((vh-r.top)/(vh+r.height));table.style.setProperty("--table-drift",`${(p-.5)*36}px`);}
+        if(bridge){const r=bridge.getBoundingClientRect();bridge.style.setProperty("--unfold",String(ease(clamp((vh-r.top)/(vh*.85)))));}
         if(philosophy){const r=philosophy.getBoundingClientRect();philosophy.style.setProperty("--connection",String(ease(clamp((vh-r.top)/(vh*.85)))));}
       }
     };
@@ -87,9 +89,15 @@ export default function Opening() {
 
     <section data-table-scene className={s.tableScene} aria-labelledby="table-title">
       <div className={s.tableHeading}><span className={s.eyebrow}>AROUND THE TABLE</span><span className={s.smallIndex}>03 / 食卓から、つながりへ。</span></div>
-      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-dining-ivory-v2.png" fill sizes="100vw" alt="自然光が差す部屋で、3人が食卓を囲むイメージ"/></div><figcaption>食べること。話すこと。つながること。</figcaption></figure>
+      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-table-four-v3.png" fill sizes="100vw" alt="自然光が差す部屋で、4人が食卓を囲むイメージ"/></div><figcaption>食べること。話すこと。つながること。</figcaption></figure>
       <div className={s.tableCopy}><div><p className={s.tableEnglish} aria-hidden="true">Better,<br/><em>together.</em></p><h2 id="table-title">誰かと囲む食卓に、<br/>健やかな明日の種がある。</h2></div><div className={s.tableBody}><p>食べること。話すこと。<br/>一緒に、笑うこと。</p><p>何気ない時間の中にある、<br/>人と人のつながりを大切に。</p><a className={s.roundLink} href="#elements">食・動・美・心を知る <span aria-hidden="true">↗</span></a></div></div>
     </section>
-    <div className={s.transition}><span>EVERYDAY WELLBEING, TOGETHER.</span><span className={s.dots} aria-hidden="true"><i/><i/><i/><i/></span><span>ここから、結の健康づくり。</span></div>
+    <section data-health-bridge className={s.healthBridge} aria-labelledby="health-bridge-title">
+      <p className={s.eyebrow}>FOUR ELEMENTS, ONE EVERYDAY.</p>
+      <h2 id="health-bridge-title" data-reveal="text">健康は、食事だけで<br/>できているわけではありません。</h2>
+      <div className={s.bridgeDrawing}><Thread className={s.bridgeThread}/><div className={s.bridgeElements}>{["食","動","美","心"].map((label,i)=><span key={label} style={{"--order":i} as React.CSSProperties}>{label}</span>)}</div></div>
+      <p className={s.bridgeCopy}>食べること。身体を動かすこと。<br/>自分を整えること。心を休めること。<br/>そのすべてを、人とのつながりの中で。</p>
+      <p className={s.bridgeNote}>管理栄養士の専門性を軸に、<br/>地域・企業・専門家と、続けられる健康づくりを。</p>
+    </section>
   </div>;
 }
