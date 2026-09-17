@@ -257,3 +257,65 @@
 .cinemaServing{opacity:calc(var(--serving)*(1 - var(--dining)))}
 .opening[data-still=true] .cinemaRice{opacity:1}
 @media(prefers-reduced-motion:reduce){.cinemaRice{opacity:1!important}}
+/* Reading rhythm: body copy, supporting labels, and headings have distinct roles. */
+.experience p{line-break:strict;overflow-wrap:anywhere}
+.experience h2,.experience h3{text-wrap:balance;line-break:strict}
+.experience .manifesto h2>span{display:block}
+.experience .manifestoCopy{font-size:16px;line-height:2.05;letter-spacing:.025em;max-width:34em}
+.experience .manifestoCopy p+p{margin-top:1.6em}
+.experience .manifestoCopy .manifestoSign{font-size:12px;margin-top:2.5em}
+.experience .healthBridge{padding-block:100px 85px}
+.experience .healthBridge h2>span{display:inline-block}
+.experience .healthBridge h2>span:first-child{display:block}
+.experience .bridgeCopy{font-size:16px;line-height:2;letter-spacing:.04em}
+.experience [data-layout] h2{line-height:1.65;letter-spacing:.035em;margin-bottom:28px}
+.experience [data-layout] p:not(:first-child){font-size:16px;line-height:2.05;letter-spacing:.02em}
+.experience [data-layout] [data-story]>p{font-size:16px!important;line-height:2.05!important;max-width:32em}
+.experience [data-layout] [data-story]>p:last-child{font-size:12px!important;line-height:1.85!important;margin-top:24px}
+.experience [data-layout=activities] article{grid-template-columns:35px minmax(190px,.8fr) minmax(290px,1.3fr);padding-block:38px;gap:14px 30px}
+.experience [data-layout=activities] article p{font-size:15px;line-height:2;max-width:36em}
+.experience [data-layout=activities] article a{font-size:12px;padding-block:10px}
+.experience [data-layout=director]>div:last-child>p:not(:first-child){font-size:16px!important;line-height:2.05;max-width:35em;margin-block:0 1.5em}
+.experience [data-layout=director] details{font-size:14px;line-height:1.95;margin-top:35px}
+.experience [data-layout=partnership]>div:first-child>p{max-width:34em;line-height:2.05}
+.experience [data-layout=partnership]>div:last-child p{font-size:14px;line-height:1.9}
+.experience [data-layout=journal]>div:last-child p{font-size:15px;line-height:2}
+.experience [data-layout=contact] form p{font-size:15px;line-height:1.95}
+.experience [data-layout=contact] form small{font-size:12px;line-height:1.8}
+.experience [data-layout=contact] form label,.experience [data-layout=contact] form legend{font-size:14px;line-height:1.8}
+.experience [data-layout=contact] input,.experience [data-layout=contact] textarea,.experience [data-layout=contact] select{font-size:16px;line-height:1.6}
+.experience [data-layout=contact] form button{font-size:13px;min-height:44px}
+.experience [data-layout=organization] dl>div{font-size:14px;line-height:1.9}
+.experience .cinemaTableCopy p{font-size:clamp(28px,3.1vw,46px);letter-spacing:.035em;line-height:1.8}
+@media(max-width:760px){
+.experience .cinemaIntro>p:not(.eyebrow){font-size:14px;line-height:2}
+.experience .cinemaTableCopy{left:7%;right:5%;bottom:16%}
+.experience .cinemaTableCopy p{font-size:clamp(20px,5.8vw,25px);line-height:1.9;letter-spacing:0}
+.experience .cinemaServingCopy p{font-size:24px;line-height:1.85}
+.experience .manifestoCopy{font-size:15px;line-height:2.05;margin-left:5%;max-width:30em;letter-spacing:.015em}
+.desktopLine{display:none}
+.experience .manifesto h2{font-size:28px;line-height:1.75;letter-spacing:.025em}
+.experience .healthBridge{padding:70px 7% 55px}
+.experience .healthBridge h2{font-size:25px;line-height:1.75;letter-spacing:.02em}
+.experience .healthBridge h2>span{display:block}
+.experience .bridgeCopy{font-size:15px;line-height:2}
+.experience [data-layout] h2{font-size:26px;line-height:1.7;letter-spacing:.015em}
+.experience [data-layout] p:not(:first-child){font-size:15px;line-height:2.05}
+.experience [data-layout] [data-story]>p{font-size:15px!important;line-height:2.05!important}
+.experience [data-layout] [data-story]>p:last-child{font-size:12px!important}
+.experience [data-layout=activities] article{grid-template-columns:23px minmax(0,1fr);gap:12px;padding-block:30px}
+.experience [data-layout=activities] article h3{font-size:20px;line-height:1.6}
+.experience [data-layout=activities] article p{font-size:15px;line-height:2.05}
+.experience [data-layout=activities] article a{font-size:12px;line-height:1.8}
+.experience [data-layout=director]>div:last-child>p:not(:first-child){font-size:15px!important;line-height:2.05}
+.experience [data-layout=journal]>div:last-child p{font-size:15px;line-height:2}
+.experience [data-layout=partnership]>div:last-child p{font-size:14px;line-height:1.9}
+.experience [data-layout=contact] form{padding:25px 18px}
+.experience [data-layout=contact] form p{font-size:14px}
+.experience [data-layout=organization] dl>div{font-size:14px;line-height:1.9}
+}
+.meaningLine{display:block;text-wrap:balance}
+@media(max-width:760px){.experience .manifestoCopy{margin-left:0}.experience [data-layout=contact]>div:first-child>p{max-width:30em}}
+.experience [data-layout]>div:first-child>p:not(:first-child){font-size:16px;line-height:2.05;letter-spacing:.02em}
+.experience [data-layout=contact] form>p{font-size:15px;line-height:1.95}
+@media(max-width:760px){.experience [data-layout]>div:first-child>p:not(:first-child){font-size:15px;line-height:2.05}.experience [data-layout=contact] form>p{font-size:14px;line-height:1.95}}
