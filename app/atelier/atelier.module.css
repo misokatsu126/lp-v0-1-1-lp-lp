@@ -161,3 +161,10 @@
 }
 @media(prefers-reduced-motion:reduce){.experience .heroImage{clip-path:none}.experience .heroImage img,.experience .heroText{transform:none}}
 .opening[data-still=true] .heroImage{clip-path:none}.opening[data-still=true] .heroImage img,.opening[data-still=true] .heroText{transform:none}
+/* Four strands draw into a rice-shaped connection as the philosophy arrives. */
+.opening[data-enhanced=true][data-still=false] .manifestoThread path{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--connection,0))}
+.manifestoThread{overflow:visible}
+.thread path:nth-child(2),.manifestoThread path:nth-child(2){opacity:.9}
+.thread path:nth-child(3),.manifestoThread path:nth-child(3){opacity:.85}
+.thread path:nth-child(4),.manifestoThread path:nth-child(4){opacity:.8}
+@media(prefers-reduced-motion:reduce){.opening .manifestoThread path{stroke-dashoffset:0!important}}

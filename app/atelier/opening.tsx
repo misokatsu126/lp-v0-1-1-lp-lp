@@ -9,7 +9,7 @@ const ease = (n:number) => n*n*(3-2*n);
 
 function Thread({className=""}:{className?:string}) {
   return <svg className={className} viewBox="0 0 800 260" fill="none" aria-hidden="true">
-    {["#c2a35e","#bd8173","#83967a","#7e9daa"].map((color,i)=><path key={color} pathLength="1" stroke={color} strokeWidth="1.3" d={`M -25 ${205+i*7} C 150 ${205+i*7}, 240 ${15+i*7}, 372 ${38+i*7} C 560 ${72+i*7}, 430 ${265-i*7}, 316 ${179-i*7} C 205 ${105-i*7}, 583 ${-17+i*7}, 825 ${84+i*7}`}/>)}
+    {["#c2a35e","#bd8173","#83967a","#7e9daa"].map((color,i)=><path key={color} pathLength="1" stroke={color} strokeWidth="1.4" strokeLinecap="round" vectorEffect="non-scaling-stroke" d={`M -25 ${205+i*6} C 130 ${215+i*6}, 206 ${48+i*5}, 366 ${38+i*5} C 504 ${28+i*5}, 486 ${217-i*5}, 366 ${207-i*5} C 228 ${197-i*5}, 270 ${67+i*5}, 404 ${75+i*5} C 552 ${83+i*5}, 573 ${232-i*5}, 825 ${90+i*5}`}/>)}
   </svg>;
 }
 
@@ -21,6 +21,7 @@ export default function Opening() {
     const scene=el.querySelector<HTMLElement>("[data-grain-scene]");
     const hero=el.querySelector<HTMLElement>("[data-opening-hero]");
     const table=el.querySelector<HTMLElement>("[data-table-scene]");
+    const philosophy=el.querySelector<HTMLElement>("#about");
     const query=matchMedia("(prefers-reduced-motion: reduce)");
     let frame=0;
     const render=()=>{
@@ -37,6 +38,7 @@ export default function Opening() {
           scene.style.setProperty("--thread",String(ease(clamp((p-.4)/.55))));
         }
         if(table){const r=table.getBoundingClientRect();const p=clamp((vh-r.top)/(vh+r.height));table.style.setProperty("--table-drift",`${(p-.5)*36}px`);}
+        if(philosophy){const r=philosophy.getBoundingClientRect();philosophy.style.setProperty("--connection",String(ease(clamp((vh-r.top)/(vh*.85)))));}
       }
     };
     const schedule=()=>{if(!frame)frame=requestAnimationFrame(render);};
@@ -67,7 +69,7 @@ export default function Opening() {
       <div className={s.grainSticky}>
         <div className={s.chapter}><span>01 / THE EVERYDAY</span><span>一粒から、はじまる。</span></div>
         <span className={s.backWord} aria-hidden="true">Nourish.</span>
-        <div className={s.servingImage}><Image src="/images/rice-serving-morning.png" fill sizes="100vw" alt="朝の光の中、器へ温かいごはんをよそう手元のイメージ"/></div>
+        <div className={s.servingImage}><Image src="/images/rice-serving-ivory-v2.png" fill sizes="100vw" alt="朝の光の中、器へ温かいごはんをよそう手元のイメージ"/></div>
         <div className={s.grainFirst}><span className={s.smallIndex}>A GRAIN</span><h2 id="grain-title">一粒の、その先に。</h2><p>いつものごはん。<br/>いつもの「いただきます」。</p></div>
         <div className={s.grainSecond}><p className={s.eyebrow}>SMALL MOMENTS, LASTING CONNECTIONS.</p><h2>健やかさは、<br/>何気ない日々の中に。</h2></div>
         <Thread className={s.thread}/>
@@ -85,7 +87,7 @@ export default function Opening() {
 
     <section data-table-scene className={s.tableScene} aria-labelledby="table-title">
       <div className={s.tableHeading}><span className={s.eyebrow}>AROUND THE TABLE</span><span className={s.smallIndex}>03 / 食卓から、つながりへ。</span></div>
-      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-dining-edited.png" fill sizes="100vw" alt="自然光が差す部屋で、3人が食卓を囲むイメージ"/></div><figcaption>食べること。話すこと。つながること。</figcaption></figure>
+      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-dining-ivory-v2.png" fill sizes="100vw" alt="自然光が差す部屋で、3人が食卓を囲むイメージ"/></div><figcaption>食べること。話すこと。つながること。</figcaption></figure>
       <div className={s.tableCopy}><div><p className={s.tableEnglish} aria-hidden="true">Better,<br/><em>together.</em></p><h2 id="table-title">誰かと囲む食卓に、<br/>健やかな明日の種がある。</h2></div><div className={s.tableBody}><p>食べること。話すこと。<br/>一緒に、笑うこと。</p><p>何気ない時間の中にある、<br/>人と人のつながりを大切に。</p><a className={s.roundLink} href="#elements">食・動・美・心を知る <span aria-hidden="true">↗</span></a></div></div>
     </section>
     <div className={s.transition}><span>EVERYDAY WELLBEING, TOGETHER.</span><span className={s.dots} aria-hidden="true"><i/><i/><i/><i/></span><span>ここから、結の健康づくり。</span></div>
