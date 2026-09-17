@@ -209,3 +209,51 @@
 @media(max-width:760px){.healthBridge h2{font-size:20px;letter-spacing:0;line-height:1.95}}
 .experience .healthBridge h2{font:500 clamp(28px,3vw,43px)/1.85 'Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;letter-spacing:.06em}
 @media(max-width:760px){.experience .healthBridge h2{font-size:20px;letter-spacing:0;line-height:1.95}}
+/* One continuous opening, controlled by reading pace. */
+.cinema{--serving:0;--dining:0;--release:0;--travel:0;--opening-copy:1;--serving-copy:0;--dining-copy:0;position:relative;background:#f3f1e9;height:300svh}
+.cinemaStage{position:sticky;top:0;height:100svh;min-height:640px;overflow:hidden;isolation:isolate}
+.cinemaRice,.cinemaServing,.cinemaTable{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.cinemaRice img,.cinemaServing img,.cinemaTable img{object-fit:cover}
+.cinemaRice img{transform:scale(calc(1.035 + var(--travel)*.04))}
+.cinemaRice:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#f3f1e980,transparent 70%)}
+.cinemaServing{opacity:var(--serving)}
+.cinemaServing img{transform:scale(calc(1.06 - var(--serving)*.06))}
+.cinemaServing:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#f3f1e9ad,transparent 70%)}
+.cinemaTable{opacity:var(--dining);clip-path:inset(calc(var(--release)*5%) calc(var(--release)*4%) round calc(var(--release)*8px))}
+.cinemaTable img{transform:scale(calc(1.04 - var(--dining)*.04));object-position:center 40%}
+.cinemaTable:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#17251b9c,transparent 65%);opacity:calc(1 - var(--release)*.35)}
+.cinemaIntro{position:absolute;left:6%;top:32%;opacity:var(--opening-copy);transform:translateY(calc((1 - var(--opening-copy))*-25px));z-index:2}
+.experience .cinemaIntro h1{font:400 clamp(38px,4.4vw,67px)/1.7 'Yu Mincho','Hiragino Mincho ProN',serif;letter-spacing:.1em;margin:27px 0}
+.cinemaIntro>p:not(.eyebrow){font-size:14px;line-height:2.2}
+.cinemaServingCopy,.cinemaTableCopy{position:absolute;z-index:2;pointer-events:none}
+.cinemaServingCopy{top:43%;left:7%;opacity:var(--serving-copy);transform:translateY(calc((1 - var(--serving-copy))*18px))}
+.cinemaTableCopy{bottom:13%;left:8%;color:#fffdf5;opacity:var(--dining-copy);transform:translateY(calc((1 - var(--dining-copy))*20px));text-shadow:0 2px 20px #14211955}
+.cinemaServingCopy>span,.cinemaTableCopy>span{font:10px/1.8 Arial,sans-serif;letter-spacing:.16em}
+.experience .cinemaServingCopy p,.experience .cinemaTableCopy p{font:400 clamp(30px,3.4vw,49px)/1.85 'Yu Mincho','Hiragino Mincho ProN',serif;letter-spacing:.08em;margin-top:18px}
+.cinemaFooter{position:absolute;bottom:28px;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;font:9px Arial,sans-serif;letter-spacing:.14em;color:#495744;opacity:calc(1 - var(--dining)*.9)}
+.cinemaFooter>div{display:flex;gap:8px}.cinemaFooter i{width:30px;height:2px;background:#65785d55}.cinemaFooter i:first-child{background:#65785d}.cinemaFooter i:nth-child(2){opacity:var(--serving)}.cinemaFooter i:nth-child(3){opacity:var(--dining)}
+@media(max-width:760px){
+.cinema{height:235svh}.cinemaStage{min-height:640px}
+.cinemaIntro{left:7%;right:5%;top:32%}
+.experience .cinemaIntro h1{font-size:clamp(30px,8.4vw,39px);line-height:1.9;letter-spacing:.04em;margin:23px 0}
+.cinemaIntro .eyebrow{font-size:8px;letter-spacing:.08em}.cinemaIntro>p:not(.eyebrow){font-size:12px}.cinemaIntro .roundLink{margin-top:25px}
+.cinemaRice img{object-position:64% center}.cinemaServing img{object-position:62% center}
+.cinemaServingCopy{left:7%;top:58%;right:5%;background:#f3f1e9d9;padding:20px 15px}
+.experience .cinemaServingCopy p{font-size:24px;letter-spacing:.035em;margin-top:10px}
+.cinemaTable{background:#e9ece1}.cinemaTable img{object-fit:contain;object-position:center 32%;transform:none}
+.cinemaTable:after{background:linear-gradient(0deg,#dce2d4,transparent 45%)}
+.cinemaTableCopy{left:8%;bottom:17%;color:#344333;text-shadow:none}
+.experience .cinemaTableCopy p{font-size:28px;line-height:1.85;margin-top:12px}
+.cinemaFooter{font-size:8px;bottom:33px}
+}
+.opening:not([data-enhanced=true]) .cinema,.opening[data-still=true] .cinema{height:100svh;min-height:690px}
+.opening:not([data-enhanced=true]) .cinemaStage,.opening[data-still=true] .cinemaStage{position:relative;height:100%;min-height:690px}
+.opening[data-still=true] .cinemaIntro{opacity:1;transform:none}
+.opening[data-still=true] .cinemaServing,.opening[data-still=true] .cinemaTable,.opening[data-still=true] .cinemaServingCopy,.opening[data-still=true] .cinemaTableCopy{display:none}
+.opening[data-still=true] .cinemaRice img{transform:none}
+@media(prefers-reduced-motion:reduce){.cinema{height:100svh;min-height:690px}.cinemaStage{position:relative;min-height:690px}.cinemaIntro{opacity:1!important;transform:none!important}.cinemaServing,.cinemaTable,.cinemaServingCopy,.cinemaTableCopy{display:none}.cinemaRice img{transform:none}}
+/* Reveal the page's paper colour, not the previous scene, around the final photo. */
+.cinemaRice{opacity:calc(1 - var(--dining))}
+.cinemaServing{opacity:calc(var(--serving)*(1 - var(--dining)))}
+.opening[data-still=true] .cinemaRice{opacity:1}
+@media(prefers-reduced-motion:reduce){.cinemaRice{opacity:1!important}}

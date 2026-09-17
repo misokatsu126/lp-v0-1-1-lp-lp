@@ -18,9 +18,7 @@ export default function Opening() {
   useEffect(()=>{
     const el=ref.current;if(!el)return;
     const root=document.getElementById("top");
-    const scene=el.querySelector<HTMLElement>("[data-grain-scene]");
-    const hero=el.querySelector<HTMLElement>("[data-opening-hero]");
-    const table=el.querySelector<HTMLElement>("[data-table-scene]");
+    const scene=el.querySelector<HTMLElement>("[data-cinema]");
     const bridge=el.querySelector<HTMLElement>("[data-health-bridge]");
     const philosophy=el.querySelector<HTMLElement>("#about");
     const query=matchMedia("(prefers-reduced-motion: reduce)");
@@ -29,16 +27,18 @@ export default function Opening() {
       frame=0;
       const reduced=query.matches||root?.dataset.motion==="off";
       el.dataset.still=String(reduced);
+      if(reduced){const copy=scene?.querySelector<HTMLElement>("[data-intro-copy]");if(copy)copy.inert=false;}
       if(!reduced){
         const vh=innerHeight;
-        if(hero){const r=hero.getBoundingClientRect();hero.style.setProperty("--drift",`${clamp(-r.top/r.height)*80}px`);hero.style.setProperty("--hero-progress",String(clamp(-r.top/r.height)));}
         if(scene){const r=scene.getBoundingClientRect();const p=clamp(-r.top/Math.max(1,r.height-vh));
-          scene.style.setProperty("--open",String(ease(clamp(p/.62))));
-          scene.style.setProperty("--first",String(1-ease(clamp((p-.28)/.2))));
-          scene.style.setProperty("--second",String(ease(clamp((p-.49)/.2))));
-          scene.style.setProperty("--thread",String(ease(clamp((p-.4)/.55))));
+          const serving=ease(clamp((p-.13)/.22));const dining=ease(clamp((p-.5)/.23));const release=ease(clamp((p-.8)/.2));
+          scene.style.setProperty("--serving",String(serving));scene.style.setProperty("--dining",String(dining));scene.style.setProperty("--release",String(release));
+          scene.style.setProperty("--opening-copy",String(1-ease(clamp((p-.06)/.15))));
+          scene.style.setProperty("--serving-copy",String(ease(clamp((p-.28)/.1))*(1-ease(clamp((p-.49)/.1)))));
+          scene.style.setProperty("--dining-copy",String(ease(clamp((p-.66)/.12))));
+          scene.style.setProperty("--travel",String(p));
+          const copy=scene.querySelector<HTMLElement>("[data-intro-copy]");if(copy)copy.inert=p>.23;
         }
-        if(table){const r=table.getBoundingClientRect();const p=clamp((vh-r.top)/(vh+r.height));table.style.setProperty("--table-drift",`${(p-.5)*36}px`);}
         if(bridge){const r=bridge.getBoundingClientRect();bridge.style.setProperty("--unfold",String(ease(clamp((vh-r.top)/(vh*.85)))));}
         if(philosophy){const r=philosophy.getBoundingClientRect();philosophy.style.setProperty("--connection",String(ease(clamp((vh-r.top)/(vh*.85)))));}
       }
@@ -51,31 +51,20 @@ export default function Opening() {
     return()=>{cancelAnimationFrame(frame);observer.disconnect();sizes.disconnect();window.removeEventListener("scroll",schedule);window.removeEventListener("resize",schedule);query.removeEventListener("change",schedule);};
   },[]);
   return <div ref={ref} className={s.opening}>
-    <section data-opening-hero className={s.hero} aria-labelledby="opening-title">
-      <div className={s.heroImage}>
-        <Image src="/images/rice-hero-v2.png" fill priority sizes="100vw" alt="光を含んだ白い米粒の重なり"/>
-        <div className={s.imageNotation} aria-hidden="true">THE BEGINNING OF EVERYDAY WELLBEING</div>
-      </div>
-      <div className={s.heroText}>
-        <p className={s.eyebrow}>A LITTLE GRAIN, A GREATER BOND.</p>
-        <h1 id="opening-title"><span>暮らしを整え、</span><span>人と人を結ぶ。</span></h1>
-        <p className={s.heroDescription}>食べる。動く。整える。休む。<br/>小さな日々から、健やかなつながりを。</p>
-        <a className={s.roundLink} href="#about">結の想いを知る <span aria-hidden="true">↗</span></a>
-      </div>
-      <div className={s.heroSignature}><span className={s.dots} aria-hidden="true"><i/><i/><i/><i/></span><span>食・動・美・心を、暮らしの中へ。</span></div>
-      <a className={s.scroll} href="#grain"><span>SCROLL TO DISCOVER</span><span className={s.scrollLine} aria-hidden="true"/></a>
-      <div className={s.heroNumber} aria-hidden="true">01 — 03<br/><span>A GRAIN / A TABLE / A CONNECTION</span></div>
-    </section>
-
-    <section id="grain" data-grain-scene className={s.grainScene} aria-labelledby="grain-title">
-      <div className={s.grainSticky}>
-        <div className={s.chapter}><span>01 / THE EVERYDAY</span><span>一粒から、はじまる。</span></div>
-        <span className={s.backWord} aria-hidden="true">Nourish.</span>
-        <div className={s.servingImage}><Image src="/images/rice-serving-ivory-v2.png" fill sizes="100vw" alt="朝の光の中、器へ温かいごはんをよそう手元のイメージ"/></div>
-        <div className={s.grainFirst}><span className={s.smallIndex}>A GRAIN</span><h2 id="grain-title">一粒の、その先に。</h2><p>いつものごはん。<br/>いつもの「いただきます」。</p></div>
-        <div className={s.grainSecond}><p className={s.eyebrow}>SMALL MOMENTS, LASTING CONNECTIONS.</p><h2>健やかさは、<br/>何気ない日々の中に。</h2></div>
-        <Thread className={s.thread}/>
-        <div className={s.sceneFoot}><span>食べることは、暮らしをつくること。</span><span aria-hidden="true">MUSUBU — 01</span></div>
+    <section data-cinema className={s.cinema} aria-label="一粒から、つながる暮らしへ">
+      <div className={s.cinemaStage}>
+        <div className={s.cinemaRice}><Image src="/images/rice-hero-v2.png" fill priority sizes="100vw" alt="光を含んだ白い米粒の重なり"/></div>
+        <div className={s.cinemaServing}><Image src="/images/rice-serving-ivory-v2.png" fill loading="eager" sizes="100vw" alt="朝の光の中、ごはんをよそう手元のイメージ"/></div>
+        <div className={s.cinemaTable}><Image src="/images/shared-table-four-v3.png" fill loading="eager" sizes="100vw" alt="4人が食卓を囲み、会話を楽しむイメージ"/></div>
+        <div data-intro-copy className={s.cinemaIntro}>
+          <p className={s.eyebrow}>A LITTLE GRAIN, A GREATER BOND.</p>
+          <h1 id="opening-title">暮らしを整え、<br/>人と人を結ぶ。</h1>
+          <p>食べる。動く。整える。休む。<br/>小さな日々から、健やかなつながりを。</p>
+          <a className={s.roundLink} href="#about">結の想いを知る <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className={s.cinemaServingCopy} aria-hidden="true"><span>01 / NOURISH</span><p>いつものごはんに、<br/>健やかな明日の種がある。</p></div>
+        <div className={s.cinemaTableCopy} aria-hidden="true"><span>02 / TOGETHER</span><p>一粒から、<br/>つながる暮らしへ。</p></div>
+        <div className={s.cinemaFooter} aria-hidden="true"><span>SCROLL TO DISCOVER</span><div><i/><i/><i/></div><span>MUSUBU</span></div>
       </div>
     </section>
 
@@ -87,11 +76,6 @@ export default function Opening() {
       </div>
     </section>
 
-    <section data-table-scene className={s.tableScene} aria-labelledby="table-title">
-      <div className={s.tableHeading}><span className={s.eyebrow}>AROUND THE TABLE</span><span className={s.smallIndex}>03 / 食卓から、つながりへ。</span></div>
-      <figure className={s.tableFigure}><div className={s.tableImage}><Image src="/images/shared-table-four-v3.png" fill sizes="100vw" alt="自然光が差す部屋で、4人が食卓を囲むイメージ"/></div><figcaption>食べること。話すこと。つながること。</figcaption></figure>
-      <div className={s.tableCopy}><div><p className={s.tableEnglish} aria-hidden="true">Better,<br/><em>together.</em></p><h2 id="table-title">誰かと囲む食卓に、<br/>健やかな明日の種がある。</h2></div><div className={s.tableBody}><p>食べること。話すこと。<br/>一緒に、笑うこと。</p><p>何気ない時間の中にある、<br/>人と人のつながりを大切に。</p><a className={s.roundLink} href="#elements">食・動・美・心を知る <span aria-hidden="true">↗</span></a></div></div>
-    </section>
     <section data-health-bridge className={s.healthBridge} aria-labelledby="health-bridge-title">
       <p className={s.eyebrow}>FOUR ELEMENTS, ONE EVERYDAY.</p>
       <h2 id="health-bridge-title" data-reveal="text">健康は、食事だけで<br/>できているわけではありません。</h2>
