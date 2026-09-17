@@ -55,7 +55,7 @@ export default function Opening() {
       <div className={s.cinemaStage}>
         <div className={s.cinemaRice}><Image src="/images/rice-hero-v2.png" fill priority sizes="100vw" alt="光を含んだ白い米粒の重なり"/></div>
         <div className={s.cinemaServing}><Image src="/images/rice-serving-ivory-v2.png" fill loading="eager" sizes="100vw" alt="朝の光の中、ごはんをよそう手元のイメージ"/></div>
-        <div className={s.cinemaTable}><Image src="/images/shared-table-four-v3.png" fill loading="eager" sizes="100vw" alt="4人が食卓を囲み、会話を楽しむイメージ"/></div>
+        <div className={s.cinemaTable}><picture><source media="(max-width: 760px)" srcSet="/images/shared-table-mobile-v4.webp"/><Image src="/images/shared-table-four-v3.png" fill loading="eager" sizes="100vw" alt="4人が食卓を囲み、会話を楽しむイメージ"/></picture></div>
         <div data-intro-copy className={s.cinemaIntro}>
           <p className={s.eyebrow}>A LITTLE GRAIN, A GREATER BOND.</p>
           <h1 id="opening-title">暮らしを整え、<br/>人と人を結ぶ。</h1>

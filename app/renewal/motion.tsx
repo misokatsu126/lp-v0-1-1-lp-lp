@@ -28,6 +28,7 @@ export default function MotionExperience(){
   const images=Array.from(root.querySelectorAll<HTMLElement>('[data-parallax]'));
   const stories=Array.from(root.querySelectorAll<HTMLElement>('[data-story]'));
   const stages=Array.from(root.querySelectorAll<HTMLElement>('[data-stage]'));
+  const threads=Array.from(root.querySelectorAll<SVGPathElement>("[data-theme-thread]"));
   const journey=root.querySelector<HTMLElement>('[data-journey]');
   const tones=['#f0ede2','#eee5df','#e5eadf','#e3e9e9'];
   const bridge=root.querySelector<HTMLElement>('[data-bridge]');
@@ -45,7 +46,8 @@ export default function MotionExperience(){
     const progress=y/Math.max(1,html.scrollHeight-vh);root.style.setProperty('--page-progress',String(progress));
     if(hero){const h=hero.offsetHeight;const p=clamp(y/h);hero.style.setProperty('--hero-y',(p*h*.22)+'px');hero.style.setProperty('--copy-y',(-p*90)+'px');hero.style.setProperty('--copy-opacity',String(1-clamp((p-.1)*1.6)));hero.style.setProperty('--hero-inset',(p*2.3)+'%');hero.style.setProperty('--hero-radius',(p*38)+'px');}
     images.forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<vh){const p=clamp((vh-r.top)/(vh+r.height));el.style.setProperty('--photo-y',((p-.5)*(innerWidth>760?64:24))+'px');}});
-    if(stories.length&&journey){let index=0;stories.forEach((el,i)=>{if(el.getBoundingClientRect().top<vh*.58)index=i;});if(index!==active){active=index;stages.forEach((el,i)=>el.dataset.active=String(i===index));stories.forEach((el,i)=>el.dataset.active=String(i===index));journey.style.setProperty('--journey-tone',tones[index]);const count=journey.querySelector('[data-count]');if(count)count.textContent='0'+(index+1);}}
+    stories.forEach(el=>{const r=el.getBoundingClientRect();el.style.setProperty("--story-progress",String(clamp((vh*.85-r.top)/(vh*.65))));});
+    if(stories.length&&journey){let index=0;stories.forEach((el,i)=>{if(el.getBoundingClientRect().top<vh*.58)index=i;});if(index!==active){active=index;threads.forEach((el,i)=>el.dataset.active=String(i===index));journey.style.setProperty("--thread-progress",String((index+1)/4));stages.forEach((el,i)=>el.dataset.active=String(i===index));stories.forEach((el,i)=>el.dataset.active=String(i===index));journey.style.setProperty('--journey-tone',tones[index]);const count=journey.querySelector('[data-count]');if(count)count.textContent='0'+(index+1);}}
     if(bridge){const r=bridge.getBoundingClientRect();const p=clamp(-r.top/Math.max(1,r.height-vh));bridge.style.setProperty('--bridge-progress',String(p));bridge.dataset.second=String(p>.48);}
     if(circle){const r=circle.getBoundingClientRect();const p=clamp((vh-r.top)/(vh+r.height));circle.style.setProperty('--circle-turn',((p-.5)*35)+'deg');}
    }
